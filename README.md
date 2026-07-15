@@ -67,7 +67,7 @@ Section entrances and project-filter transitions use Motion for React. CSS handl
 
 1. Push this repository to GitHub.
 2. In Vercel, select **Add New → Project** and import the repository.
-3. If this portfolio remains in the current monorepo, set **Root Directory** to `portfolio`.
+3. Leave **Root Directory** at the repository root (`./`). This GitHub repository contains the portfolio as a standalone project.
 4. Confirm that Vercel automatically detects **Next.js**. Keep the default build command and output settings.
 5. Choose `main` as the production branch in **Project Settings → Environments → Production**.
 6. No environment variables are required for the initial deployment. After connecting a custom domain, optionally set `NEXT_PUBLIC_SITE_URL` to its full `https://` URL so canonical, sitemap, robots, and social metadata use that domain.

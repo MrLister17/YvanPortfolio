@@ -77,7 +77,7 @@ The exact content-and-permission checklist is maintained in [`docs/MISSING_CONTE
 
 1. Review the public project and practicum wording.
 2. Push the repository to GitHub.
-3. Import it into Vercel with `portfolio` as the Root Directory.
+3. Import it into Vercel and leave the Root Directory at the repository root (`./`).
 4. Confirm `main` as the production branch and run the first deployment.
 5. Test the Vercel URL and connect a custom domain when available.
 6. Add a final CV or missing approved assets only after privacy review.
