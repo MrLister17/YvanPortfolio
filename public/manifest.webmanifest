@@ -1,0 +1,10 @@
+{
+  "name": "Yvan Ramirez — Applied AI Portfolio",
+  "short_name": "Yvan Ramirez",
+  "description": "Portfolio of Lester Yvan P. Ramirez, Machine Learning Student and Applied AI Developer.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#070607",
+  "theme_color": "#070607",
+  "icons": [{ "src": "/icon", "sizes": "64x64", "type": "image/png" }]
+}
