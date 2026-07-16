@@ -22,6 +22,7 @@ export function ProjectCard({
   const rectRef = useRef<DOMRect | null>(null);
   const frameRef = useRef<number | null>(null);
   const reduceMotion = useReducedMotion();
+  const preview = project.thumbnail ?? project.gallery[0];
 
   useEffect(() => () => {
     if (frameRef.current !== null) cancelAnimationFrame(frameRef.current);
@@ -62,12 +63,12 @@ export function ProjectCard({
       onPointerLeave={resetPointer}
     >
       <Link href={`/projects/${project.slug}`} className="project-media" aria-label={`View ${project.title} case study`}>
-        {project.gallery[0] ? (
+        {preview ? (
           <Image
-            src={project.gallery[0].src}
-            alt={project.gallery[0].alt}
-            width={project.gallery[0].width}
-            height={project.gallery[0].height}
+            src={preview.src}
+            alt={preview.alt}
+            width={preview.width}
+            height={preview.height}
             sizes={variant === "row" ? "(max-width: 900px) 100vw, 58vw" : lead ? "(max-width: 900px) 100vw, 66vw" : "(max-width: 900px) 100vw, 34vw"}
             loading={lead || index === 0 ? "eager" : "lazy"}
           />
