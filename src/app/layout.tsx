@@ -4,12 +4,13 @@ import { Header } from "@/components/header";
 import { BackToTop } from "@/components/back-to-top";
 import { getSiteUrl, portfolioConfig } from "@/config/portfolio";
 import "./globals.css";
+import "./scrollbar.css";
 
 const productionUrl = getSiteUrl();
 
 export const metadata: Metadata = {
   metadataBase: new URL(productionUrl),
-  title: { default: `${portfolioConfig.name} — Applied AI Developer`, template: `%s — ${portfolioConfig.shortName}` },
+  title: { default: `${portfolioConfig.name} - Applied AI Developer`, template: `%s - ${portfolioConfig.shortName}` },
   description: portfolioConfig.supportingHeadline,
   applicationName: `${portfolioConfig.shortName} Portfolio`,
   authors: [{ name: portfolioConfig.name }],
@@ -18,12 +19,12 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    title: `${portfolioConfig.name} — Applied AI Developer`,
+    title: `${portfolioConfig.name} - Applied AI Developer`,
     description: portfolioConfig.supportingHeadline,
     siteName: `${portfolioConfig.shortName} Portfolio`,
-    images: [{ url: "/og.png", width: 1200, height: 630, alt: `${portfolioConfig.name} — ${portfolioConfig.headline}` }],
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: `${portfolioConfig.name} - ${portfolioConfig.headline}` }],
   },
-  twitter: { card: "summary_large_image", title: `${portfolioConfig.name} — Applied AI Developer`, description: portfolioConfig.supportingHeadline, images: ["/og.png"] },
+  twitter: { card: "summary_large_image", title: `${portfolioConfig.name} - Applied AI Developer`, description: portfolioConfig.supportingHeadline, images: ["/og.png"] },
   robots: { index: true, follow: true },
   manifest: "/manifest.webmanifest",
 };

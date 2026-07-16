@@ -33,7 +33,7 @@ export default function PracticumPage() {
 
       <section className="section-shell practicum-facts">
         <div><small>Company</small><strong>{practicum.company}</strong></div>
-        <div><small>Period</small><strong>{practicum.startDate}<br />— {practicum.endDate}</strong></div>
+        <div><small>Period</small><strong>{practicum.startDate}<br />to {practicum.endDate}</strong></div>
         <div><small>Required hours</small><strong>{practicum.totalHours}</strong></div>
         <div><small>Setup</small><strong>{practicum.setup}</strong></div>
       </section>
@@ -41,13 +41,13 @@ export default function PracticumPage() {
       <section className="section-shell section-block practicum-disclosure">
         <article>
           <FileCheck2 aria-hidden="true" />
-          <span className="eyebrow">01 — Confirmed public scope</span>
+          <span className="eyebrow">01 · Confirmed public scope</span>
           <h2>What this page can state.</h2>
           <ul>{confirmedItems.map((item) => <li key={item}>{item}</li>)}</ul>
         </article>
         <article>
           <LockKeyhole aria-hidden="true" />
-          <span className="eyebrow">02 — Protected information</span>
+          <span className="eyebrow">02 · Protected information</span>
           <h2>What remains outside the public site.</h2>
           <ul>{protectedItems.map((item) => <li key={item}>{item}</li>)}</ul>
         </article>

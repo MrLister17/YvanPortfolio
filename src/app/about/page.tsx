@@ -43,12 +43,12 @@ export default function AboutPage() {
       </section>
 
       <section className="section-shell section-block">
-        <Reveal variant="mask" className="section-heading"><div><span className="eyebrow">02 — Current interests</span><h2>Technical areas represented in the work.</h2></div><p>These interests are connected to the verified project themes and portfolio direction.</p></Reveal>
+        <Reveal variant="mask" className="section-heading"><div><span className="eyebrow">02 · Current interests</span><h2>Technical areas represented in the work.</h2></div><p>These interests are connected to the verified project themes and portfolio direction.</p></Reveal>
         <div className="interest-grid">{interests.map((interest, index) => <div key={interest}><span>{String(index + 1).padStart(2, "0")}</span>{interest}</div>)}</div>
       </section>
 
       <section className="section-shell section-block evidence-section">
-        <Reveal variant="mask"><span className="eyebrow">03 — Skills through evidence</span><h2>Capabilities shown in context.</h2></Reveal>
+        <Reveal variant="mask"><span className="eyebrow">03 · Skills through evidence</span><h2>Capabilities shown in context.</h2></Reveal>
         <div className="evidence-list">{evidenceGroups.map((item, index) => <article key={item.title}><span>{String(index + 1).padStart(2, "0")}</span><h3>{item.title}</h3><p>{item.evidence}</p></article>)}</div>
       </section>
 
