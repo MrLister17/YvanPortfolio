@@ -123,10 +123,8 @@ export const projects: Project[] = [
     role: "Mobile, full-stack, and AI application developer",
     technologies: [
       "Android APK",
-      "Next.js 16",
-      "React 19",
-      "TypeScript",
-      "Tailwind CSS 4",
+      "Kotlin",
+      "Jetpack Compose",
       "Python",
       "JSON HTTP API",
       "Groq Llama 4 Scout",
