@@ -714,6 +714,20 @@ body::before {
 .rag-meter span { background: linear-gradient(90deg, #9f4f72, var(--accent-strong)); }
 .abstract-project-visual { background: radial-gradient(circle at 70% 20%, rgba(243, 167, 196, .14), transparent 35%), linear-gradient(135deg, #0d090b, #21121a); }
 .abstract-project-visual::before { border-color: rgba(243, 167, 196, .35); box-shadow: 0 0 0 34px rgba(243, 167, 196, .04), 0 0 0 68px rgba(243, 167, 196, .025); }
+.game-visual { background: radial-gradient(circle at 50% 45%, rgba(243, 167, 196, .18), transparent 27%), linear-gradient(135deg, #090809, #27121e); }
+.game-visual::before { width: 48%; border-radius: 4px; border-style: dashed; box-shadow: 0 0 0 28px rgba(243, 167, 196, .04), 0 0 0 56px rgba(243, 167, 196, .02); }
+.game-visual strong { color: var(--accent-strong); font-size: clamp(3.7rem, 7vw, 5.6rem); }
+.case-game-cover { background: radial-gradient(circle at 50% 45%, rgba(243, 167, 196, .18), transparent 22%), linear-gradient(135deg, #080708, #2b1220); }
+.case-game-cover::before { content: ""; position: absolute; inset: 10%; opacity: .25; background-image: linear-gradient(rgba(243, 167, 196, .18) 1px, transparent 1px), linear-gradient(90deg, rgba(243, 167, 196, .18) 1px, transparent 1px); background-size: 34px 34px; mask-image: radial-gradient(circle, black, transparent 72%); }
+.game-invader { position: absolute; left: 50%; top: 50%; width: min(32vw, 340px); aspect-ratio: 1.45 / 1; transform: translate(-50%, -50%); opacity: .56; filter: drop-shadow(0 0 42px rgba(243, 167, 196, .23)); }
+.game-invader::before, .game-invader::after, .game-invader span { content: ""; position: absolute; background: var(--accent); box-shadow: 0 0 0 1px rgba(255, 249, 252, .08); }
+.game-invader::before { inset: 5% 18% 32%; clip-path: polygon(25% 0, 75% 0, 75% 18%, 92% 18%, 92% 62%, 78% 62%, 78% 82%, 61% 82%, 61% 65%, 39% 65%, 39% 82%, 22% 82%, 22% 62%, 8% 62%, 8% 18%, 25% 18%); }
+.game-invader::after { left: 23%; right: 23%; bottom: 7%; height: 12%; }
+.game-invader span { left: 46%; bottom: -15%; width: 8%; height: 24%; }
+.game-play-section { border-top: 1px solid var(--border); }
+.game-embed { overflow: hidden; border: 1px solid var(--border-strong); background: #050713; box-shadow: 0 34px 100px rgba(0, 0, 0, .45); }
+.game-embed iframe { width: 100%; min-height: 680px; display: block; border: 0; background: #050713; }
+.game-embed-actions { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 12px; }
 .error-code { color: rgba(243, 167, 196, .12); }
 .dialog-backdrop { background: rgba(5, 3, 4, .78); }
 .command-dialog { background: #0c090b; }
@@ -824,6 +838,7 @@ body::before {
   .case-hero-frame { min-height: 240px; }
   .case-hero-frame figcaption { position: static; border: 0; border-top: 1px solid var(--border); }
   .case-abstract-cover { min-height: 520px; }
+  .game-embed iframe { min-height: 640px; }
   .case-limitations { grid-template-columns: 1fr; gap: 32px; }
   .back-projects-link { margin-top: -45px; padding-bottom: 90px; }
   .practicum-facts { grid-template-columns: 1fr 1fr; }

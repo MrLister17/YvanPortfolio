@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, Code2, ExternalLink } from "lucide-react";
 import { ArchitectureExplorer } from "@/components/architecture-explorer";
 import { CaseHeroMedia } from "@/components/case-hero-media";
 import { Gallery } from "@/components/gallery";
@@ -36,6 +36,8 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       </header>
 
       <CaseHeroMedia project={project} index={index} />
+
+      {project.embedUrl && <section className="section-shell section-block game-play-section"><div className="section-heading"><div><span className="eyebrow">Playable demo</span><h2>Play the game directly in the portfolio.</h2></div><p>Use the frame below for the live game, or open it in a new tab for the largest play area. Click or tap the game before using its keyboard controls.</p></div><div className="game-embed"><iframe src={project.embedUrl} title={`Play ${project.title}`} loading="lazy" sandbox="allow-scripts allow-same-origin" allow="autoplay; fullscreen" /></div><div className="game-embed-actions"><a className="button" href={project.liveUrl} target="_blank" rel="noreferrer">Open game <ExternalLink /></a>{project.repositoryUrl && <a className="button button-secondary" href={project.repositoryUrl} target="_blank" rel="noreferrer"><Code2 /> View source</a>}</div></section>}
 
       <section className="section-shell section-block case-overview"><div><span className="section-number">01</span><span className="eyebrow">Overview</span><h2>{project.shortDescription}</h2></div><div><h3>The problem</h3><p>{project.problem}</p><h3>Intended users</h3><p>{project.users}</p><h3>Constraints</h3><ul>{project.constraints.map((constraint) => <li key={constraint}>{constraint}</li>)}</ul></div></section>
       {project.gallery.length > 0 && <section className="section-shell section-block"><div className="section-heading compact"><div><span className="section-number">02</span><span className="eyebrow">Product evidence</span><h2>Interface states from the working prototype.</h2></div></div><Gallery images={project.gallery} /></section>}

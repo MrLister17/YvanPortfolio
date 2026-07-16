@@ -41,6 +41,10 @@ export type Project = {
   users: string;
   constraints: string[];
   contribution?: string;
+  liveUrl?: string;
+  repositoryUrl?: string;
+  embedUrl?: string;
+  visualType?: "game";
   approach: string[];
   keyFeatures: { title: string; description: string }[];
   architecture: ArchitectureNode[];

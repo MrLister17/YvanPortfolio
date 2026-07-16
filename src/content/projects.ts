@@ -149,6 +149,75 @@ export const projects: Project[] = [
         "An academic mobile and AI application case study focused on adaptive fitness experiences and retrieval-supported guidance.",
     },
   },
+  {
+    slug: "space-invaders-browser",
+    title: "Pixel Vanguard",
+    shortDescription:
+      "A playable, endless Space Invaders-style browser game built for keyboard, touch, and mobile play.",
+    positioningStatement:
+      "A responsive arcade game that keeps the classic loop fast, readable, and playable across devices.",
+    categories: ["Web", "Mobile"],
+    featured: false,
+    status: "Completed",
+    role: "Creator and browser game developer",
+    technologies: ["JavaScript", "HTML5 Canvas", "HTML", "CSS"],
+    gallery: [],
+    visualType: "game",
+    liveUrl: "https://mrlister17.github.io/space-invaders-browser/",
+    embedUrl: "https://mrlister17.github.io/space-invaders-browser/",
+    repositoryUrl: "https://github.com/MrLister17/space-invaders-browser",
+    problem:
+      "Classic arcade controls can feel cramped or inaccessible when a browser game is designed for only one screen size or input method. Pixel Vanguard explores a responsive, touch-friendly version of the Space Invaders-style loop.",
+    users:
+      "Desktop and mobile browser players who want a lightweight arcade game without an account, installation, or backend service.",
+    constraints: [
+      "The game must remain playable with keyboard, mouse, and simultaneous multi-touch controls.",
+      "The canvas needs to stay readable across desktop and mobile browser sizes.",
+      "The static game must run entirely in the browser without a build step, account, or paid service.",
+    ],
+    contribution:
+      "I created the vanilla HTML, CSS, and JavaScript game experience, including its Canvas rendering loop, responsive input controls, game states, local high-score behavior, audio controls, and GitHub Pages deployment.",
+    approach: [
+      "Build the arcade loop around a responsive 3:2 Canvas playfield rather than a fixed desktop-only layout.",
+      "Separate entities, collision handling, assets, input, and game state into focused JavaScript modules.",
+      "Support keyboard, mouse, and multi-touch movement and firing so the same game works across devices.",
+      "Keep deployment static and lightweight by publishing the finished game through GitHub Pages.",
+    ],
+    keyFeatures: [
+      { title: "Endless waves", description: "Alien speed and fire frequency increase as each wave is cleared." },
+      { title: "Responsive controls", description: "Keyboard, mouse, and simultaneous multi-touch controls support desktop and mobile play." },
+      { title: "Arcade progression", description: "Score, wave, lives, wave bonuses, and browser-local high-score tracking provide a complete game loop." },
+      { title: "Game-state polish", description: "Pause, mute, tab-visibility pause, visual feedback, sprites, sound effects, and looping music are part of the experience." },
+    ],
+    architecture: [
+      { id: "canvas", label: "Canvas renderer", detail: "A 900 × 600 logical playfield scales for browser and device density constraints." },
+      { id: "entities", label: "Game entities", detail: "Player, alien, projectile, shield, mystery enemy, and explosion behavior are modeled in focused modules." },
+      { id: "input", label: "Input layer", detail: "Keyboard, mouse drag and click, and multi-touch controls map into the same game actions." },
+      { id: "assets", label: "Assets & audio", detail: "Graphics, sprites, font, music, and sound effects load through relative static paths." },
+      { id: "state", label: "Game state", detail: "Start, pause, wave completion, game-over, muted audio, and local high-score states stay explicit." },
+    ],
+    outcomes: [
+      "A public, playable browser game is deployed through GitHub Pages.",
+      "The experience supports desktop and mobile controls without a backend or account requirement.",
+      "Players can pause, mute, and retain a high score in their browser when local storage is available.",
+    ],
+    lessons: [
+      "Responsive canvas games need input and layout decisions to be designed together.",
+      "A small static project can still benefit from clear module boundaries and explicit game states.",
+      "Touch controls require simultaneous input handling rather than a desktop control scheme scaled down visually.",
+    ],
+    challenges: [
+      { challenge: "Making one control system work across devices", response: "Keyboard, mouse, and multi-touch interactions are translated into a shared movement and firing model." },
+      { challenge: "Keeping play readable on small screens", response: "The responsive canvas preserves a 3:2 playfield while the interface provides mobile-safe controls and a landscape suggestion." },
+    ],
+    visibilityNote:
+      "The playable demo is hosted on GitHub Pages. Scores and sound preferences are stored locally in the player’s browser when browser storage is available; the game does not use a backend or account system.",
+    seo: {
+      title: "Pixel Vanguard Browser Game",
+      description:
+        "A playable Space Invaders-style browser game by Yvan Ramirez, built with JavaScript and the HTML5 Canvas API.",
+    },
+  },
 ];
 
 export function getProject(slug: string) {

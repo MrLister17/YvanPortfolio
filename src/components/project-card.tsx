@@ -72,9 +72,15 @@ export function ProjectCard({
             loading={lead || index === 0 ? "eager" : "lazy"}
           />
         ) : (
-          <div className="abstract-project-visual fitness-visual" role="img" aria-label="Abstract training and guidance system illustration">
-            <span>adaptive plan</span><strong>01</strong><span>retrieved context</span>
-          </div>
+          project.visualType === "game" ? (
+            <div className="abstract-project-visual game-visual" role="img" aria-label="Abstract Pixel Vanguard arcade game illustration">
+              <span>browser game</span><strong>PX</strong><span>playable demo</span>
+            </div>
+          ) : (
+            <div className="abstract-project-visual fitness-visual" role="img" aria-label="Abstract training and guidance system illustration">
+              <span>adaptive plan</span><strong>01</strong><span>retrieved context</span>
+            </div>
+          )
         )}
         <span className="project-open"><ArrowUpRight aria-hidden="true" /></span>
       </Link>
