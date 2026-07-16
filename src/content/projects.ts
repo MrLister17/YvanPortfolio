@@ -16,13 +16,6 @@ export const projects: Project[] = [
       "Designed and implemented the interface, API workflow, data services, AI-provider layer, review controls, and export path represented in this prototype.",
     timeframe: "2026",
     technologies: ["Next.js", "TypeScript", "FastAPI", "Python", "PostgreSQL", "pgvector"],
-    thumbnail: {
-      src: "/images/projects/gma/research-workflow-thumbnail.png",
-      alt: "Conceptual GMA Research Assistant preview showing source documents, structured evidence review, and retrieval connections",
-      caption: "Conceptual visual for the research workflow; not a live product capture.",
-      width: 1568,
-      height: 1003,
-    },
     gallery: [
       {
         src: "/images/projects/gma/regulatory-search.png",
@@ -188,7 +181,7 @@ export const projects: Project[] = [
   },
   {
     slug: "space-invaders-browser",
-    title: "Pixel Vanguard",
+    title: "Space Invaders Clone",
     shortDescription:
       "A playable, endless Space Invaders-style browser game built for keyboard, touch, and mobile play.",
     positioningStatement:
@@ -204,7 +197,7 @@ export const projects: Project[] = [
     embedUrl: "https://mrlister17.github.io/space-invaders-browser/",
     repositoryUrl: "https://github.com/MrLister17/space-invaders-browser",
     problem:
-      "Classic arcade controls can feel cramped or inaccessible when a browser game is designed for only one screen size or input method. Pixel Vanguard explores a responsive, touch-friendly version of the Space Invaders-style loop.",
+      "Classic arcade controls can feel cramped or inaccessible when a browser game is designed for only one screen size or input method. Space Invaders Clone explores a responsive, touch-friendly version of the classic arcade loop.",
     users:
       "Desktop and mobile browser players who want a lightweight arcade game without an account, installation, or backend service.",
     constraints: [
@@ -250,7 +243,7 @@ export const projects: Project[] = [
     visibilityNote:
       "The playable demo is hosted on GitHub Pages. Scores and sound preferences are stored locally in the player’s browser when browser storage is available; the game does not use a backend or account system.",
     seo: {
-      title: "Pixel Vanguard Browser Game",
+      title: "Space Invaders Clone Browser Game",
       description:
         "A playable Space Invaders-style browser game by Yvan Ramirez, built with JavaScript and the HTML5 Canvas API.",
     },

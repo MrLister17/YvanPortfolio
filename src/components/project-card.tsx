@@ -74,7 +74,7 @@ export function ProjectCard({
           />
         ) : (
           project.visualType === "game" ? (
-            <div className="abstract-project-visual game-visual" role="img" aria-label="Abstract Pixel Vanguard arcade game illustration">
+            <div className="abstract-project-visual game-visual" role="img" aria-label="Abstract Space Invaders Clone arcade game illustration">
               <span>browser game</span><strong>PX</strong><span>playable demo</span>
             </div>
           ) : (

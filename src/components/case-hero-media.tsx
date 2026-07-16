@@ -13,9 +13,9 @@ export function CaseHeroMedia({ project, index }: { project: Project; index: num
           <figcaption>{image.caption}</figcaption>
         </figure>
       ) : project.visualType === "game" ? (
-        <div className="case-hero-frame case-abstract-cover case-game-cover" role="img" aria-label="Abstract Pixel Vanguard arcade game cover, not a gameplay screenshot">
+        <div className="case-hero-frame case-abstract-cover case-game-cover" role="img" aria-label="Abstract Space Invaders Clone arcade game cover, not a gameplay screenshot">
           <div className="game-invader" aria-hidden="true"><span /><span /><span /></div>
-          <div><small>Browser game · GitHub Pages</small><strong>PIXEL<br />VANGUARD</strong><p>Endless Space Invaders-style arcade action</p></div>
+          <div><small>Browser game · GitHub Pages</small><strong>SPACE<br />INVADERS</strong><p>Classic arcade action for desktop and mobile</p></div>
           <span className="abstract-label">Playable demo below</span>
         </div>
       ) : (
