@@ -12,6 +12,7 @@ export const portfolioConfig = {
   email: "yvanmain28@gmail.com",
   githubUrl: "https://github.com/MrLister17",
   linkedInUrl: "https://www.linkedin.com/in/lester-yvan-ramirez-353b44293/",
+  resumeUrl: "/documents/resume/Ramirez-Resume.pdf",
   practicum: {
     company: "UL Solutions",
     startDate: "June 8, 2026",
