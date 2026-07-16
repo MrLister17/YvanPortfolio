@@ -1,0 +1,83 @@
+.profileCard {
+  overflow: hidden;
+}
+
+.profilePhoto {
+  margin: -1px -1px 24px;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface-2);
+}
+
+.profilePhoto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 34%;
+}
+
+.photoGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.photoGrid figure {
+  position: relative;
+  min-height: 280px;
+  overflow: hidden;
+  background: var(--surface-2);
+}
+
+.photoGrid figure:nth-child(2) {
+  grid-column: span 2;
+}
+
+.photoGrid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.45s ease;
+}
+
+.photoGrid figure:hover img {
+  transform: scale(1.03);
+}
+
+.photoGrid figcaption {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  padding: 7px 9px;
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  background: rgba(7, 6, 7, 0.74);
+  font: 500 0.58rem/1 var(--font-mono), monospace;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 800px) {
+  .photoGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .photoGrid figure:nth-child(2) {
+    grid-column: span 1;
+  }
+}
+
+@media (max-width: 520px) {
+  .profilePhoto {
+    aspect-ratio: 1 / 1;
+  }
+
+  .photoGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .photoGrid figure {
+    min-height: 360px;
+  }
+}
