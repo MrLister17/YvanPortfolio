@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Award, ExternalLink } from "lucide-react";
 import { Reveal } from "@/components/reveal";
 import { portfolioConfig } from "@/config/portfolio";
 import styles from "./about.module.css";
@@ -19,6 +19,20 @@ const evidenceGroups = [
   { title: "Full-stack development", evidence: "GMA Research Assistant" },
   { title: "Data & spreadsheet workflows", evidence: "GMA Research Assistant" },
   { title: "Mobile application concepts", evidence: "Fitness Buddy overview" },
+];
+
+const certifications = [
+  { title: "Foundations of Project Management", issuer: "Google", issued: "March 2026", credentialId: "K6UO2C33HJ0Z", url: "https://www.coursera.org/account/accomplishments/records/K6UO2C33HJ0Z" },
+  { title: "Full Stack Web Development", issuer: "Amazon", issued: "March 2026", credentialId: "7235BFDPGSDG", url: "https://www.coursera.org/account/accomplishments/records/7235BFDPGSDG" },
+  { title: "CompTIA Tech+ Certification", issuer: "CompTIA", issued: "December 2025", credentialId: "291250c2-ca40-4cc3-beda-4801b04c191e", url: "https://www.credly.com/earner/earned/badge/291250c2-ca40-4cc3-beda-4801b04c191e" },
+  { title: "AWS Academy Graduate: Cloud Foundations", issuer: "Amazon Web Services Training and Certification", issued: "November 2023", credentialId: "8c0a5747-d71d-4357-b90b-da0107652403", url: "https://www.credly.com/earner/earned/badge/8c0a5747-d71d-4357-b90b-da0107652403" },
+];
+
+const techStack = [
+  { title: "Mobile development", items: ["Kotlin", "Jetpack Compose", "Android APK"] },
+  { title: "Web and services", items: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Python", "FastAPI", "Uvicorn"] },
+  { title: "AI and retrieval", items: ["Groq Llama 4 Scout", "sentence-transformers", "FAISS", "pgvector", "OpenAI and Hugging Face libraries", "NumPy", "Pandas"] },
+  { title: "Data, cloud, and delivery", items: ["PostgreSQL", "SQLite", "Drizzle", "Firebase Admin", "CSV and JSON", "AWS Cloud Foundations", "GitHub", "Vercel", "Cloudflare Workers"] },
 ];
 
 const personalPhotos = [
@@ -61,6 +75,16 @@ export default function AboutPage() {
       <section className="section-shell section-block evidence-section">
         <Reveal variant="mask"><span className="eyebrow">03 · Skills through evidence</span><h2>Capabilities shown in context.</h2></Reveal>
         <div className="evidence-list">{evidenceGroups.map((item, index) => <article key={item.title}><span>{String(index + 1).padStart(2, "0")}</span><h3>{item.title}</h3><p>{item.evidence}</p></article>)}</div>
+      </section>
+
+      <section className="section-shell section-block">
+        <Reveal variant="mask" className="section-heading"><div><span className="eyebrow">Professional certifications</span><h2>Credentials that support practical delivery.</h2></div><p>Verification links open directly with the issuing platform.</p></Reveal>
+        <div className={styles.certificationGrid}>{certifications.map((certification) => <article key={certification.credentialId} className={styles.certification}><span className={styles.certificationLogo} aria-label={`${certification.issuer} logo placeholder`}>LOGO</span><div><div className={styles.certificationTitle}><Award aria-hidden="true" /><h3>{certification.title}</h3></div><p>{certification.issuer} · Issued {certification.issued}</p><small>Credential ID: {certification.credentialId}</small><a className="text-link" href={certification.url} target="_blank" rel="noreferrer">Show credential <ExternalLink /></a></div></article>)}</div>
+      </section>
+
+      <section className="section-shell section-block">
+        <Reveal variant="mask" className="section-heading"><div><span className="eyebrow">Education and tech stack</span><h2>Computer science foundations, applied across the stack.</h2></div><p>{portfolioConfig.school} · Bachelor of Science in Computer Science · Machine Learning specialization</p></Reveal>
+        <div className={styles.stackGrid}>{techStack.map((group) => <article key={group.title}><h3>{group.title}</h3><ul>{group.items.map((item) => <li key={item}>{item}</li>)}</ul></article>)}</div>
       </section>
 
       <section className="section-shell section-block">

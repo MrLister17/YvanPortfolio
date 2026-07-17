@@ -58,6 +58,105 @@
   text-transform: uppercase;
 }
 
+.certificationGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-top: 1px solid var(--border);
+}
+
+.certification {
+  min-width: 0;
+  padding: 28px;
+  display: grid;
+  grid-template-columns: 58px minmax(0, 1fr);
+  gap: 18px;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.certification:nth-child(even) {
+  border-right: 0;
+}
+
+.certificationLogo {
+  width: 58px;
+  height: 58px;
+  display: grid;
+  place-items: center;
+  color: var(--text-muted);
+  border: 1px dashed var(--border-strong);
+  background: var(--surface-2);
+  font: 500 0.58rem/1 var(--font-mono), monospace;
+  letter-spacing: 0.08em;
+}
+
+.certificationTitle {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+}
+
+.certificationTitle svg {
+  width: 17px;
+  flex: 0 0 auto;
+  margin-top: 4px;
+  color: var(--accent);
+}
+
+.certification h3,
+.stackGrid h3 {
+  font-size: 1.06rem;
+}
+
+.certification p {
+  margin-top: 8px;
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+}
+
+.certification small {
+  display: block;
+  margin-top: 12px;
+  color: var(--text-muted);
+  font: 500 0.61rem/1.45 var(--font-mono), monospace;
+}
+
+.certification a {
+  margin-top: 18px;
+}
+
+.stackGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 1px solid var(--border);
+}
+
+.stackGrid article {
+  min-width: 0;
+  padding: 26px;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.stackGrid article:last-child {
+  border-right: 0;
+}
+
+.stackGrid ul {
+  margin-top: 18px;
+}
+
+.stackGrid li {
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+}
+
+.stackGrid li:last-child {
+  border-bottom: 0;
+}
+
 @media (max-width: 800px) {
   .photoGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -65,6 +164,19 @@
 
   .photoGrid figure:nth-child(2) {
     grid-column: span 1;
+  }
+
+  .certificationGrid,
+  .stackGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .stackGrid article:nth-child(even) {
+    border-right: 0;
+  }
+
+  .stackGrid article:nth-child(3) {
+    border-right: 1px solid var(--border);
   }
 }
 
@@ -79,5 +191,17 @@
 
   .photoGrid figure {
     min-height: 360px;
+  }
+
+  .certificationGrid,
+  .stackGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .certification,
+  .certification:nth-child(even),
+  .stackGrid article,
+  .stackGrid article:nth-child(3) {
+    border-right: 0;
   }
 }
