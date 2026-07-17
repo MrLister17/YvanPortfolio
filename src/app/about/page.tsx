@@ -22,10 +22,10 @@ const evidenceGroups = [
 ];
 
 const certifications = [
-  { title: "Foundations of Project Management", issuer: "Google", issued: "March 2026", credentialId: "K6UO2C33HJ0Z", url: "https://www.coursera.org/account/accomplishments/records/K6UO2C33HJ0Z" },
-  { title: "Full Stack Web Development", issuer: "Amazon", issued: "March 2026", credentialId: "7235BFDPGSDG", url: "https://www.coursera.org/account/accomplishments/records/7235BFDPGSDG" },
-  { title: "CompTIA Tech+ Certification", issuer: "CompTIA", issued: "December 2025", credentialId: "291250c2-ca40-4cc3-beda-4801b04c191e", url: "https://www.credly.com/earner/earned/badge/291250c2-ca40-4cc3-beda-4801b04c191e" },
-  { title: "AWS Academy Graduate: Cloud Foundations", issuer: "Amazon Web Services Training and Certification", issued: "November 2023", credentialId: "8c0a5747-d71d-4357-b90b-da0107652403", url: "https://www.credly.com/earner/earned/badge/8c0a5747-d71d-4357-b90b-da0107652403" },
+  { title: "Foundations of Project Management", issuer: "Google", issued: "March 2026", credentialId: "K6UO2C33HJ0Z", url: "https://www.coursera.org/account/accomplishments/records/K6UO2C33HJ0Z", logo: "/images/certifications/google.png" },
+  { title: "Full Stack Web Development", issuer: "Amazon", issued: "March 2026", credentialId: "7235BFDPGSDG", url: "https://www.coursera.org/account/accomplishments/records/7235BFDPGSDG", logo: "/images/certifications/aws.png" },
+  { title: "CompTIA Tech+ Certification", issuer: "CompTIA", issued: "December 2025", credentialId: "291250c2-ca40-4cc3-beda-4801b04c191e", url: "https://www.credly.com/earner/earned/badge/291250c2-ca40-4cc3-beda-4801b04c191e", logo: "/images/certifications/comptia-tech-plus.webp" },
+  { title: "AWS Academy Graduate: Cloud Foundations", issuer: "Amazon Web Services Training and Certification", issued: "November 2023", credentialId: "8c0a5747-d71d-4357-b90b-da0107652403", url: "https://www.credly.com/earner/earned/badge/8c0a5747-d71d-4357-b90b-da0107652403", logo: "/images/certifications/aws.png" },
 ];
 
 const techStack = [
@@ -79,7 +79,7 @@ export default function AboutPage() {
 
       <section className="section-shell section-block">
         <Reveal variant="mask" className="section-heading"><div><span className="eyebrow">Professional certifications</span><h2>Credentials that support practical delivery.</h2></div><p>Verification links open directly with the issuing platform.</p></Reveal>
-        <div className={styles.certificationGrid}>{certifications.map((certification) => <article key={certification.credentialId} className={styles.certification}><span className={styles.certificationLogo} aria-label={`${certification.issuer} logo placeholder`}>LOGO</span><div><div className={styles.certificationTitle}><Award aria-hidden="true" /><h3>{certification.title}</h3></div><p>{certification.issuer} · Issued {certification.issued}</p><small>Credential ID: {certification.credentialId}</small><a className="text-link" href={certification.url} target="_blank" rel="noreferrer">Show credential <ExternalLink /></a></div></article>)}</div>
+        <div className={styles.certificationGrid}>{certifications.map((certification) => <article key={certification.credentialId} className={styles.certification}><div className={styles.certificationLogo}><Image src={certification.logo} alt={`${certification.issuer} logo`} width={58} height={58} sizes="58px" /></div><div><div className={styles.certificationTitle}><Award aria-hidden="true" /><h3>{certification.title}</h3></div><p>{certification.issuer} · Issued {certification.issued}</p><small>Credential ID: {certification.credentialId}</small><a className="text-link" href={certification.url} target="_blank" rel="noreferrer">Show credential <ExternalLink /></a></div></article>)}</div>
       </section>
 
       <section className="section-shell section-block">
