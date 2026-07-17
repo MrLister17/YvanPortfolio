@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, FileCheck2, LockKeyhole, ShieldCheck } from "lucide-react";
+import { ArrowRight, ExternalLink, FileCheck2, LockKeyhole, ShieldCheck } from "lucide-react";
 import { portfolioConfig } from "@/config/portfolio";
 
 export const metadata: Metadata = {
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 const confirmedItems = [
   "Company, schedule, required hours, and on-site setup",
-  "Academic submission records are retained outside the public portfolio",
+  "The practicum engagement narrative is available to view online",
   "No private company system, customer information, or internal document is published",
 ];
 
@@ -55,7 +55,7 @@ export default function PracticumPage() {
 
       <aside className="section-shell records-note">
         <ShieldCheck aria-hidden="true" />
-        <div><span className="eyebrow">Academic records</span><p>Supporting practicum records, signed documents, and formal appendices are retained in the official academic submission.</p></div>
+        <div><span className="eyebrow">Narrative report</span><p>The practicum engagement narrative is available to read in a separate browser tab. Supporting signed records and formal appendices remain in the official academic submission.</p><a className="text-link" href="/documents/practicum-narrative-report.pdf" target="_blank" rel="noreferrer">View narrative report <ExternalLink /></a></div>
       </aside>
 
       <section className="section-shell section-block final-cta">
