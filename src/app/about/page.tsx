@@ -29,10 +29,10 @@ const certifications = [
 ];
 
 const techStack = [
-  { title: "Mobile development", items: ["Kotlin", "Jetpack Compose", "Android APK"] },
+  { title: "Mobile development", items: ["Kotlin", "Jetpack Compose"] },
   { title: "Web and services", items: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Python", "FastAPI", "Uvicorn"] },
   { title: "AI and retrieval", items: ["Groq Llama 4 Scout", "sentence-transformers", "FAISS", "pgvector", "OpenAI and Hugging Face libraries", "NumPy", "Pandas"] },
-  { title: "Data, cloud, and delivery", items: ["PostgreSQL", "SQLite", "Drizzle", "Firebase Admin", "CSV and JSON", "AWS Cloud Foundations", "GitHub", "Vercel", "Cloudflare Workers"] },
+  { title: "Data, cloud, and delivery", items: ["PostgreSQL", "SQLite", "Drizzle ORM", "Firebase Admin SDK", "Git and GitHub", "Vercel", "Cloudflare Workers"] },
 ];
 
 const personalPhotos = [
