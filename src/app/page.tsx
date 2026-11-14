@@ -22,7 +22,7 @@ export default function Home() {
           <div><span className="eyebrow">01 · Selected work</span><h2>Systems designed around real tasks.</h2></div>
           <p>Two focused case studies across AI-assisted research, full-stack workflows, mobile experience, and responsible use of retrieved context.</p>
         </Reveal>
-        <div className="project-grid"><ProjectCard project={projects[0]} lead index={0} /><ProjectCard project={projects[1]} index={1} /></div>
+        <div className="project-grid" data-reveal-group=""><ProjectCard project={projects[0]} lead index={0} /><ProjectCard project={projects[1]} index={1} /></div>
         <div className="section-link"><Link className="text-link" href="/projects">Explore all projects <ArrowRight /></Link></div>
       </section>
 
@@ -45,7 +45,7 @@ export default function Home() {
           <div><span className="eyebrow">03 · Skills through projects</span><h2>Capabilities connected to evidence.</h2></div>
           <p>Tools are presented through the projects where they appear, not as arbitrary percentages or unsupported proficiency labels.</p>
         </Reveal>
-        <div className="skill-groups">{skillGroups.map((group, index) => <article key={group.title}><span className="skill-index">{String(index + 1).padStart(2, "0")}</span><h3>{group.title}</h3><ul>{group.skills.map((skill) => <li key={skill}>{skill}</li>)}</ul><small>Evidence: {group.project}</small></article>)}</div>
+        <div className="skill-groups" data-reveal-group="">{skillGroups.map((group, index) => <article key={group.title}><span className="skill-index">{String(index + 1).padStart(2, "0")}</span><h3>{group.title}</h3><ul>{group.skills.map((skill) => <li key={skill}>{skill}</li>)}</ul><small>Evidence: {group.project}</small></article>)}</div>
       </section>
 
       <section className="section-shell section-block split-feature numbered-section">

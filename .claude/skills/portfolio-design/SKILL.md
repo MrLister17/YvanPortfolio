@@ -1,6 +1,6 @@
 ---
 name: portfolio-design
-description: Design rules for Yvan's portfolio site. Use BEFORE editing anything visual or interactive in this repo — CSS, components, pages, layout, colors, fonts, icons, animation, hover/focus states, forms, navigation. Covers the brand palette (Cream / Ink / Orchid Pink), the Söhne Mono type system, 20 UX and animation principles, and 20 design terms, each turned into a concrete rule to apply and check.
+description: Design rules for Yvan's portfolio site. Use BEFORE editing anything visual or interactive in this repo — CSS, components, pages, layout, colors, fonts, icons, animation, hover/focus states, forms, navigation. Covers the brand palette (Cream / Ink / Orchid Pink), the Fraunces + DM Sans type system, the motion system, 20 UX and animation principles, and 20 design terms, each turned into a concrete rule to apply and check.
 ---
 
 # Portfolio design rules
@@ -31,12 +31,16 @@ derive it with `color-mix(in oklch, …)` from an existing token.
 
 ## 2. Typography
 
-- Display face: **Söhne Mono** (`--font-mono`). It is a paid Klim font, so the stack
-  is `"Söhne Mono", Geist Mono, system mono`. Geist Mono ships with the site as the
-  free stand-in. If licensed `.woff2` files are ever added, register them with
-  `next/font/local` in `src/app/layout.tsx` and put that variable first in `--font-mono`.
-- Mono is for headings, navigation, buttons, labels, tags, numbers and code.
-  Paragraphs use the sans (`--font-sans`, Geist Sans) for comfortable reading.
+Yvan wants the site to feel personal, not techy, and only uses free fonts.
+
+- Display face: **Fraunces** (`--font-display`), a warm soft serif. Used for headings,
+  the wordmark, big numbers and pull-out phrases. Weight 400, `"SOFT" 100`.
+  Emphasis inside a heading is `<em>`: italic and `--accent-text`.
+- Text face: **DM Sans** (`--font-sans`). Used for paragraphs, navigation, buttons,
+  labels and tags.
+- Both are SIL Open Font License, self-hosted in `src/fonts/` and loaded with
+  `next/font/local` in `src/app/layout.tsx`. Never add a paid font or a font CDN link.
+- No monospace for design purposes. `--font-mono` exists only for `<kbd>` and code.
 - Smallest text on the site is `0.75rem` (12px). Nothing smaller, ever.
 
 ## 3. Twenty principles of UX and animation
@@ -99,11 +103,11 @@ Each line is the principle, then the rule this site follows.
    an aspect-ratio; status text reserves its line; fonts use `display: swap` with a
    metric-similar fallback.
 5. **Tracking** — spacing across a whole run of text. Uppercase labels get
-   `+0.08em`; large mono headings get `-0.03em`; body text gets none.
+   `+0.08em`; large serif headings get `-0.02em` to `-0.03em`; body text gets none.
 6. **Optimistic update** — show the result immediately and reconcile after (copy
    email flips to "copied" at once; filters apply on click with no spinner).
 7. **x-height** — height of lowercase letters. Paired fonts must have similar
-   x-heights (Geist Sans and Geist Mono do); do not mix in a face that looks smaller
+   x-heights (Fraunces and DM Sans are close); do not mix in a face that looks smaller
    at the same size.
 8. **Touch target** — the tappable area, minimum 44×44px with at least 8px between
    neighbouring targets.
@@ -135,6 +139,37 @@ Each line is the principle, then the rule this site follows.
     states or pages (the nav indicator's `layoutId`; a project icon carrying from
     card to case study). Use it for continuity, one shared element at a time.
 
+## 4b. Motion system (how the principles are built here)
+
+Reuse these before inventing anything new. All live in the "Motion" block of
+`src/app/globals.css`.
+
+| Need | Use | Principles |
+|------|-----|------------|
+| Block enters on scroll | `<Reveal variant="rise|fade|mask">` or `data-reveal` | slow in/out, pose to pose |
+| List or grid enters on scroll | `data-reveal-group=""` on the parent; children stagger 60ms, capped at six | stagger, follow through |
+| Page intro | children of `.page-hero`, `.case-hero`, `.contact-intro` stagger in automatically | staging, stagger |
+| Press | `:active { transform: scale(.97) }` on every control | squash & stretch |
+| Hover hint | arrow nudges 3px toward where the click goes; nav underline draws from the left | anticipation, secondary action |
+| Card hover | card lifts, then image scales and icon tilts a beat later | follow through, arcs |
+| Confirmation | `pop` keyframe on the swapped icon, label text changes | exaggerated feedback |
+| Panel content swap | wrap in `<div key={id} className="swap-in">` | snappy timing |
+| Disclosure | `<details>`; content uses the `disclose` keyframe, the `+` rotates to `×` | progressive disclosure |
+| Overlay opens | `dialog-in` with `transform-origin` pointing at the trigger | origin-aware |
+| Theme switch | view transition circle spreading from the toggle button | origin-aware |
+| Moving highlight | `motion` `layoutId` (nav indicator) | shared element |
+
+Rules for adding motion:
+- State changes use CSS transitions so they can be reversed mid-way. Keyframes are
+  only for one-shot entrances and confirmations.
+- `RevealObserver` removes the `data-reveal*` attributes after the entrance, so
+  entrance delays never slow down later hover or press feedback. Keep it that way.
+- The hidden pre-reveal state is scoped to `html.js`; content must stay visible with
+  JavaScript off.
+- Any new animated selector must be added to the `prefers-reduced-motion` block.
+- Only one infinite animation is allowed on screen at a time, and it must be tiny
+  (the status dot).
+
 ## 5. Non-negotiables
 
 - `prefers-reduced-motion: reduce` removes movement; opacity changes may stay.
@@ -152,7 +187,7 @@ site use only the three brand colors.
 
 ## 7. Checklist before finishing a UI change
 
-1. Tokens only: no new hex/rgba, font-family, duration or easing literals.
+1. Tokens only: no new hex/rgba, font-family, duration or easing literals. Free fonts only.
 2. Looks right in dark and light theme.
 3. Looks right at 390px and 1440px; no horizontal scroll.
 4. Every new interactive element: ≥44px target, hover + active + focus-visible states.

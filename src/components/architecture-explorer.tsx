@@ -18,7 +18,7 @@ export function ArchitectureExplorer({ nodes }: { nodes: ArchitectureNode[] }) {
           </div>
         ))}
       </div>
-      <div className="architecture-detail" aria-live="polite"><span className="eyebrow">Selected component</span><h3>{selected.label}</h3><p>{selected.detail}</p></div>
+      <div className="architecture-detail" aria-live="polite"><div key={selected.id} className="swap-in"><span className="eyebrow">Selected component</span><h3>{selected.label}</h3><p>{selected.detail}</p></div></div>
     </div>
   );
 }

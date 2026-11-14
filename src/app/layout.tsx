@@ -3,10 +3,27 @@ import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { BackToTop } from "@/components/back-to-top";
 import { getSiteUrl, portfolioConfig } from "@/config/portfolio";
-import { GeistMono } from "geist/font/mono";
-import { GeistSans } from "geist/font/sans";
+import localFont from "next/font/local";
 import "./globals.css";
 import "./scrollbar.css";
+
+// Free fonts (SIL Open Font License), self-hosted from src/fonts.
+const display = localFont({
+  variable: "--font-fraunces",
+  display: "swap",
+  fallback: ["Georgia", "Times New Roman", "serif"],
+  src: [
+    { path: "../fonts/fraunces-latin-soft-normal.woff2", weight: "100 900", style: "normal" },
+    { path: "../fonts/fraunces-latin-wght-italic.woff2", weight: "100 900", style: "italic" },
+  ],
+});
+const sans = localFont({
+  variable: "--font-dm-sans",
+  display: "swap",
+  fallback: ["Helvetica Neue", "Segoe UI", "Arial", "sans-serif"],
+  src: "../fonts/dm-sans-latin-wght-normal.woff2",
+  weight: "100 1000",
+});
 
 const productionUrl = getSiteUrl();
 
@@ -43,7 +60,7 @@ export const viewport: Viewport = {
 };
 
 // Runs before first paint so the saved or system theme applies without a flash.
-const themeScript = `(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=="light"&&t!=="dark"){t=window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"}document.documentElement.dataset.theme=t})()`;
+const themeScript = `(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=="light"&&t!=="dark"){t=window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"}var d=document.documentElement;d.dataset.theme=t;d.classList.add("js")})()`;
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   const personJsonLd = {
@@ -58,7 +75,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   };
 
   return (
-    <html lang="en" data-theme="dark" className={`${GeistSans.variable} ${GeistMono.variable}`} suppressHydrationWarning>
+    <html lang="en" data-theme="dark" className={`${display.variable} ${sans.variable}`} suppressHydrationWarning>
       <head><script dangerouslySetInnerHTML={{ __html: themeScript }} /></head>
       <body>
         <a className="skip-link" href="#main-content">Skip to main content</a>

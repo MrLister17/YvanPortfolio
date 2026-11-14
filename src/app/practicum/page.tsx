@@ -31,14 +31,14 @@ export default function PracticumPage() {
         <p>This page presents only the practicum facts currently approved for the public portfolio. Responsibilities, technologies, and reflections are omitted until public wording is confirmed.</p>
       </section>
 
-      <section className="section-shell practicum-facts">
+      <section className="section-shell practicum-facts" data-reveal-group="">
         <div><small>Company</small><strong>{practicum.company}</strong></div>
         <div><small>Period</small><strong>{practicum.startDate}<br />to {practicum.endDate}</strong></div>
         <div><small>Required hours</small><strong>{practicum.totalHours}</strong></div>
         <div><small>Setup</small><strong>{practicum.setup}</strong></div>
       </section>
 
-      <section className="section-shell section-block practicum-disclosure">
+      <section className="section-shell section-block practicum-disclosure" data-reveal-group="">
         <article>
           <FileCheck2 aria-hidden="true" />
           <span className="eyebrow">01 · Confirmed public scope</span>

@@ -58,7 +58,7 @@ export function Gallery({ images }: { images: ProjectImage[] }) {
 
   return (
     <>
-      <div className="gallery-grid">
+      <div className="gallery-grid" data-reveal-group="">
         {images.map((image, index) => (
           <figure key={image.src} className={index === 0 ? "gallery-featured" : ""}>
             <button onClick={(event) => open(index, event.currentTarget)} aria-label={`Open screenshot ${index + 1}: ${image.caption}`}>

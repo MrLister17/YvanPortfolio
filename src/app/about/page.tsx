@@ -69,27 +69,27 @@ export default function AboutPage() {
 
       <section className="section-shell section-block">
         <Reveal variant="mask" className="section-heading"><div><span className="eyebrow">02 · Current interests</span><h2>Technical areas represented in the work.</h2></div><p>These interests are connected to the verified project themes and portfolio direction.</p></Reveal>
-        <div className="interest-grid">{interests.map((interest, index) => <div key={interest}><span>{String(index + 1).padStart(2, "0")}</span>{interest}</div>)}</div>
+        <div className="interest-grid" data-reveal-group="">{interests.map((interest, index) => <div key={interest}><span>{String(index + 1).padStart(2, "0")}</span>{interest}</div>)}</div>
       </section>
 
       <section className="section-shell section-block evidence-section">
         <Reveal variant="mask"><span className="eyebrow">03 · Skills through evidence</span><h2>Capabilities shown in context.</h2></Reveal>
-        <div className="evidence-list">{evidenceGroups.map((item, index) => <article key={item.title}><span>{String(index + 1).padStart(2, "0")}</span><h3>{item.title}</h3><p>{item.evidence}</p></article>)}</div>
+        <div className="evidence-list" data-reveal-group="">{evidenceGroups.map((item, index) => <article key={item.title}><span>{String(index + 1).padStart(2, "0")}</span><h3>{item.title}</h3><p>{item.evidence}</p></article>)}</div>
       </section>
 
       <section className="section-shell section-block">
         <Reveal variant="mask" className="section-heading"><div><span className="eyebrow">Professional certifications</span><h2>Credentials that support practical delivery.</h2></div><p>Verification links open directly with the issuing platform.</p></Reveal>
-        <div className={styles.certificationGrid}>{certifications.map((certification) => <article key={certification.credentialId} className={styles.certification}><div className={styles.certificationLogo}><Image src={certification.logo} alt={`${certification.issuer} logo`} width={58} height={58} sizes="58px" /></div><div><div className={styles.certificationTitle}><Award aria-hidden="true" /><h3>{certification.title}</h3></div><p>{certification.issuer} · Issued {certification.issued}</p><small>Credential ID: {certification.credentialId}</small><a className="text-link" href={certification.url} target="_blank" rel="noreferrer">Show credential <ExternalLink /></a></div></article>)}</div>
+        <div className={styles.certificationGrid} data-reveal-group="">{certifications.map((certification) => <article key={certification.credentialId} className={styles.certification}><div className={styles.certificationLogo}><Image src={certification.logo} alt={`${certification.issuer} logo`} width={58} height={58} sizes="58px" /></div><div><div className={styles.certificationTitle}><Award aria-hidden="true" /><h3>{certification.title}</h3></div><p>{certification.issuer} · Issued {certification.issued}</p><small>Credential ID: {certification.credentialId}</small><a className="text-link" href={certification.url} target="_blank" rel="noreferrer">Show credential <ExternalLink /></a></div></article>)}</div>
       </section>
 
       <section className="section-shell section-block">
         <Reveal variant="mask" className="section-heading"><div><span className="eyebrow">Education and tech stack</span><h2>Computer science foundations, applied across the stack.</h2></div><p>{portfolioConfig.school} · Bachelor of Science in Computer Science · Machine Learning specialization</p></Reveal>
-        <div className={styles.stackGrid}>{techStack.map((group) => <article key={group.title}><h3>{group.title}</h3><ul>{group.items.map((item) => <li key={item}>{item}</li>)}</ul></article>)}</div>
+        <div className={styles.stackGrid} data-reveal-group="">{techStack.map((group) => <article key={group.title}><h3>{group.title}</h3><ul>{group.items.map((item) => <li key={item}>{item}</li>)}</ul></article>)}</div>
       </section>
 
       <section className="section-shell section-block">
         <Reveal variant="mask" className="section-heading"><div><span className="eyebrow">A little beyond the work</span><h2>Personal moments that shape the perspective I bring to the work.</h2></div><p>Learning is supported by curiosity, movement, and time away from the screen.</p></Reveal>
-        <div className={styles.photoGrid}>{personalPhotos.map((photo) => <figure key={photo.src}><Image src={photo.src} alt={photo.alt} width={photo.src.endsWith("2941.jpg") ? 1440 : photo.src.endsWith("5880.jpg") ? 768 : 1080} height={photo.src.endsWith("5880.jpg") ? 1364 : 1920} sizes="(max-width: 640px) 100vw, (max-width: 1000px) 50vw, 25vw" /><figcaption>{photo.caption}</figcaption></figure>)}</div>
+        <div className={styles.photoGrid} data-reveal-group="">{personalPhotos.map((photo) => <figure key={photo.src}><Image src={photo.src} alt={photo.alt} width={photo.src.endsWith("2941.jpg") ? 1440 : photo.src.endsWith("5880.jpg") ? 768 : 1080} height={photo.src.endsWith("5880.jpg") ? 1364 : 1920} sizes="(max-width: 640px) 100vw, (max-width: 1000px) 50vw, 25vw" /><figcaption>{photo.caption}</figcaption></figure>)}</div>
       </section>
 
       <section className="section-shell section-block final-cta"><span className="eyebrow">Next</span><h2>Explore the projects behind the profile.</h2><div><Link href="/projects" className="button">View projects <ArrowRight /></Link><Link href="/resume" className="button button-secondary">View résumé</Link></div></section>

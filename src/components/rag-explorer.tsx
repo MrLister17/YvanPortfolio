@@ -18,7 +18,7 @@ export function RagExplorer() {
       <div className="rag-steps" role="group" aria-label="RAG pipeline stages">
         {steps.map((step, index) => <button key={step.label} aria-pressed={active === index} onClick={() => setActive(index)}><small>{index + 1}</small>{step.label}</button>)}
       </div>
-      <div className="rag-output" aria-live="polite"><span className="eyebrow">Stage {active + 1} of {steps.length}</span><h2>{steps[active].label}</h2><p>{steps[active].detail}</p><div className="rag-meter"><span style={{ width: `${((active + 1) / steps.length) * 100}%` }} /></div></div>
+      <div className="rag-output" aria-live="polite"><div key={active} className="swap-in"><span className="eyebrow">Stage {active + 1} of {steps.length}</span><h2>{steps[active].label}</h2><p>{steps[active].detail}</p></div><div className="rag-meter"><span style={{ width: `${((active + 1) / steps.length) * 100}%` }} /></div></div>
       <p className="lab-note">Educational visualization only. It does not call a model or submit user data.</p>
     </div>
   );
