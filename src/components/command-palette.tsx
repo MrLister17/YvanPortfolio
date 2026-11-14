@@ -1,9 +1,10 @@
 "use client";
 
-import { ArrowRight, Copy, ExternalLink, Search, X } from "lucide-react";
+import { ArrowRight, Copy, CornerDownRight, ExternalLink, Search, X } from "lucide-react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { navigation, portfolioConfig } from "@/config/portfolio";
 import { projects } from "@/content/projects";
+import { ProjectIcon } from "@/components/project-icon";
 
 type CommandPaletteProps = {
   open: boolean;
@@ -20,10 +21,11 @@ export function CommandPalette({ open, onClose, onNavigate }: CommandPaletteProp
   const dialogRef = useRef<HTMLElement>(null);
   const copyTimeoutRef = useRef<number | null>(null);
   const commands = useMemo(() => [
-    ...navigation.map((item) => ({ label: `Go to ${item.label}`, href: item.href, type: "page" })),
-    ...projects.map((project) => ({ label: `Open ${project.title}`, href: `/projects/${project.slug}`, type: "project" })),
+    ...navigation.map((item) => ({ label: `Go to ${item.label}`, href: item.href, type: "page", project: undefined })),
+    ...projects.map((project) => ({ label: `Open ${project.title}`, href: `/projects/${project.slug}`, type: "project", project })),
   ], []);
-  const filtered = commands.filter((command) => command.label.toLowerCase().includes(query.toLowerCase()));
+  const terms = query.toLowerCase().split(/\s+/).filter(Boolean);
+  const filtered = commands.filter((command) => terms.every((term) => command.label.toLowerCase().includes(term)));
 
   const close = useCallback(() => {
     setQuery("");
@@ -113,6 +115,7 @@ export function CommandPalette({ open, onClose, onNavigate }: CommandPaletteProp
               onMouseEnter={() => setSelected(index)}
               onClick={() => navigate(command.href)}
             >
+              {command.project ? <ProjectIcon project={command.project} size={36} decorative /> : <span className="command-glyph" aria-hidden="true"><CornerDownRight /></span>}
               <span><small>{command.type}</small>{command.label}</span><ArrowRight size={17} aria-hidden="true" />
             </button>
           )) : <p className="command-empty">No matching destination.</p>}

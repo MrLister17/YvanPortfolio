@@ -13,13 +13,12 @@ export default function Icon() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          color: "#f4f7fb",
-          background: "linear-gradient(135deg, #151014, #8b3f61)",
-          border: "3px solid #f3a7c4",
-          borderRadius: "50%",
-          fontSize: 18,
+          color: "#050505",
+          background: "#E65BC4",
+          borderRadius: 14,
+          fontSize: 26,
           fontWeight: 700,
-          letterSpacing: "-1px",
+          letterSpacing: "-2px",
         }}
       >
         LYR

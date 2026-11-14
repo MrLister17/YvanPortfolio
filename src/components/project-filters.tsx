@@ -14,8 +14,10 @@ export function ProjectFilters() {
   const [query, setQuery] = useState("");
   const results = projects.filter((project) => {
     const matchesCategory = category === "All" || project.categories.includes(category as ProjectCategory);
-    const haystack = `${project.title} ${project.shortDescription} ${project.technologies.join(" ")}`.toLowerCase();
-    return matchesCategory && haystack.includes(query.toLowerCase());
+    const haystack = `${project.title} ${project.shortDescription} ${project.categories.join(" ")} ${project.technologies.join(" ")}`.toLowerCase();
+    // Forgiving search: ignore case and stray spaces, match every word in any order.
+    const terms = query.toLowerCase().split(/\s+/).filter(Boolean);
+    return matchesCategory && terms.every((term) => haystack.includes(term));
   });
 
   const reset = () => { setCategory("All"); setQuery(""); };

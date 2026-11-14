@@ -5,6 +5,7 @@ import { ArrowLeft, ArrowRight, Code2, ExternalLink } from "lucide-react";
 import { ArchitectureExplorer } from "@/components/architecture-explorer";
 import { CaseHeroMedia } from "@/components/case-hero-media";
 import { Gallery } from "@/components/gallery";
+import { ProjectIcon } from "@/components/project-icon";
 import { projects, getProject } from "@/content/projects";
 
 export function generateStaticParams() { return projects.map((project) => ({ slug: project.slug })); }
@@ -30,12 +31,13 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
       <div className="case-progress" aria-hidden="true" />
       <header className="case-hero section-shell">
         <Link className="back-link" href="/projects"><ArrowLeft /> Back to projects</Link>
-        <div className="case-kicker"><span>{project.categories.join(" · ")}</span><span>{project.status}</span></div>
+        {project.gallery.length > 0 && <ProjectIcon project={project} size={72} priority />}
+        <div className="case-kicker"><span>{project.categories.join(" · ")}</span><span className="status-pill">{project.status}</span></div>
         <h1>{project.title}</h1><p className="case-positioning">{project.positioningStatement}</p>
         {(project.role || project.timeframe || project.technologies.length > 0) && <div className="case-facts">{project.role && <div><small>Role</small><strong>{project.role}</strong></div>}{project.timeframe && <div><small>Timeframe</small><strong>{project.timeframe}</strong></div>}{project.technologies.length > 0 && <div><small>Stack</small><strong>{project.technologies.join(" · ")}</strong></div>}</div>}
       </header>
 
-      <CaseHeroMedia project={project} index={index} />
+      <CaseHeroMedia project={project} />
 
       {project.embedUrl && <section className="section-shell section-block game-play-section"><div className="section-heading"><div><span className="eyebrow">Playable demo</span><h2>Play the game directly in the portfolio.</h2></div><p>Use the frame below for the live game, or open it in a new tab for the largest play area. Click or tap the game before using its keyboard controls.</p></div><div className="game-embed"><iframe src={project.embedUrl} title={`Play ${project.title}`} loading="lazy" sandbox="allow-scripts allow-same-origin" allow="autoplay; fullscreen" /></div><div className="game-embed-actions"><a className="button" href={project.liveUrl} target="_blank" rel="noreferrer">Open game <ExternalLink /></a>{project.repositoryUrl && <a className="button button-secondary" href={project.repositoryUrl} target="_blank" rel="noreferrer"><Code2 /> View source</a>}</div></section>}
 

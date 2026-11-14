@@ -3,6 +3,8 @@ import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { BackToTop } from "@/components/back-to-top";
 import { getSiteUrl, portfolioConfig } from "@/config/portfolio";
+import { GeistMono } from "geist/font/mono";
+import { GeistSans } from "geist/font/sans";
 import "./globals.css";
 import "./scrollbar.css";
 
@@ -29,7 +31,19 @@ export const metadata: Metadata = {
   manifest: "/manifest.webmanifest",
 };
 
-export const viewport: Viewport = { colorScheme: "dark", themeColor: "#070607", width: "device-width", initialScale: 1 };
+export const viewport: Viewport = {
+  colorScheme: "dark light",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ECE6DC" },
+    { media: "(prefers-color-scheme: dark)", color: "#050505" },
+  ],
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
+
+// Runs before first paint so the saved or system theme applies without a flash.
+const themeScript = `(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=="light"&&t!=="dark"){t=window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"}document.documentElement.dataset.theme=t})()`;
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   const personJsonLd = {
@@ -44,7 +58,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   };
 
   return (
-    <html lang="en">
+    <html lang="en" data-theme="dark" className={`${GeistSans.variable} ${GeistMono.variable}`} suppressHydrationWarning>
+      <head><script dangerouslySetInnerHTML={{ __html: themeScript }} /></head>
       <body>
         <a className="skip-link" href="#main-content">Skip to main content</a>
         <div className="page-progress" aria-hidden="true" />

@@ -16,6 +16,7 @@ export const projects: Project[] = [
       "Designed and implemented the interface, API workflow, data services, AI-provider layer, review controls, and export path represented in this prototype.",
     timeframe: "2026",
     technologies: ["Next.js", "TypeScript", "FastAPI", "Python", "PostgreSQL", "pgvector"],
+    icon: { src: "/images/projects/gma/gma-icon.svg", alt: "GMA Research Assistant icon: a source document under a review lens with an approval check" },
     gallery: [
       {
         src: "/images/projects/gma/regulatory-search.png",
@@ -144,13 +145,8 @@ export const projects: Project[] = [
       "Uvicorn",
       "FastAPI",
     ],
-    gallery: [{
-      src: "/images/projects/fitness/fitness-buddy-icon.png",
-      alt: "Fitness Buddy orange wellness robot icon with a heart-rate display",
-      caption: "Fitness Buddy project icon supplied by Yvan Ramirez.",
-      width: 1254,
-      height: 1254,
-    }],
+    icon: { src: "/images/projects/fitness/fitness-buddy-icon.png", alt: "Fitness Buddy icon: an orange wellness robot with a heart-rate display" },
+    gallery: [],
     problem:
       "Generic fitness plans can overlook user context and make progress difficult to interpret. Fitness Buddy explores a more adaptive application experience while keeping AI-supported guidance educational rather than medical.",
     users: "The supplied project summary describes people seeking structured cardiovascular training and progress feedback.",
@@ -189,13 +185,8 @@ export const projects: Project[] = [
     status: "Completed",
     role: "Creator and browser game developer",
     technologies: ["JavaScript", "HTML5 Canvas", "HTML", "CSS"],
-    gallery: [{
-      src: "/images/projects/space-invaders/space-invader-icon.png",
-      alt: "Black pixel Space Invader icon supplied by Yvan Ramirez",
-      caption: "Space Invaders Clone project icon supplied by Yvan Ramirez.",
-      width: 507,
-      height: 394,
-    }],
+    icon: { src: "/images/projects/space-invaders/space-invader-icon.png", alt: "Space Invaders Clone icon: a black pixel alien" },
+    gallery: [],
     visualType: "game",
     liveUrl: "https://mrlister17.github.io/space-invaders-browser/",
     embedUrl: "https://mrlister17.github.io/space-invaders-browser/",

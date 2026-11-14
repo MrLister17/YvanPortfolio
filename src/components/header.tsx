@@ -7,6 +7,7 @@ import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import { navigation, portfolioConfig } from "@/config/portfolio";
 import { CommandPalette } from "@/components/command-palette";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { motionTokens } from "@/config/motion";
 
 export function Header() {
@@ -104,7 +105,7 @@ export function Header() {
               <span>Navigate</span>
               <kbd>⌘ K</kbd>
             </button>
-            <Link href="/projects" className="button button-small header-cta">Explore work</Link>
+            <ThemeToggle />
             <button
               ref={menuButtonRef}
               className="icon-button mobile-menu-button"
@@ -124,9 +125,9 @@ export function Header() {
               id="mobile-navigation"
               className="mobile-nav"
               aria-label="Mobile navigation"
-              initial={reduceMotion ? false : { opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
+              initial={reduceMotion ? false : { opacity: 0, scale: 0.98 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={reduceMotion ? { opacity: 0 } : { opacity: 0, scale: 0.98 }}
               transition={{ duration: reduceMotion ? 0 : motionTokens.duration.fast }}
             >
               <div className="mobile-nav-inner">

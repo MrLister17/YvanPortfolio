@@ -4,6 +4,7 @@
 
 .profilePhoto {
   margin: -1px -1px 24px;
+  border-radius: var(--radius-sm);
   aspect-ratio: 4 / 3;
   overflow: hidden;
   border-bottom: 1px solid var(--border);
@@ -19,13 +20,16 @@
 
 .photoGrid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  /* Fixed row height: portrait photos crop evenly and nothing shifts while they load */
+  grid-auto-rows: clamp(300px, 32vw, 440px);
   gap: 12px;
 }
 
 .photoGrid figure {
   position: relative;
-  min-height: 280px;
+  border-radius: var(--radius);
+  min-height: 0;
   overflow: hidden;
   background: var(--surface-2);
 }
@@ -52,8 +56,9 @@
   padding: 7px 9px;
   color: var(--text-primary);
   border: 1px solid var(--border);
-  background: rgba(7, 6, 7, 0.74);
-  font: 500 0.58rem/1 var(--font-mono), monospace;
+  border-radius: 7px;
+  background: var(--overlay);
+  font: var(--label);
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
@@ -85,6 +90,7 @@
   place-items: center;
   overflow: hidden;
   border: 1px solid var(--border);
+  border-radius: 22%;
   background: #fff;
 }
 
@@ -104,7 +110,7 @@
   width: 17px;
   flex: 0 0 auto;
   margin-top: 4px;
-  color: var(--accent);
+  color: var(--accent-text);
 }
 
 .certification h3,
@@ -115,14 +121,15 @@
 .certification p {
   margin-top: 8px;
   color: var(--text-secondary);
-  font-size: 0.82rem;
+  font-size: 0.9rem;
 }
 
 .certification small {
   display: block;
   margin-top: 12px;
   color: var(--text-muted);
-  font: 500 0.61rem/1.45 var(--font-mono), monospace;
+  font: var(--label);
+  overflow-wrap: anywhere;
 }
 
 .certification a {
@@ -154,7 +161,7 @@
   padding: 8px 0;
   border-bottom: 1px solid var(--border);
   color: var(--text-secondary);
-  font-size: 0.8rem;
+  font-size: 0.9rem;
 }
 
 .stackGrid li:last-child {
@@ -193,8 +200,8 @@
     grid-template-columns: 1fr;
   }
 
-  .photoGrid figure {
-    min-height: 360px;
+  .photoGrid {
+    grid-auto-rows: 420px;
   }
 
   .certificationGrid,

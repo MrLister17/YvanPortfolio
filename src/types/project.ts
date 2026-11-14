@@ -36,6 +36,7 @@ export type Project = {
   detailVerified?: boolean;
   timeframe?: string;
   technologies: string[];
+  icon: { src: string; alt: string };
   thumbnail?: ProjectImage;
   gallery: ProjectImage[];
   problem: string;

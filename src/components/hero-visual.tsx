@@ -4,12 +4,6 @@ import Image from "next/image";
 import { useReducedMotion } from "motion/react";
 import { useEffect, useRef } from "react";
 
-const signals = [
-  { label: "AI workflows", className: "signal-a" },
-  { label: "Human review", className: "signal-b" },
-  { label: "Structured data", className: "signal-c" },
-];
-
 export function HeroVisual() {
   const ref = useRef<HTMLDivElement>(null);
   const rectRef = useRef<DOMRect | null>(null);
@@ -52,8 +46,6 @@ export function HeroVisual() {
       }}
       aria-label="Layered previews of the GMA Research Assistant showing source-backed research and human review"
     >
-      <div className="system-grid" aria-hidden="true" />
-      <div className="hero-monogram" aria-hidden="true"><span>LYR</span><small>APPLIED / AI</small></div>
       <figure className="hero-screen hero-screen-primary">
         <Image
           src="/images/projects/gma/regulatory-search.png"
@@ -76,7 +68,6 @@ export function HeroVisual() {
         />
         <figcaption>Human approval gate</figcaption>
       </figure>
-      {signals.map((signal) => <span key={signal.label} className={`system-signal ${signal.className}`}>{signal.label}</span>)}
       <div className="system-status"><span className="status-dot" /> Evidence before output</div>
     </div>
   );

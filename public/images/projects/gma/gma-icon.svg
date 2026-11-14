@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="GMA Research Assistant icon">
+  <rect width="512" height="512" fill="#050505"/>
+  <!-- source document -->
+  <rect x="112" y="84" width="232" height="300" rx="22" fill="none" stroke="#ECE6DC" stroke-width="20"/>
+  <path d="M164 160h128M164 214h128M164 268h60" stroke="#ECE6DC" stroke-width="20" stroke-linecap="round" opacity=".55"/>
+  <!-- review lens with approval mark -->
+  <circle cx="318" cy="318" r="92" fill="#E65BC4" stroke="#050505" stroke-width="20"/>
+  <path d="M385 385l52 52" stroke="#050505" stroke-width="56" stroke-linecap="round"/>
+  <path d="M385 385l52 52" stroke="#E65BC4" stroke-width="30" stroke-linecap="round"/>
+  <path d="M276 320l30 30 56-62" fill="none" stroke="#050505" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
