@@ -7,7 +7,8 @@ export const projects: Project[] = [
     shortDescription:
       "A structured regulatory research workflow for evidence review, approval, grounded drafting, and spreadsheet export.",
     positioningStatement:
-      "Making source-backed research easier to inspect, review, and hand off.",
+      "Regulatory research where every answer shows its sources, and nothing ships until a person approves it.",
+    highlights: ["Source-backed answers", "Human approval gate", "Spreadsheet handoff"],
     categories: ["AI", "Research", "Data", "Automation", "Web"],
     featured: true,
     status: "Prototype",
@@ -115,9 +116,37 @@ export const projects: Project[] = [
     slug: "fitness-buddy",
     title: "Fitness Buddy",
     shortDescription:
-      "An academic mobile application exploring adaptive cardio training, progress tracking, and retrieval-supported guidance.",
+      "A cardio coaching app for preventing lifestyle diseases, where a retrieval-grounded Llama model answers from expert-verified health references.",
     positioningStatement:
-      "Exploring how personalized context can make fitness guidance clearer and more relevant.",
+      "An AI cardio coach that answers from expert-verified health references, not from memory.",
+    highlights: ["RAG over 28 expert answers", "549-passage health knowledge base", "ROUGE-L evaluated"],
+    aiSystem: {
+      eyebrow: "Retrieval and model tuning",
+      headline: "The coach looks it up before it speaks.",
+      intro:
+        "Fitness Buddy does not let the model answer health questions from memory. Each reply is assembled from the user's profile, expert-verified references, and a fixed exercise library, then generated under rules tuned for each task.",
+      stats: [
+        { value: "28", label: "expert-verified reference answers from Stanford Medicine, Healthline, Vancouver Coastal Health Research Institute, and Shirley Ryan AbilityLab" },
+        { value: "549", label: "sourced passages on non-communicable diseases, cardio, and Filipino nutrition from DOH, WHO, FNRI, and the Philippine Heart Association" },
+        { value: "5", label: "task-specific prompts: workouts, 14-day plans, health tips, progress reminders, and evaluation" },
+        { value: "Top 2", label: "passages retrieved per question, each labelled with where it came from" },
+      ],
+      retrievalTitle: "How an answer is retrieved",
+      retrieval: [
+        { label: "Read the person", detail: "The backend loads the user's profile from Firebase: age, BMI status, fitness level, session length, weekly activity goal, medical constraints, and lifestyle notes remembered from earlier chats." },
+        { label: "Expert references first", detail: "The question is scored against 28 gold-standard answers written by named health experts. The two best matches are passed on with their source and expert attached." },
+        { label: "Knowledge-base fallback", detail: "If no expert answer matches, retrieval falls back to a 549-passage knowledge base on non-communicable diseases, each passage stored with its source link." },
+        { label: "Exercise menu", detail: "Workouts can only use exercises from the app's own library. The model receives that menu with intensity and MET values and is forbidden to invent anything outside it." },
+        { label: "Grounded generation", detail: "Llama 4 Scout writes the reply from that context. The prompt tells it which facts are expert-verified and which come from the general knowledge base." },
+      ],
+      tuningTitle: "How the model is tuned for each job",
+      tuning: [
+        { label: "Evaluation answers", value: "Temperature 0.01", detail: "Near-deterministic output so results can be reproduced and scored with ROUGE-L against the expert reference answers." },
+        { label: "Workouts and 14-day plans", value: "Temperature 0.1", detail: "Low randomness for safety. Sessions must add up to the user's exact minutes, and plans return only valid exercise IDs, one line per day." },
+        { label: "Tips and reminders", value: "Temperature 0.7", detail: "More variety for daily motivation, capped at one or two short sentences and matched to how the user's week is going." },
+        { label: "Domain guardrails", value: "Cardio, NCDs, Filipino nutrition", detail: "Anything outside that scope gets a fixed refusal. Higher-risk suggestions add a see-your-doctor disclaimer." },
+      ],
+    },
     categories: ["Mobile", "AI", "Machine Learning"],
     featured: true,
     status: "Academic Project",
@@ -149,7 +178,7 @@ export const projects: Project[] = [
     gallery: [],
     problem:
       "Generic fitness plans can overlook user context and make progress difficult to interpret. Fitness Buddy explores a more adaptive application experience while keeping AI-supported guidance educational rather than medical.",
-    users: "The supplied project summary describes people seeking structured cardiovascular training and progress feedback.",
+    users: "Busy Filipino adults who want structured cardio training, clear progress feedback, and help building daily movement habits that lower the risk of non-communicable diseases.",
     constraints: [
       "The experience must not present itself as medical advice or a medical device.",
       "AI-supported guidance needs clear limits and curated information sources.",
@@ -157,16 +186,24 @@ export const projects: Project[] = [
     ],
     approach: [],
     keyFeatures: [
-      { title: "Adaptive cardio training", description: "Identified in the available high-level project description." },
-      { title: "Progress tracking", description: "Identified in the available high-level project description." },
-      { title: "AI-supported guidance", description: "Described at a high level; implementation details remain unverified." },
+      { title: "Workouts that fit the minutes you have", description: "Warm-up, main set, and cool-down are generated to add up to the user's exact session length, using only exercises from the app's library." },
+      { title: "A 14-day plan with real rest days", description: "The planner follows the user's chosen workout days and returns a strict two-week schedule the app can render directly." },
+      { title: "Tips that know your week", description: "Daily tips react to the last logged activity and weekly progress, switching between building on progress, recovery, and catching up." },
+      { title: "Reminders with the right tone", description: "Four reminder styles cover a strong week, a nearly finished goal, a few missed sessions, and a long break, each written to encourage rather than guilt." },
     ],
-    architecture: [],
+    architecture: [
+      { id: "app", label: "Android app", detail: "Kotlin and Jetpack Compose interface for workouts, progress tracking, and chat with the coach." },
+      { id: "api", label: "FastAPI backend", detail: "Separate routes for workouts, weekly plans, health tips, progress reminders, and evaluation, each with its own prompt and settings." },
+      { id: "firebase", label: "Firebase", detail: "Holds user profiles, goals, logged activities, chat memory, generated schedules, and the exercise library." },
+      { id: "retrieval", label: "Retrieval layer", detail: "Searches expert-verified reference answers first, then the non-communicable disease knowledge base, and labels where each fact came from." },
+      { id: "model", label: "Llama 4 Scout", detail: "The 17B instruct model generates replies from the retrieved context under task-specific rules." },
+      { id: "eval", label: "Evaluation", detail: "A dedicated endpoint produces answers that are scored with ROUGE-L against the expert reference set." },
+    ],
     outcomes: [],
     lessons: [],
     challenges: [],
     visibilityNote:
-      "This public overview reflects the supplied Fitness Buddy build stack. The project remains an educational fitness application and does not provide medical advice or medical-device functionality.",
+      "Retrieval and tuning details are taken from the Fitness Buddy backend code. The app is an educational fitness project and does not provide medical advice or medical-device functionality.",
     seo: {
       title: "Fitness Buddy Case Study",
       description:
@@ -180,6 +217,7 @@ export const projects: Project[] = [
       "A playable, endless Space Invaders-style browser game built for keyboard, touch, and mobile play.",
     positioningStatement:
       "A responsive arcade game that keeps the classic loop fast, readable, and playable across devices.",
+    highlights: ["Playable in the browser", "Keyboard and multi-touch"],
     categories: ["Web", "Mobile"],
     featured: false,
     status: "Completed",

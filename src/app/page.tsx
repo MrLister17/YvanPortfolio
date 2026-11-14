@@ -19,10 +19,10 @@ export default function Home() {
 
       <section id="selected-work" className="section-shell section-block numbered-section">
         <Reveal variant="mask" className="section-heading">
-          <div><span className="eyebrow">01 · Selected work</span><h2>Systems designed around real tasks.</h2></div>
-          <p>Two focused case studies across AI-assisted research, full-stack workflows, mobile experience, and responsible use of retrieved context.</p>
+          <div><span className="eyebrow">01 · Selected work</span><h2>Three builds, one rule: show the evidence.</h2></div>
+          <p>A regulatory research assistant, an AI cardio coach, and a browser game. Open any of them to see how it works and what I built.</p>
         </Reveal>
-        <div className="project-grid" data-reveal-group=""><ProjectCard project={projects[0]} lead index={0} /><ProjectCard project={projects[1]} index={1} /></div>
+        <div className="project-grid" data-reveal-group="">{projects.map((project, index) => <ProjectCard key={project.slug} project={project} index={index} />)}</div>
         <div className="section-link"><Link className="text-link" href="/projects">Explore all projects <ArrowRight /></Link></div>
       </section>
 

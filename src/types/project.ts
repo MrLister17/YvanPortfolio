@@ -23,6 +23,17 @@ export type ArchitectureNode = {
   detail: string;
 };
 
+export type AiSystem = {
+  eyebrow: string;
+  headline: string;
+  intro: string;
+  stats: { value: string; label: string }[];
+  retrievalTitle: string;
+  retrieval: { label: string; detail: string }[];
+  tuningTitle: string;
+  tuning: { label: string; value: string; detail: string }[];
+};
+
 export type Project = {
   slug: string;
   title: string;
@@ -38,6 +49,8 @@ export type Project = {
   technologies: string[];
   icon: { src: string; alt: string };
   thumbnail?: ProjectImage;
+  highlights?: string[];
+  aiSystem?: AiSystem;
   gallery: ProjectImage[];
   problem: string;
   users: string;

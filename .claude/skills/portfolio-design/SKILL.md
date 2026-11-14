@@ -1,6 +1,6 @@
 ---
 name: portfolio-design
-description: Design rules for Yvan's portfolio site. Use BEFORE editing anything visual or interactive in this repo — CSS, components, pages, layout, colors, fonts, icons, animation, hover/focus states, forms, navigation. Covers the brand palette (Cream / Ink / Orchid Pink), the Fraunces + DM Sans type system, the motion system, 20 UX and animation principles, and 20 design terms, each turned into a concrete rule to apply and check.
+description: Design rules for Yvan's portfolio site. Use BEFORE editing anything visual or interactive in this repo — CSS, components, pages, layout, colors, fonts, icons, animation, hover/focus states, forms, navigation. Covers the brand palette (Cream / Ink / Salmon Pink), the Fraunces + DM Sans type system, the motion system, 20 UX and animation principles, and 20 design terms, each turned into a concrete rule to apply and check.
 ---
 
 # Portfolio design rules
@@ -18,13 +18,17 @@ derive it with `color-mix(in oklch, …)` from an existing token.
 |-------------|-----------|----------------------------------------------------------|
 | Cream       | `#ECE6DC` | Text on dark theme, background on light theme            |
 | Ink         | `#050505` | Background on dark theme, text on light theme            |
-| Orchid Pink | `#E65BC4` | The one accent: primary buttons, active states, emphasis |
+| Salmon Pink | `#FA9189` | The one accent: primary buttons, active states, emphasis |
 
 - Two themes: Ink dark (default) and Cream light, switched by `data-theme` on `<html>`.
   Every change must look right in both. Check both before finishing.
-- Orchid Pink as a fill always carries Ink text (`--on-accent`), never Cream or white.
-- Orchid Pink as small text fails contrast on Cream. Use `--accent-text`, which is the
-  pure pink on dark and a darker orchid on light.
+- Yvan rejected hot pink (Orchid `#E65BC4`) as too loud. Keep the accent soft and warm;
+  never reintroduce a saturated magenta.
+- Salmon as a fill always carries Ink text (`--on-accent`), never Cream or white.
+- Salmon as text fails contrast on Cream, so text never uses `--accent` directly:
+  `--accent-text` for small text (darker terracotta on light), `--accent-display` for
+  large headings and numbers (mid salmon on light). On dark both are the pure salmon.
+- `--accent-deep` is the darker edge under 3D buttons.
 - No other hues. No blue, green, purple or gradient-rainbow accents. Status and
   emphasis are expressed with the accent, weight, or borders.
 - One accent moment per view. If everything is pink, nothing is.
@@ -159,6 +163,25 @@ Reuse these before inventing anything new. All live in the "Motion" block of
 | Theme switch | view transition circle spreading from the toggle button | origin-aware |
 | Moving highlight | `motion` `layoutId` (nav indicator) | shared element |
 
+### 3D and press feedback (Yvan asked for these explicitly, on mobile too)
+
+Yvan wants obvious 3D motion and exaggerated feedback on every click and tap. Lean
+toward more feedback, not less. `src/components/feedback.tsx` provides it site-wide:
+
+| Need | Use |
+|------|-----|
+| Anything clickable answers a press | Add its selector to `PRESSABLE` in `feedback.tsx`. It then gets `.is-pressed` (held at least 170ms so quick taps show), `.did-press` on release, a spark at the contact point, and a haptic tick on phones. Style those two classes. |
+| Bigger burst for primary actions | Add the selector to `BIG`. |
+| 3D tilt that follows the pointer or leans toward the finger | `data-tilt=""` on the element. It reads `--rx/--ry` (rotation), `--px/--py` (-1..1 position), `--gx/--gy` (glare). |
+| Tilt values without transforming the element itself | `data-tilt-source=""` (the hero stack). |
+| Physical button | `.button`: sits on a 4px `--edge` and sinks into it when pressed. |
+| Release bounce | `animation: boing` on `.did-press` (uses the `scale` property so it never fights `transform`). |
+| 3D scroll entrance | `data-reveal-group` children rotate up from `rotateX(-16deg)`. |
+| 3D showpiece | `HeroStack`: exploded layers in `preserve-3d`, auto-plays until touched. |
+
+Every new interactive element must have a visible `.is-pressed` state. Feedback must
+work with touch: never rely on `:hover` alone.
+
 Rules for adding motion:
 - State changes use CSS transitions so they can be reversed mid-way. Keyframes are
   only for one-shot entrances and confirmations.
@@ -167,8 +190,8 @@ Rules for adding motion:
 - The hidden pre-reveal state is scoped to `html.js`; content must stay visible with
   JavaScript off.
 - Any new animated selector must be added to the `prefers-reduced-motion` block.
-- Only one infinite animation is allowed on screen at a time, and it must be tiny
-  (the status dot).
+- Infinite animations stay slow and small: the hero stack float and the status dot.
+  Do not add more.
 
 ## 5. Non-negotiables
 
@@ -185,6 +208,10 @@ rounded app-icon tile so mixed artwork looks like one set. New project → add a
 (SVG preferred, square, in `public/images/projects/<slug>/`). Icons drawn for the
 site use only the three brand colors.
 
+Cards and case-study covers lead with the icon, not a screenshot. Yvan finds the raw
+GMA screenshots ugly: they appear only in the case-study gallery, inside the CSS
+browser frame. Do not put raw screenshots in the hero, on cards, or as cover images.
+
 ## 7. Checklist before finishing a UI change
 
 1. Tokens only: no new hex/rgba, font-family, duration or easing literals. Free fonts only.
@@ -194,3 +221,14 @@ site use only the three brand colors.
 5. Motion: eased, ≤600ms, interruptible, respects reduced motion.
 6. Text: ≥12px, headings balanced, paragraphs ≤65ch.
 7. `npm run verify` passes.
+
+## 8. Voice and content
+
+- The site's hook is "I build AI that shows its work." Headlines should be short,
+  first-person and concrete, not job-title labels.
+- Each project leads with a one-line hook (`positioningStatement`) and two or three
+  `highlights` chips.
+- AI projects put their retrieval and tuning design directly under the case-study
+  hero via `aiSystem` in `src/content/projects.ts` (rendered by `AiSpotlight`).
+- Only state facts that are in the project's code or that Yvan supplied. Do not
+  invent metrics, and do not claim weight fine-tuning unless Yvan provides the details.
