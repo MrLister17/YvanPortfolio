@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="GMA DataReady icon">
+  <rect width="512" height="512" fill="#050505"/>
+  <!-- workbook grid -->
+  <rect x="92" y="104" width="272" height="272" rx="22" fill="none" stroke="#ECE6DC" stroke-width="20"/>
+  <path d="M92 190h272M190 190v186" stroke="#ECE6DC" stroke-width="20" stroke-linecap="round"/>
+  <path d="M92 283h272" stroke="#ECE6DC" stroke-width="20" stroke-linecap="round" opacity=".55"/>
+  <!-- automation bolt -->
+  <circle cx="346" cy="346" r="98" fill="#F7B9CB" stroke="#050505" stroke-width="20"/>
+  <path transform="translate(271 271) scale(6.25)" d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z" fill="#050505"/>
+</svg>

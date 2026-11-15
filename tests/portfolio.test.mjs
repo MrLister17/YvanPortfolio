@@ -5,7 +5,7 @@ import { test } from "node:test";
 const read = (path) => readFileSync(new URL(`../${path}`, import.meta.url), "utf8");
 
 test("all required routes have page modules", () => {
-  for (const route of ["src/app/page.tsx", "src/app/about/page.tsx", "src/app/projects/page.tsx", "src/app/projects/[slug]/page.tsx", "src/app/practicum/page.tsx", "src/app/resume/page.tsx", "src/app/contact/page.tsx", "src/app/lab/page.tsx", "src/app/not-found.tsx"]) {
+  for (const route of ["src/app/page.tsx", "src/app/about/page.tsx", "src/app/projects/page.tsx", "src/app/projects/[slug]/page.tsx", "src/app/practicum/page.tsx", "src/app/experience/page.tsx", "src/app/resume/page.tsx", "src/app/contact/page.tsx", "src/app/lab/page.tsx", "src/app/not-found.tsx"]) {
     assert.equal(existsSync(new URL(`../${route}`, import.meta.url)), true, `${route} is missing`);
   }
 });

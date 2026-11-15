@@ -7,7 +7,7 @@ export type ProjectCategory =
   | "Research"
   | "Automation";
 
-export type ProjectStatus = "Completed" | "In Progress" | "Academic Project" | "Prototype";
+export type ProjectStatus = "Completed" | "In Progress" | "Thesis Project" | "Prototype" | "Workplace Tool";
 
 export type ProjectImage = {
   src: string;
@@ -23,6 +23,24 @@ export type ArchitectureNode = {
   detail: string;
 };
 
+export type AiSystem = {
+  eyebrow: string;
+  headline: string;
+  intro: string;
+  stats: { value: string; label: string }[];
+  retrievalTitle: string;
+  retrieval: { label: string; detail: string }[];
+  tuningTitle: string;
+  tuning: { label: string; value: string; detail: string }[];
+  results?: {
+    title: string;
+    caption: string;
+    columns: string[];
+    rows: { label: string; values: string[]; deployed?: boolean }[];
+  }[];
+  resultsNote?: string;
+};
+
 export type Project = {
   slug: string;
   title: string;
@@ -36,7 +54,12 @@ export type Project = {
   detailVerified?: boolean;
   timeframe?: string;
   technologies: string[];
+  icon: { src: string; alt: string };
   thumbnail?: ProjectImage;
+  /** Large image under the case-study title. Cards never use it. */
+  cover?: ProjectImage;
+  highlights?: string[];
+  aiSystem?: AiSystem;
   gallery: ProjectImage[];
   problem: string;
   users: string;

@@ -2,11 +2,12 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { Menu, Search, X } from "lucide-react";
+import { ArrowUpRight, Command, Menu, Search, X } from "lucide-react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import { navigation, portfolioConfig } from "@/config/portfolio";
 import { CommandPalette } from "@/components/command-palette";
+import { ThemeToggle } from "@/components/theme-toggle";
 import { motionTokens } from "@/config/motion";
 
 export function Header() {
@@ -102,9 +103,9 @@ export function Header() {
             <button ref={paletteButtonRef} className="command-trigger" onClick={() => { setMenuOpen(false); setPaletteOpen(true); }} aria-label="Open command palette">
               <Search size={16} aria-hidden="true" />
               <span>Navigate</span>
-              <kbd>⌘ K</kbd>
+              <kbd><Command aria-hidden="true" />K</kbd>
             </button>
-            <Link href="/projects" className="button button-small header-cta">Explore work</Link>
+            <ThemeToggle />
             <button
               ref={menuButtonRef}
               className="icon-button mobile-menu-button"
@@ -124,9 +125,9 @@ export function Header() {
               id="mobile-navigation"
               className="mobile-nav"
               aria-label="Mobile navigation"
-              initial={reduceMotion ? false : { opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
+              initial={reduceMotion ? false : { opacity: 0, scale: 0.98 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={reduceMotion ? { opacity: 0 } : { opacity: 0, scale: 0.98 }}
               transition={{ duration: reduceMotion ? 0 : motionTokens.duration.fast }}
             >
               <div className="mobile-nav-inner">
@@ -140,7 +141,7 @@ export function Header() {
                   >
                     <small>{String(index + 1).padStart(2, "0")}</small>
                     <span>{item.label}</span>
-                    <span aria-hidden="true">↗</span>
+                    <ArrowUpRight aria-hidden="true" />
                   </Link>
                 ))}
                 <p>{portfolioConfig.headline}</p>

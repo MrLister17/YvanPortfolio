@@ -2,9 +2,29 @@ import type { Metadata, Viewport } from "next";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { BackToTop } from "@/components/back-to-top";
+import { Feedback } from "@/components/feedback";
 import { getSiteUrl, portfolioConfig } from "@/config/portfolio";
+import localFont from "next/font/local";
 import "./globals.css";
 import "./scrollbar.css";
+
+// Free fonts (SIL Open Font License), self-hosted from src/fonts.
+const display = localFont({
+  variable: "--font-fraunces",
+  display: "swap",
+  fallback: ["Georgia", "Times New Roman", "serif"],
+  src: [
+    { path: "../fonts/fraunces-latin-soft-normal.woff2", weight: "100 900", style: "normal" },
+    { path: "../fonts/fraunces-latin-wght-italic.woff2", weight: "100 900", style: "italic" },
+  ],
+});
+const sans = localFont({
+  variable: "--font-dm-sans",
+  display: "swap",
+  fallback: ["Helvetica Neue", "Segoe UI", "Arial", "sans-serif"],
+  src: "../fonts/dm-sans-latin-wght-normal.woff2",
+  weight: "100 1000",
+});
 
 const productionUrl = getSiteUrl();
 
@@ -29,7 +49,19 @@ export const metadata: Metadata = {
   manifest: "/manifest.webmanifest",
 };
 
-export const viewport: Viewport = { colorScheme: "dark", themeColor: "#070607", width: "device-width", initialScale: 1 };
+export const viewport: Viewport = {
+  colorScheme: "dark light",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ECE6DC" },
+    { media: "(prefers-color-scheme: dark)", color: "#050505" },
+  ],
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
+
+// Runs before first paint so the saved or system theme applies without a flash.
+const themeScript = `(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=="light"&&t!=="dark"){t=window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark"}var d=document.documentElement;d.dataset.theme=t;d.classList.add("js")})()`;
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   const personJsonLd = {
@@ -39,12 +71,15 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     url: productionUrl,
     email: `mailto:${portfolioConfig.email}`,
     sameAs: [portfolioConfig.githubUrl, portfolioConfig.linkedInUrl],
+    jobTitle: portfolioConfig.currentRole.title,
+    worksFor: { "@type": "Organization", name: portfolioConfig.currentRole.company },
     alumniOf: { "@type": "CollegeOrUniversity", name: portfolioConfig.school },
     knowsAbout: ["Applied artificial intelligence", "Machine learning", "Retrieval-augmented generation", "Full-stack development"],
   };
 
   return (
-    <html lang="en">
+    <html lang="en" data-theme="dark" className={`${display.variable} ${sans.variable}`} suppressHydrationWarning>
+      <head><script dangerouslySetInnerHTML={{ __html: themeScript }} /></head>
       <body>
         <a className="skip-link" href="#main-content">Skip to main content</a>
         <div className="page-progress" aria-hidden="true" />
@@ -53,6 +88,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <main id="main-content" tabIndex={-1}>{children}</main>
         <Footer />
         <BackToTop />
+        <Feedback />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }} />
       </body>
     </html>

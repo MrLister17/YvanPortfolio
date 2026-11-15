@@ -1,5 +1,6 @@
 "use client";
 
+import { ArrowRight } from "lucide-react";
 import { useState } from "react";
 import type { ArchitectureNode } from "@/types/project";
 
@@ -14,11 +15,11 @@ export function ArchitectureExplorer({ nodes }: { nodes: ArchitectureNode[] }) {
             <button className={active === node.id ? "active" : ""} aria-pressed={active === node.id} onClick={() => setActive(node.id)}>
               <small>{String(index + 1).padStart(2, "0")}</small><span>{node.label}</span>
             </button>
-            {index < nodes.length - 1 && <span className="architecture-line" aria-hidden="true">→</span>}
+            {index < nodes.length - 1 && <span className="architecture-line" aria-hidden="true"><ArrowRight /></span>}
           </div>
         ))}
       </div>
-      <div className="architecture-detail" aria-live="polite"><span className="eyebrow">Selected component</span><h3>{selected.label}</h3><p>{selected.detail}</p></div>
+      <div className="architecture-detail" aria-live="polite"><div key={selected.id} className="swap-in"><span className="eyebrow">Selected component</span><h3>{selected.label}</h3><p>{selected.detail}</p></div></div>
     </div>
   );
 }

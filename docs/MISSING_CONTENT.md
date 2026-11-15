@@ -27,7 +27,7 @@ The portfolio is intentionally conservative where Lester-specific evidence or pu
 
 - [ ] Supply approved public wording for responsibilities, technologies, achievements, reflections, and learning themes.
 - [ ] Obtain explicit permission before publishing the supervisor's name; it remains omitted from the public page until then.
-- [ ] Confirm whether any relationship between UL Solutions and the GMA Research Assistant may be stated publicly. Until approved, the practicum and GMA project must remain separate in the portfolio.
+- [x] The published résumé states that the GMA Research Assistant was built as an AI Intern with the GMA Research Team at UL Solutions. The site follows the résumé wording.
 
 ## Deployment and résumé
 

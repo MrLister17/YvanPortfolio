@@ -58,10 +58,10 @@ export function Gallery({ images }: { images: ProjectImage[] }) {
 
   return (
     <>
-      <div className="gallery-grid">
+      <div className="gallery-grid" data-reveal-group="">
         {images.map((image, index) => (
           <figure key={image.src} className={index === 0 ? "gallery-featured" : ""}>
-            <button onClick={(event) => open(index, event.currentTarget)} aria-label={`Open screenshot ${index + 1}: ${image.caption}`}>
+            <button data-tilt="" onClick={(event) => open(index, event.currentTarget)} aria-label={`Open screenshot ${index + 1}: ${image.caption}`}>
               <Image src={image.src} alt={image.alt} width={image.width} height={image.height} sizes={index === 0 ? "(max-width: 900px) 100vw, 70vw" : "(max-width: 900px) 100vw, 30vw"} />
               <span><Expand size={18} /> Inspect</span>
             </button>
