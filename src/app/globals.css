@@ -247,7 +247,8 @@ kbd svg { width: 11px; height: 11px; }
 .project-icon { position: relative; flex: 0 0 auto; display: block; aspect-ratio: 1; overflow: hidden; border-radius: 22%; background: var(--surface-2); box-shadow: 0 0 0 1px var(--border-strong), var(--shadow-sm); }
 .project-icon img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.03); }
 
-.project-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; align-items: stretch; }
+.project-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; align-items: stretch; }
+.project-grid:not(.project-grid-browser) .project-media { aspect-ratio: 16 / 7; }
 .project-card { position: relative; min-width: 0; overflow: hidden; display: flex; flex-direction: column; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface-1); transition: border-color var(--dur) var(--ease-out), transform var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out); }
 .project-card:hover { --lift: -6px; border-color: var(--accent-line); box-shadow: var(--shadow); }
 .project-card.is-pressed { --press: .97; --lift: 0px; border-color: var(--accent); }
@@ -453,6 +454,7 @@ kbd svg { width: 11px; height: 11px; }
 .feature-grid span, .theme-grid span { color: var(--accent-text); font: var(--label); }
 .feature-grid h3, .theme-grid h3 { margin-top: 36px; font-size: 1.25rem; }
 .feature-grid .icon-tile + h3 { margin-top: 22px; }
+.experience-links { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 4px 32px; }
 .experience-list { margin-top: 36px; border-top: 1px solid var(--border); }
 .feature-grid p, .theme-grid p { margin-top: 12px; font-size: .95rem; }
 

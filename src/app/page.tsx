@@ -20,8 +20,8 @@ export default function Home() {
 
       <section id="selected-work" className="section-shell section-block numbered-section">
         <Reveal variant="mask" className="section-heading">
-          <div><span className="eyebrow">01 · Selected work</span><h2>Three builds, one rule: show the evidence.</h2></div>
-          <p>A regulatory research assistant, an AI cardio coach, and a browser game. Open any of them to see how it works and what I built.</p>
+          <div><span className="eyebrow">01 · Selected work</span><h2>Four builds, one rule: show the evidence.</h2></div>
+          <p>A regulatory research assistant, a workbook automation tool, an AI cardio coach, and a browser game. Open any of them to see how it works and what I built.</p>
         </Reveal>
         <div className="project-grid" data-reveal-group="">{projects.map((project, index) => <ProjectCard key={project.slug} project={project} index={index} />)}</div>
         <div className="section-link"><Link className="text-link" href="/projects">Explore all projects <ArrowRight /></Link></div>
@@ -36,7 +36,7 @@ export default function Home() {
           <span className="eyebrow">02 · About me</span>
           <h2>Computer science foundations, applied to AI systems.</h2>
           <p>{portfolioConfig.name} holds a {portfolioConfig.program} from {portfolioConfig.school}, with a specialization in {portfolioConfig.specialization}.</p>
-          <p>I currently work as an {portfolioConfig.currentRole.title} with the {portfolioConfig.currentRole.team} at {portfolioConfig.currentRole.company}, building evidence-grounded research tools with Python, FastAPI, React, and PostgreSQL.</p>
+          <p>I currently work as a {portfolioConfig.currentRole.title} in {portfolioConfig.currentRole.team} at {portfolioConfig.currentRole.company}, developing AI-assisted research applications and workbook automation tools.</p>
           <Link className="text-link" href="/about">More about me <ArrowRight /></Link>
         </Reveal>
       </section>
@@ -51,8 +51,8 @@ export default function Home() {
 
       <section className="section-shell section-block split-feature numbered-section">
         <Reveal variant="fade" className="practicum-card">
-          <div><span className="eyebrow">04 · Experience</span><h2>{portfolioConfig.currentRole.title} with the {portfolioConfig.currentRole.team} at {portfolioConfig.currentRole.company}.</h2><p>I map regulatory research workflows, turn researcher feedback into requirements, and build the full-stack tools that make AI-assisted research traceable and reviewable.</p><Link className="text-link" href="/experience">See my experience <ArrowRight /></Link></div>
-          <dl><div><dt>Role</dt><dd>{portfolioConfig.currentRole.title}</dd></div><div><dt>Period</dt><dd>{portfolioConfig.currentRole.period}</dd></div><div><dt>Setup</dt><dd>{portfolioConfig.practicum.setup}</dd></div></dl>
+          <div><span className="eyebrow">04 · Experience</span><h2>{portfolioConfig.currentRole.title} in {portfolioConfig.currentRole.team} at {portfolioConfig.currentRole.company}.</h2><p>I develop AI-assisted research applications and workbook automation tools, and translate researcher requirements into application features, validation checks, and traceable review workflows.</p><Link className="text-link" href="/experience">See my experience <ArrowRight /></Link></div>
+          <dl><div><dt>Role</dt><dd>{portfolioConfig.currentRole.title}</dd></div><div><dt>Period</dt><dd>{portfolioConfig.currentRole.period}</dd></div><div><dt>Before that</dt><dd>AI Intern, Jun to Sep 2026</dd></div></dl>
         </Reveal>
       </section>
 

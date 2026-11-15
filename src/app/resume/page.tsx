@@ -3,14 +3,14 @@ import Link from "next/link";
 import { ArrowRight, Download, ExternalLink, Mail } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/brand-icons";
 import { portfolioConfig } from "@/config/portfolio";
-import { certificationNames, experience, leadership, skillGroups } from "@/content/experience";
+import { certificationNames, experience, leadership, profile, skillGroups } from "@/content/experience";
 import { projects } from "@/content/projects";
 import styles from "./resume.module.css";
 
 export const metadata: Metadata = {
   title: "Résumé",
   description:
-    "Résumé for Lester Yvan P. Ramirez, BS Computer Science graduate: experience, education, projects, skills, certifications, and contact links.",
+    "Résumé for Lester Yvan P. Ramirez, Research Analyst in AI Development & Automation: experience, projects, skills, education, certifications, and contact links.",
   alternates: { canonical: "/resume" },
 };
 
@@ -20,7 +20,7 @@ export default function ResumePage() {
       <section className="page-hero resume-hero section-shell">
         <span className="eyebrow">Résumé</span>
         <h1>{portfolioConfig.name}</h1>
-        <p>AI Intern · Full-Stack Developer · BS Computer Science Graduate</p>
+        <p>Applied AI · Research Automation · Full-Stack Development</p>
         <div className={styles.actions}>
           <a className="button" href={portfolioConfig.resumeUrl} target="_blank" rel="noreferrer">Preview PDF <ExternalLink /></a>
           <a className="button button-secondary" href={portfolioConfig.resumeUrl} download="Lester-Yvan-Ramirez-Resume.pdf">Download PDF <Download /></a>
@@ -35,10 +35,8 @@ export default function ResumePage() {
       <div className="section-shell resume-layout">
         <aside>
           <span className="eyebrow">Profile</span>
-          <p>
-            BS Computer Science graduate specializing in Machine Learning and an AI Intern with hands-on experience translating regulatory research workflows into evidence-grounded web tools. AWS and CompTIA certified, with strengths in requirements gathering, testing, documentation, and stakeholder communication.
-          </p>
-          <span className="eyebrow">Certifications</span>
+          <p>{profile}</p>
+          <span className="eyebrow">Certifications & training</span>
           <ul>{certificationNames.map((item) => <li key={item}>{item}</li>)}</ul>
           <span className="eyebrow">Direction</span>
           <ul>{portfolioConfig.careerDirections.map((direction) => <li key={direction}>{direction}</li>)}</ul>

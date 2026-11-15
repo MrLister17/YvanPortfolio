@@ -17,7 +17,7 @@ export function HomeHero() {
           <em>shows its work.</em>
         </h1>
         <p className="hero-lede hero-sequence-3">
-          I&apos;m Yvan, an AI intern at UL Solutions and a computer science graduate specializing in machine learning. I build retrieval-grounded assistants and full-stack tools. Every answer points back to a source, and a person stays in control.
+          I&apos;m Yvan, a Research Analyst in AI Development &amp; Automation at UL Solutions. I build AI-assisted research applications and automation tools. Every answer points back to a source, and a person stays in control.
         </p>
         <div className="hero-actions hero-sequence-4">
           <Link className="button" href="/projects">See the projects <ArrowRight /></Link>

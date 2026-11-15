@@ -1,5 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Space Invaders Clone icon" shape-rendering="crispEdges">
-  <rect width="512" height="512" fill="#050505"/>
-  <g fill="#ECE6DC"><rect x="130" y="112" width="36" height="36"/><rect x="346" y="112" width="36" height="36"/><rect x="166" y="148" width="36" height="36"/><rect x="310" y="148" width="36" height="36"/><rect x="130" y="184" width="252" height="36"/><rect x="94" y="220" width="72" height="36"/><rect x="202" y="220" width="108" height="36"/><rect x="346" y="220" width="72" height="36"/><rect x="58" y="256" width="396" height="36"/><rect x="58" y="292" width="36" height="36"/><rect x="130" y="292" width="252" height="36"/><rect x="418" y="292" width="36" height="36"/><rect x="58" y="328" width="36" height="36"/><rect x="130" y="328" width="36" height="36"/><rect x="346" y="328" width="36" height="36"/><rect x="418" y="328" width="36" height="36"/><rect x="166" y="364" width="72" height="36"/><rect x="274" y="364" width="72" height="36"/></g>
-  <g fill="#F7B9CB"><rect x="166" y="220" width="36" height="36"/><rect x="310" y="220" width="36" height="36"/></g>
-</svg>

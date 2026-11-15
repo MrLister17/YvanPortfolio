@@ -4,7 +4,7 @@ import Link from "next/link";
 import { ArrowRight, Award, ExternalLink } from "lucide-react";
 import { Reveal } from "@/components/reveal";
 import { portfolioConfig } from "@/config/portfolio";
-import { skillGroups } from "@/content/experience";
+import { profile, skillGroups } from "@/content/experience";
 import styles from "./about.module.css";
 
 export const metadata: Metadata = {
@@ -18,7 +18,7 @@ const interests = ["Applied artificial intelligence", "Machine learning", "Retri
 const evidenceGroups = [
   { title: "AI & retrieval workflows", evidence: "GMA Research Assistant · Fitness Buddy" },
   { title: "Full-stack development", evidence: "GMA Research Assistant" },
-  { title: "Data & spreadsheet workflows", evidence: "GMA Research Assistant" },
+  { title: "Workbook & Microsoft 365 automation", evidence: "GMA DataReady · GMA Research Assistant" },
   { title: "Mobile application development", evidence: "Fitness Buddy" },
 ];
 
@@ -29,8 +29,7 @@ const certifications = [
   { title: "AWS Academy Graduate: Cloud Foundations", issuer: "Amazon Web Services Training and Certification", issued: "November 2023", credentialId: "8c0a5747-d71d-4357-b90b-da0107652403", url: "https://www.credly.com/earner/earned/badge/8c0a5747-d71d-4357-b90b-da0107652403", logo: "/images/certifications/aws.png" },
 ];
 
-// Résumé skill groups, plus the mobile stack used in Fitness Buddy.
-const techStack = skillGroups.map((group) => group.title === "Development" ? { ...group, items: [...group.items, "Kotlin", "Jetpack Compose"] } : group);
+const techStack = skillGroups;
 
 const personalPhotos = [
   { src: "/images/profile/img-2941.jpg", alt: "Yvan Ramirez taking a mirror photo after a workout", caption: "Training" },
@@ -45,15 +44,15 @@ export default function AboutPage() {
       <section className="page-hero section-shell">
         <span className="eyebrow">About</span>
         <h1>From computer science foundations to <em>applied AI systems.</em></h1>
-        <p>{portfolioConfig.name} is an {portfolioConfig.currentRole.title} with the {portfolioConfig.currentRole.team} at {portfolioConfig.currentRole.company} and a {portfolioConfig.program} graduate of {portfolioConfig.school}.</p>
+        <p>{portfolioConfig.name} is a {portfolioConfig.currentRole.title} in {portfolioConfig.currentRole.team} at {portfolioConfig.currentRole.company} and a {portfolioConfig.program} graduate of {portfolioConfig.school}.</p>
       </section>
 
       <section className="section-shell section-block about-grid">
         <Reveal variant="mask" className="about-statement">
           <span className="section-number">01</span>
           <span className="eyebrow">Right now</span>
-          <h2>Building evidence-grounded research tools as an {portfolioConfig.currentRole.title}.</h2>
-          <p>BS Computer Science graduate specializing in Machine Learning, with hands-on experience translating regulatory research workflows into evidence-grounded web tools. AWS and CompTIA certified, with strengths in requirements gathering, testing, documentation, and stakeholder communication.</p>
+          <h2>AI-assisted research applications and workflow automation.</h2>
+          <p>{profile}</p>
           <p>Each public claim is tied to source material, demonstrated functionality, or an explicitly supplied portfolio fact.</p>
         </Reveal>
         <Reveal variant="fade" className={`identity-card ${styles.profileCard}`}>

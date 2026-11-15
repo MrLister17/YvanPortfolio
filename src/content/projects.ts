@@ -5,17 +5,17 @@ export const projects: Project[] = [
     slug: "gma-research-assistant",
     title: "GMA Research Assistant",
     shortDescription:
-      "A structured regulatory research workflow for evidence review, approval, grounded drafting, and spreadsheet export.",
+      "An AI regulatory research web application for approved-knowledge retrieval, AI-assisted drafting, researcher review, and Excel export.",
     positioningStatement:
       "Regulatory research where every answer shows its sources, and nothing ships until a person approves it.",
-    highlights: ["Source-backed answers", "Human approval gate", "Spreadsheet handoff"],
+    highlights: ["Source citations", "Reviewer approvals", "Excel export"],
     categories: ["AI", "Research", "Data", "Automation", "Web"],
     featured: true,
     status: "Prototype",
-    role: "AI Intern, GMA Research Team at UL Solutions",
+    role: "Full-stack and AI workflow developer, UL Solutions",
     contributionSummary:
       "Designed and implemented the interface, API workflow, data services, AI-provider layer, review controls, and export path represented in this prototype.",
-    timeframe: "Jun 2026 – Present",
+    timeframe: "2026",
     technologies: ["Next.js", "React", "TypeScript", "Python", "FastAPI", "PostgreSQL", "pgvector", "SQLAlchemy", "Alembic", "Docker", "Pytest"],
     icon: { src: "/images/projects/gma/gma-icon.svg", alt: "GMA Research Assistant icon: a source document under a review lens with an approval check" },
     gallery: [
@@ -46,7 +46,7 @@ export const projects: Project[] = [
       "Spreadsheet inputs and outputs need validation rather than silent transformation.",
     ],
     contribution:
-      "Built during my AI internship with the GMA Research Team at UL Solutions. I mapped the Chem-Envi regulatory research workflow, turned researcher feedback into requirements, and worked across the Next.js interface and FastAPI services, including workspace flows, research orchestration, provider abstraction, records, reviews, source policy, storage, and export behavior. The current repository also includes test coverage for authentication, tenant boundaries, migrations, AI providers, files, and end-to-end workflow scenarios.",
+      "Started during my AI internship with the GMA Research Team at UL Solutions. I mapped Chem-Envi workflows into requirements, refined the prototype through researcher feedback, testing, and documentation, and integrated source citations, versioned records, and reviewer approvals to trace findings from workbook ingestion through Excel export. I worked across the Next.js interface and FastAPI services, including workspace flows, research orchestration, provider abstraction, records, reviews, source policy, storage, and export behavior. The current repository also includes test coverage for authentication, tenant boundaries, migrations, AI providers, files, and end-to-end workflow scenarios.",
     approach: [
       "Map the research journey from upload and validation through search, review, approval, and export.",
       "Separate source retrieval, draft generation, and human approval so each state remains visible.",
@@ -113,13 +113,51 @@ export const projects: Project[] = [
     },
   },
   {
+    slug: "gma-dataready",
+    title: "GMA DataReady",
+    shortDescription:
+      "Microsoft 365 workbook automation that converts and validates research workbooks before upload.",
+    positioningStatement:
+      "Workbook preparation cut from 2–3 hours to 10–15 minutes.",
+    highlights: ["2–3 hours down to 10–15 minutes", "Microsoft 365 automation"],
+    categories: ["Automation", "Data"],
+    featured: true,
+    status: "Workplace Tool",
+    role: "Workbook automation developer, UL Solutions",
+    timeframe: "2026",
+    technologies: ["Power Automate", "Excel Office Scripts", "OneDrive for Business", "Microsoft Teams"],
+    icon: { src: "/images/projects/dataready/dataready-icon.svg", alt: "GMA DataReady icon: a workbook grid with an automation bolt" },
+    gallery: [],
+    problem:
+      "Preparing research workbooks meant converting files and running checks by hand before upload, which took 2–3 hours.",
+    users: "Researchers who prepare regulatory research workbooks.",
+    constraints: [],
+    approach: [],
+    keyFeatures: [
+      { title: "Workbook conversion", description: "Conversion is automated with Power Automate and Excel Office Scripts instead of being done by hand." },
+      { title: "Pre-upload checks", description: "Validation checks run on each workbook before it is uploaded." },
+      { title: "Inside Microsoft 365", description: "The tools run on OneDrive for Business and Teams, alongside the Excel files they work on." },
+    ],
+    architecture: [],
+    outcomes: ["Workbook preparation went from 2–3 hours to 10–15 minutes by automating conversion and pre-upload checks."],
+    lessons: [],
+    challenges: [],
+    visibilityNote:
+      "GMA DataReady is a workplace tool. Its screens, files, and workflow details are not shown publicly.",
+    seo: {
+      title: "GMA DataReady Case Study",
+      description:
+        "Microsoft 365 workbook automation by Yvan Ramirez that cut workbook preparation from 2–3 hours to 10–15 minutes.",
+    },
+  },
+  {
     slug: "fitness-buddy",
     title: "Fitness Buddy",
     shortDescription:
-      "A cardio coaching app for preventing lifestyle diseases, where a retrieval-grounded Llama model answers from expert-verified health references.",
+      "An Android fitness app with adaptive cardio training, progress tracking, and retrieval-augmented AI guidance grounded in expert-verified health references.",
     positioningStatement:
       "An AI cardio coach that answers from expert-verified health references, not from memory.",
-    highlights: ["RAG over 28 expert answers", "549-passage health knowledge base", "ROUGE-L evaluated"],
+    highlights: ["RAG over 28 expert answers", "549-passage health knowledge base", "Base vs RAG evaluation"],
     aiSystem: {
       eyebrow: "Retrieval and model tuning",
       headline: "The coach looks it up before it speaks.",
@@ -128,7 +166,7 @@ export const projects: Project[] = [
       stats: [
         { value: "28", label: "expert-verified reference answers from Stanford Medicine, Healthline, Vancouver Coastal Health Research Institute, and Shirley Ryan AbilityLab" },
         { value: "549", label: "sourced passages on non-communicable diseases, cardio, and Filipino nutrition from DOH, WHO, FNRI, and the Philippine Heart Association" },
-        { value: "5", label: "task-specific prompts: workouts, 14-day plans, health tips, progress reminders, and evaluation" },
+        { value: "3", label: "evaluation methods comparing base and RAG outputs: ROUGE-L, semantic similarity, and manual RAGAS-style assessment" },
         { value: "Top 2", label: "passages retrieved per question, each labelled with where it came from" },
       ],
       retrievalTitle: "How an answer is retrieved",
@@ -141,7 +179,7 @@ export const projects: Project[] = [
       ],
       tuningTitle: "How the model is tuned for each job",
       tuning: [
-        { label: "Evaluation answers", value: "Temperature 0.01", detail: "Near-deterministic output so results can be reproduced and scored with ROUGE-L against the expert reference answers." },
+        { label: "Evaluation", value: "Base vs RAG, 28 reference cases", detail: "Outputs with and without retrieval were compared using ROUGE-L, semantic similarity, and a manual RAGAS-style assessment of relevance, completeness, and evidence support. Evaluation runs at temperature 0.01 so results can be reproduced." },
         { label: "Workouts and 14-day plans", value: "Temperature 0.1", detail: "Low randomness for safety. Sessions must add up to the user's exact minutes, and plans return only valid exercise IDs, one line per day." },
         { label: "Tips and reminders", value: "Temperature 0.7", detail: "More variety for daily motivation, capped at one or two short sentences and matched to how the user's week is going." },
         { label: "Domain guardrails", value: "Cardio, NCDs, Filipino nutrition", detail: "Anything outside that scope gets a fixed refusal. Higher-risk suggestions add a see-your-doctor disclaimer." },
@@ -175,7 +213,7 @@ export const projects: Project[] = [
       "Uvicorn",
       "FastAPI",
     ],
-    icon: { src: "/images/projects/fitness/fitness-buddy-icon.svg", alt: "Fitness Buddy icon: a heart with a heart-rate pulse line" },
+    icon: { src: "/images/projects/fitness/fitness-buddy-icon.png", alt: "Fitness Buddy icon: an orange wellness robot with a heart-rate display" },
     gallery: [],
     problem:
       "Generic fitness plans can overlook user context and make progress difficult to interpret. Fitness Buddy explores a more adaptive application experience while keeping AI-supported guidance educational rather than medical.",
@@ -198,7 +236,7 @@ export const projects: Project[] = [
       { id: "firebase", label: "Firebase", detail: "Holds user profiles, goals, logged activities, chat memory, generated schedules, and the exercise library." },
       { id: "retrieval", label: "Retrieval layer", detail: "Searches expert-verified reference answers first, then the non-communicable disease knowledge base, and labels where each fact came from." },
       { id: "model", label: "Llama 4 Scout", detail: "The 17B instruct model generates replies from the retrieved context under task-specific rules." },
-      { id: "eval", label: "Evaluation", detail: "A dedicated endpoint produces answers that are scored with ROUGE-L against the expert reference set." },
+      { id: "eval", label: "Evaluation", detail: "Base and RAG outputs are compared across 28 reference cases with ROUGE-L, semantic similarity, and a manual RAGAS-style assessment." },
     ],
     outcomes: [],
     lessons: [],
@@ -224,7 +262,7 @@ export const projects: Project[] = [
     status: "Completed",
     role: "Creator and browser game developer",
     technologies: ["JavaScript", "HTML5 Canvas", "HTML", "CSS"],
-    icon: { src: "/images/projects/space-invaders/space-invader-icon.svg", alt: "Space Invaders Clone icon: a pixel alien" },
+    icon: { src: "/images/projects/space-invaders/space-invader-icon.png", alt: "Space Invaders Clone icon: a black pixel alien" },
     gallery: [],
     visualType: "game",
     liveUrl: "https://mrlister17.github.io/space-invaders-browser/",

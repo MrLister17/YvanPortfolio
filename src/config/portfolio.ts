@@ -2,7 +2,7 @@ export const portfolioConfig = {
   name: "Lester Yvan P. Ramirez",
   shortName: "Yvan Ramirez",
   initials: "LYR",
-  headline: "AI Intern, Full-Stack Developer & BS Computer Science Graduate",
+  headline: "Applied AI, Research Automation & Full-Stack Development",
   supportingHeadline:
     "Building practical AI-assisted tools, machine-learning applications, and thoughtful digital experiences.",
   program: "Bachelor of Science in Computer Science",
@@ -15,10 +15,10 @@ export const portfolioConfig = {
   linkedInUrl: "https://www.linkedin.com/in/lester-yvan-ramirez-353b44293/",
   resumeUrl: "/documents/resume/Ramirez-Resume.pdf",
   currentRole: {
-    title: "AI Intern",
-    team: "GMA Research Team",
+    title: "Research Analyst",
+    team: "AI Development & Automation",
     company: "UL Solutions",
-    period: "Jun 2026 – Present",
+    period: "Oct 2026 – Present",
   },
   practicum: {
     company: "UL Solutions",

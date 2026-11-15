@@ -212,11 +212,14 @@ AI-generated-looking art (the old cartoon robot) and emoji read as cheap to him.
   introduces a block sits in an `.icon-tile` (soft pink rounded tile).
 - **Brand marks:** GitHub and LinkedIn use the real marks from
   `src/components/brand-icons.tsx`. Do not substitute generic icons for a brand.
-- **Project icons:** every project in `src/content/projects.ts` has an `icon`, drawn
-  as an SVG in `public/images/projects/<slug>/` in one style: 512 viewBox, Ink
-  background, Cream line work or shapes, one Pastel Pink accent element. No
-  gradients, photos, mascots or generated illustrations. They are always rendered
-  through `ProjectIcon`, which frames them as a rounded app-icon tile.
+- **Project icons:** every project in `src/content/projects.ts` has an `icon`, always
+  rendered through `ProjectIcon`, which frames it as a rounded app-icon tile.
+  - Fitness Buddy (orange robot) and Space Invaders (black pixel alien) keep their
+    **original PNG artwork**. A redraw was tried and Yvan asked for the originals
+    back. Do not redraw, recolor or replace these two.
+  - Icons drawn for the site (GMA Research Assistant, GMA DataReady, any new
+    project without its own artwork) share one style: SVG, 512 viewBox, Ink
+    background, Cream line work, one Pastel Pink accent element.
 - Cards and case-study covers lead with the icon, not a screenshot. Yvan finds the raw
   GMA screenshots ugly: they appear only in the case-study gallery, inside the CSS
   browser frame. Do not put raw screenshots in the hero, on cards, or as cover images.
@@ -239,8 +242,8 @@ AI-generated-looking art (the old cartoon robot) and emoji read as cheap to him.
   `highlights` chips.
 - AI projects put their retrieval and tuning design directly under the case-study
   hero via `aiSystem` in `src/content/projects.ts` (rendered by `AiSpotlight`).
-- Yvan's current position is AI Intern, GMA Research Team, UL Solutions (Jun 2026 –
-  Present). It lives in `portfolioConfig.currentRole`; experience, skills and
+- Yvan's current position is Research Analyst, AI Development & Automation, UL
+  Solutions (Oct 2026 – Present); he was an AI Intern there Jun – Sep 2026. It lives in `portfolioConfig.currentRole`; experience, skills and
   certifications live in `src/content/experience.ts`. The résumé PDF is the source of
   truth: when Yvan says to update his info, sync these files and every page with it.
 - Yvan is a BS Computer Science graduate (Mapúa MCL, Aug 2022 – Jul 2026, Machine

@@ -1,21 +1,19 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, ExternalLink, FileSpreadsheet, Layers, Route, ShieldCheck, TestTubeDiagonal } from "lucide-react";
+import { ArrowRight, Bot, ExternalLink, ListChecks, ShieldCheck } from "lucide-react";
 import { Reveal } from "@/components/reveal";
 import { portfolioConfig } from "@/config/portfolio";
 import { experience, leadership } from "@/content/experience";
 
 export const metadata: Metadata = {
   title: "Experience",
-  description: "Yvan Ramirez's experience: AI Intern with the GMA Research Team at UL Solutions, plus earlier roles and leadership.",
+  description: "Yvan Ramirez's experience: Research Analyst in AI Development & Automation at UL Solutions, AI internship, earlier roles, and leadership.",
   alternates: { canonical: "/experience" },
 };
 
 const focusAreas = [
-  { icon: Route, title: "Requirements from real research work" },
-  { icon: Layers, title: "Full-stack build" },
-  { icon: FileSpreadsheet, title: "Workbook automation and traceability" },
-  { icon: TestTubeDiagonal, title: "Testing and governance" },
+  { icon: Bot, title: "AI-assisted research and workbook automation" },
+  { icon: ListChecks, title: "Requirements into traceable workflows" },
 ];
 
 export default function ExperiencePage() {
@@ -27,20 +25,20 @@ export default function ExperiencePage() {
       <section className="page-hero section-shell">
         <span className="eyebrow">Experience / Current role</span>
         <h1>{currentRole.title} at <em>{currentRole.company}.</em></h1>
-        <p>Since June 2026 I have worked with the {currentRole.team}, turning regulatory research workflows into evidence-grounded web tools.</p>
+        <p>I work in {currentRole.team}, building AI-assisted research applications and workflow automation for regulatory research.</p>
       </section>
 
       <section className="section-shell practicum-facts" data-reveal-group="">
         <div><small>Role</small><strong>{currentRole.title}</strong></div>
         <div><small>Team</small><strong>{currentRole.team}</strong></div>
+        <div><small>Company</small><strong>{currentRole.company}</strong></div>
         <div><small>Period</small><strong>{currentRole.period}</strong></div>
-        <div><small>Setup</small><strong>{practicum.setup}</strong></div>
       </section>
 
       <section className="section-shell section-block">
         <Reveal variant="mask" className="section-heading">
-          <div><span className="eyebrow">01 · What I work on</span><h2>From a researcher&apos;s spreadsheet to a reviewed answer.</h2></div>
-          <p>The work centres on the GMA Research Assistant, a working demonstration for approved knowledge discovery, AI-assisted research, human review, and Excel-ready outputs.</p>
+          <div><span className="eyebrow">01 · What I work on</span><h2>Research tools people can check and trust.</h2></div>
+          <p>The work covers two builds: the GMA Research Assistant for AI-assisted regulatory research, and GMA DataReady for workbook automation in Microsoft 365.</p>
         </Reveal>
         <div className="feature-grid" data-reveal-group="">
           {current.points.map((point, index) => {
@@ -48,11 +46,14 @@ export default function ExperiencePage() {
             return <article key={point}><span className="icon-tile"><Icon aria-hidden="true" /></span><h3>{focusAreas[index].title}</h3><p>{point}</p></article>;
           })}
         </div>
-        <div className="section-link"><Link className="text-link" href="/projects/gma-research-assistant">Read the GMA Research Assistant case study <ArrowRight /></Link></div>
+        <div className="section-link experience-links">
+          <Link className="text-link" href="/projects/gma-research-assistant">GMA Research Assistant <ArrowRight /></Link>
+          <Link className="text-link" href="/projects/gma-dataready">GMA DataReady <ArrowRight /></Link>
+        </div>
       </section>
 
       <section className="section-shell section-block evidence-section">
-        <Reveal variant="mask"><span className="eyebrow">02 · Earlier roles and leadership</span><h2>Where the working habits came from.</h2></Reveal>
+        <Reveal variant="mask"><span className="eyebrow">02 · How I got here</span><h2>Internship, campus roles, and leadership.</h2></Reveal>
         <div className="experience-list" data-reveal-group="">
           {earlier.map((job) => (
             <div className="resume-entry" key={`${job.role}-${job.organization}`}>
