@@ -42,7 +42,8 @@ Run all checks with `npm run verify`. Test the production build locally with `np
 
 ## Content updates
 
-- Profile, contact, education, social links, and practicum facts: `src/config/portfolio.ts`
+- Profile, current role, contact, education, social links, and practicum facts: `src/config/portfolio.ts`
+- Experience, skills, and certifications (mirrors the résumé PDF): `src/content/experience.ts`
 - Project content, ordering, technology lists, screenshots, and visibility notes: `src/content/projects.ts`
 - Navigation: the `navigation` collection in `src/config/portfolio.ts`
 - Global metadata defaults: `src/app/layout.tsx`

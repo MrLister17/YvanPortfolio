@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { Menu, Search, X } from "lucide-react";
+import { ArrowUpRight, Command, Menu, Search, X } from "lucide-react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import { navigation, portfolioConfig } from "@/config/portfolio";
@@ -103,7 +103,7 @@ export function Header() {
             <button ref={paletteButtonRef} className="command-trigger" onClick={() => { setMenuOpen(false); setPaletteOpen(true); }} aria-label="Open command palette">
               <Search size={16} aria-hidden="true" />
               <span>Navigate</span>
-              <kbd>⌘ K</kbd>
+              <kbd><Command aria-hidden="true" />K</kbd>
             </button>
             <ThemeToggle />
             <button
@@ -141,7 +141,7 @@ export function Header() {
                   >
                     <small>{String(index + 1).padStart(2, "0")}</small>
                     <span>{item.label}</span>
-                    <span aria-hidden="true">↗</span>
+                    <ArrowUpRight aria-hidden="true" />
                   </Link>
                 ))}
                 <p>{portfolioConfig.headline}</p>

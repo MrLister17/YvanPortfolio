@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ArrowRight, Award, ExternalLink } from "lucide-react";
 import { Reveal } from "@/components/reveal";
 import { portfolioConfig } from "@/config/portfolio";
+import { skillGroups } from "@/content/experience";
 import styles from "./about.module.css";
 
 export const metadata: Metadata = {
@@ -15,10 +16,10 @@ export const metadata: Metadata = {
 const interests = ["Applied artificial intelligence", "Machine learning", "Retrieval-augmented generation", "AI-assisted research", "Workflow automation", "Full-stack development", "Mobile development", "Data processing", "User-centered product design", "AI evaluation and reliability"];
 
 const evidenceGroups = [
-  { title: "AI & retrieval workflows", evidence: "GMA Research Assistant · Fitness Buddy overview" },
+  { title: "AI & retrieval workflows", evidence: "GMA Research Assistant · Fitness Buddy" },
   { title: "Full-stack development", evidence: "GMA Research Assistant" },
   { title: "Data & spreadsheet workflows", evidence: "GMA Research Assistant" },
-  { title: "Mobile application concepts", evidence: "Fitness Buddy overview" },
+  { title: "Mobile application development", evidence: "Fitness Buddy" },
 ];
 
 const certifications = [
@@ -28,12 +29,8 @@ const certifications = [
   { title: "AWS Academy Graduate: Cloud Foundations", issuer: "Amazon Web Services Training and Certification", issued: "November 2023", credentialId: "8c0a5747-d71d-4357-b90b-da0107652403", url: "https://www.credly.com/earner/earned/badge/8c0a5747-d71d-4357-b90b-da0107652403", logo: "/images/certifications/aws.png" },
 ];
 
-const techStack = [
-  { title: "Mobile development", items: ["Kotlin", "Jetpack Compose"] },
-  { title: "Web and services", items: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Python", "FastAPI", "Uvicorn"] },
-  { title: "AI and retrieval", items: ["Groq Llama 4 Scout", "sentence-transformers", "FAISS", "pgvector", "OpenAI and Hugging Face libraries", "NumPy", "Pandas"] },
-  { title: "Data, cloud, and delivery", items: ["PostgreSQL", "SQLite", "Drizzle ORM", "Firebase Admin SDK", "Git and GitHub", "Vercel", "Cloudflare Workers"] },
-];
+// Résumé skill groups, plus the mobile stack used in Fitness Buddy.
+const techStack = skillGroups.map((group) => group.title === "Development" ? { ...group, items: [...group.items, "Kotlin", "Jetpack Compose"] } : group);
 
 const personalPhotos = [
   { src: "/images/profile/img-2941.jpg", alt: "Yvan Ramirez taking a mirror photo after a workout", caption: "Training" },
@@ -48,22 +45,22 @@ export default function AboutPage() {
       <section className="page-hero section-shell">
         <span className="eyebrow">About</span>
         <h1>From computer science foundations to <em>applied AI systems.</em></h1>
-        <p>{portfolioConfig.name} is a {portfolioConfig.program} graduate of {portfolioConfig.school}, specializing in {portfolioConfig.specialization}.</p>
+        <p>{portfolioConfig.name} is an {portfolioConfig.currentRole.title} with the {portfolioConfig.currentRole.team} at {portfolioConfig.currentRole.company} and a {portfolioConfig.program} graduate of {portfolioConfig.school}.</p>
       </section>
 
       <section className="section-shell section-block about-grid">
         <Reveal variant="mask" className="about-statement">
           <span className="section-number">01</span>
-          <span className="eyebrow">Current direction</span>
-          <h2>{portfolioConfig.headline}</h2>
-          <p>The current portfolio documents academic and prototype work across AI-assisted research, retrieval workflows, full-stack interfaces, structured data, automation, and mobile application concepts.</p>
+          <span className="eyebrow">Right now</span>
+          <h2>Building evidence-grounded research tools as an {portfolioConfig.currentRole.title}.</h2>
+          <p>BS Computer Science graduate specializing in Machine Learning, with hands-on experience translating regulatory research workflows into evidence-grounded web tools. AWS and CompTIA certified, with strengths in requirements gathering, testing, documentation, and stakeholder communication.</p>
           <p>Each public claim is tied to source material, demonstrated functionality, or an explicitly supplied portfolio fact.</p>
         </Reveal>
         <Reveal variant="fade" className={`identity-card ${styles.profileCard}`}>
           <figure className={styles.profilePhoto}>
             <Image src="/images/profile/img-3863.jpg" alt="Portrait of Lester Yvan P. Ramirez outdoors" width={1440} height={1920} sizes="(max-width: 800px) 100vw, 34vw" priority />
           </figure>
-          <dl><div><dt>Full name</dt><dd>{portfolioConfig.name}</dd></div><div><dt>Program</dt><dd>{portfolioConfig.program}</dd></div><div><dt>Specialization</dt><dd>{portfolioConfig.specialization}</dd></div><div><dt>Status</dt><dd>{portfolioConfig.academicLevel} · Dean&apos;s Lister</dd></div><div><dt>School</dt><dd>{portfolioConfig.school}</dd></div></dl>
+          <dl><div><dt>Full name</dt><dd>{portfolioConfig.name}</dd></div><div><dt>Current role</dt><dd>{portfolioConfig.currentRole.title}, {portfolioConfig.currentRole.team}, {portfolioConfig.currentRole.company}</dd></div><div><dt>Program</dt><dd>{portfolioConfig.program}</dd></div><div><dt>Specialization</dt><dd>{portfolioConfig.specialization}</dd></div><div><dt>Status</dt><dd>{portfolioConfig.academicLevel} · Dean&apos;s Lister</dd></div><div><dt>School</dt><dd>{portfolioConfig.school}</dd></div></dl>
         </Reveal>
       </section>
 
@@ -83,7 +80,7 @@ export default function AboutPage() {
       </section>
 
       <section className="section-shell section-block">
-        <Reveal variant="mask" className="section-heading"><div><span className="eyebrow">Education and tech stack</span><h2>Computer science foundations, applied across the stack.</h2></div><p>{portfolioConfig.school} · Bachelor of Science in Computer Science · Machine Learning specialization</p></Reveal>
+        <Reveal variant="mask" className="section-heading"><div><span className="eyebrow">Education and technical skills</span><h2>Computer science foundations, applied across the stack.</h2></div><p>{portfolioConfig.school} · Bachelor of Science in Computer Science · Machine Learning specialization · Aug 2022 to Jul 2026</p></Reveal>
         <div className={styles.stackGrid} data-reveal-group="">{techStack.map((group) => <article key={group.title}><h3>{group.title}</h3><ul>{group.items.map((item) => <li key={item}>{item}</li>)}</ul></article>)}</div>
       </section>
 

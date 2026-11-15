@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight, Code2, ContactRound, Mail } from "lucide-react";
+import { ArrowRight, ArrowUpRight, BrainCircuit, DatabaseZap, Layers, Mail } from "lucide-react";
+import { GithubIcon, LinkedinIcon } from "@/components/brand-icons";
 import { HomeHero } from "@/components/home-hero";
 import { ProjectCard } from "@/components/project-card";
 import { Reveal } from "@/components/reveal";
@@ -7,9 +8,9 @@ import { portfolioConfig } from "@/config/portfolio";
 import { projects } from "@/content/projects";
 
 const skillGroups = [
-  { title: "AI & RAG systems", skills: ["Retrieval-augmented generation", "AI-assisted workflows", "Provider integration", "Evaluation thinking"], project: "GMA Research Assistant · Fitness Buddy" },
-  { title: "Product engineering", skills: ["Next.js & TypeScript", "FastAPI & Python", "Mobile interfaces", "API integration"], project: "Demonstrated across the case studies" },
-  { title: "Data & reliability", skills: ["Structured data", "Spreadsheet workflows", "Review systems", "Source governance"], project: "GMA Research Assistant" },
+  { icon: BrainCircuit, title: "AI & RAG systems", skills: ["Retrieval-augmented generation", "AI-assisted workflows", "Provider integration", "Evaluation thinking"], project: "GMA Research Assistant · Fitness Buddy" },
+  { icon: Layers, title: "Product engineering", skills: ["Next.js & TypeScript", "FastAPI & Python", "Mobile interfaces", "API integration"], project: "Demonstrated across the case studies" },
+  { icon: DatabaseZap, title: "Data & reliability", skills: ["Structured data", "Spreadsheet workflows", "Review systems", "Source governance"], project: "GMA Research Assistant" },
 ];
 
 export default function Home() {
@@ -35,8 +36,8 @@ export default function Home() {
           <span className="eyebrow">02 · About me</span>
           <h2>Computer science foundations, applied to AI systems.</h2>
           <p>{portfolioConfig.name} holds a {portfolioConfig.program} from {portfolioConfig.school}, with a specialization in {portfolioConfig.specialization}.</p>
-          <p>Current technical interests include applied artificial intelligence, retrieval-augmented generation, workflow automation, full-stack development, data processing, and user-centered interfaces.</p>
-          <Link className="text-link" href="/about">View the academic profile <ArrowRight /></Link>
+          <p>I currently work as an {portfolioConfig.currentRole.title} with the {portfolioConfig.currentRole.team} at {portfolioConfig.currentRole.company}, building evidence-grounded research tools with Python, FastAPI, React, and PostgreSQL.</p>
+          <Link className="text-link" href="/about">More about me <ArrowRight /></Link>
         </Reveal>
       </section>
 
@@ -45,13 +46,13 @@ export default function Home() {
           <div><span className="eyebrow">03 · Skills through projects</span><h2>Capabilities connected to evidence.</h2></div>
           <p>Tools are presented through the projects where they appear, not as arbitrary percentages or unsupported proficiency labels.</p>
         </Reveal>
-        <div className="skill-groups" data-reveal-group="">{skillGroups.map((group, index) => <article key={group.title}><span className="skill-index">{String(index + 1).padStart(2, "0")}</span><h3>{group.title}</h3><ul>{group.skills.map((skill) => <li key={skill}>{skill}</li>)}</ul><small>Evidence: {group.project}</small></article>)}</div>
+        <div className="skill-groups" data-reveal-group="">{skillGroups.map((group) => <article key={group.title}><span className="icon-tile"><group.icon aria-hidden="true" /></span><h3>{group.title}</h3><ul>{group.skills.map((skill) => <li key={skill}>{skill}</li>)}</ul><small>Evidence: {group.project}</small></article>)}</div>
       </section>
 
       <section className="section-shell section-block split-feature numbered-section">
         <Reveal variant="fade" className="practicum-card">
-          <div><span className="eyebrow">04 · Practicum</span><h2>A verified public record of the practicum period.</h2><p>{portfolioConfig.practicum.company} · {portfolioConfig.practicum.startDate} to {portfolioConfig.practicum.endDate} · {portfolioConfig.practicum.setup}. Detailed responsibilities and reflections remain private until approved for public use.</p><Link className="text-link" href="/practicum">View practicum details <ArrowRight /></Link></div>
-          <dl><div><dt>Period</dt><dd>June 8 to August 15</dd></div><div><dt>Setup</dt><dd>{portfolioConfig.practicum.setup}</dd></div><div><dt>Required hours</dt><dd>{portfolioConfig.practicum.totalHours}</dd></div></dl>
+          <div><span className="eyebrow">04 · Experience</span><h2>{portfolioConfig.currentRole.title} with the {portfolioConfig.currentRole.team} at {portfolioConfig.currentRole.company}.</h2><p>I map regulatory research workflows, turn researcher feedback into requirements, and build the full-stack tools that make AI-assisted research traceable and reviewable.</p><Link className="text-link" href="/experience">See my experience <ArrowRight /></Link></div>
+          <dl><div><dt>Role</dt><dd>{portfolioConfig.currentRole.title}</dd></div><div><dt>Period</dt><dd>{portfolioConfig.currentRole.period}</dd></div><div><dt>Setup</dt><dd>{portfolioConfig.practicum.setup}</dd></div></dl>
         </Reveal>
       </section>
 
@@ -62,8 +63,8 @@ export default function Home() {
         </Reveal>
         <Reveal variant="fade" className="home-contact-actions">
           <a href={`mailto:${portfolioConfig.email}`}><span><Mail /> Email</span><small>{portfolioConfig.email}</small><ArrowUpRight /></a>
-          <a href={portfolioConfig.githubUrl} target="_blank" rel="noreferrer"><span><Code2 /> GitHub</span><small>@MrLister17</small><ArrowUpRight /></a>
-          <a href={portfolioConfig.linkedInUrl} target="_blank" rel="noreferrer"><span><ContactRound /> LinkedIn</span><small>Lester Yvan P. Ramirez</small><ArrowUpRight /></a>
+          <a href={portfolioConfig.githubUrl} target="_blank" rel="noreferrer"><span><GithubIcon /> GitHub</span><small>@MrLister17</small><ArrowUpRight /></a>
+          <a href={portfolioConfig.linkedInUrl} target="_blank" rel="noreferrer"><span><LinkedinIcon /> LinkedIn</span><small>Lester Yvan P. Ramirez</small><ArrowUpRight /></a>
           <Link className="button" href="/contact">Open contact page <ArrowRight /></Link>
         </Reveal>
       </section>

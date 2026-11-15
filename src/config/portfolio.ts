@@ -2,7 +2,7 @@ export const portfolioConfig = {
   name: "Lester Yvan P. Ramirez",
   shortName: "Yvan Ramirez",
   initials: "LYR",
-  headline: "Computer Science Graduate & Applied AI Developer",
+  headline: "AI Intern, Full-Stack Developer & BS Computer Science Graduate",
   supportingHeadline:
     "Building practical AI-assisted tools, machine-learning applications, and thoughtful digital experiences.",
   program: "Bachelor of Science in Computer Science",
@@ -14,6 +14,12 @@ export const portfolioConfig = {
   githubUrl: "https://github.com/MrLister17",
   linkedInUrl: "https://www.linkedin.com/in/lester-yvan-ramirez-353b44293/",
   resumeUrl: "/documents/resume/Ramirez-Resume.pdf",
+  currentRole: {
+    title: "AI Intern",
+    team: "GMA Research Team",
+    company: "UL Solutions",
+    period: "Jun 2026 – Present",
+  },
   practicum: {
     company: "UL Solutions",
     startDate: "June 8, 2026",
@@ -34,7 +40,7 @@ export const navigation = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
   { href: "/projects", label: "Projects" },
-  { href: "/practicum", label: "Practicum" },
+  { href: "/experience", label: "Experience" },
   { href: "/resume", label: "Résumé" },
   { href: "/contact", label: "Contact" },
 ] as const;

@@ -12,11 +12,11 @@ export const projects: Project[] = [
     categories: ["AI", "Research", "Data", "Automation", "Web"],
     featured: true,
     status: "Prototype",
-    role: "Full-stack and AI workflow developer",
+    role: "AI Intern, GMA Research Team at UL Solutions",
     contributionSummary:
       "Designed and implemented the interface, API workflow, data services, AI-provider layer, review controls, and export path represented in this prototype.",
-    timeframe: "2026",
-    technologies: ["Next.js", "TypeScript", "FastAPI", "Python", "PostgreSQL", "pgvector"],
+    timeframe: "Jun 2026 – Present",
+    technologies: ["Next.js", "React", "TypeScript", "Python", "FastAPI", "PostgreSQL", "pgvector", "SQLAlchemy", "Alembic", "Docker", "Pytest"],
     icon: { src: "/images/projects/gma/gma-icon.svg", alt: "GMA Research Assistant icon: a source document under a review lens with an approval check" },
     gallery: [
       {
@@ -39,14 +39,14 @@ export const projects: Project[] = [
     problem:
       "Regulatory research can span repetitive spreadsheet work, fragmented evidence, draft generation, and multi-step human review. The prototype explores how those steps can become one inspectable workflow without treating generated text as final authority.",
     users:
-      "Researchers and reviewers working with structured, source-backed regulatory records.",
+      "Regulatory researchers and reviewers on the GMA Research Team who work with structured, source-backed records.",
     constraints: [
       "Generated drafts must remain reviewable and attributable to their supporting sources.",
       "Workspace and role boundaries must be respected throughout the workflow.",
       "Spreadsheet inputs and outputs need validation rather than silent transformation.",
     ],
     contribution:
-      "I worked across the Next.js interface and FastAPI services, including workspace flows, research orchestration, provider abstraction, records, reviews, source policy, storage, and export behavior. The current repository also includes test coverage for authentication, tenant boundaries, migrations, AI providers, files, and end-to-end workflow scenarios.",
+      "Built during my AI internship with the GMA Research Team at UL Solutions. I mapped the Chem-Envi regulatory research workflow, turned researcher feedback into requirements, and worked across the Next.js interface and FastAPI services, including workspace flows, research orchestration, provider abstraction, records, reviews, source policy, storage, and export behavior. The current repository also includes test coverage for authentication, tenant boundaries, migrations, AI providers, files, and end-to-end workflow scenarios.",
     approach: [
       "Map the research journey from upload and validation through search, review, approval, and export.",
       "Separate source retrieval, draft generation, and human approval so each state remains visible.",
@@ -158,6 +158,7 @@ export const projects: Project[] = [
       "Python",
       "JSON HTTP API",
       "Groq Llama 4 Scout",
+      "FLAN-T5",
       "sentence-transformers",
       "FAISS",
       "NumPy",
@@ -174,7 +175,7 @@ export const projects: Project[] = [
       "Uvicorn",
       "FastAPI",
     ],
-    icon: { src: "/images/projects/fitness/fitness-buddy-icon.png", alt: "Fitness Buddy icon: an orange wellness robot with a heart-rate display" },
+    icon: { src: "/images/projects/fitness/fitness-buddy-icon.svg", alt: "Fitness Buddy icon: a heart with a heart-rate pulse line" },
     gallery: [],
     problem:
       "Generic fitness plans can overlook user context and make progress difficult to interpret. Fitness Buddy explores a more adaptive application experience while keeping AI-supported guidance educational rather than medical.",
@@ -223,7 +224,7 @@ export const projects: Project[] = [
     status: "Completed",
     role: "Creator and browser game developer",
     technologies: ["JavaScript", "HTML5 Canvas", "HTML", "CSS"],
-    icon: { src: "/images/projects/space-invaders/space-invader-icon.png", alt: "Space Invaders Clone icon: a black pixel alien" },
+    icon: { src: "/images/projects/space-invaders/space-invader-icon.svg", alt: "Space Invaders Clone icon: a pixel alien" },
     gallery: [],
     visualType: "game",
     liveUrl: "https://mrlister17.github.io/space-invaders-browser/",

@@ -71,6 +71,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     url: productionUrl,
     email: `mailto:${portfolioConfig.email}`,
     sameAs: [portfolioConfig.githubUrl, portfolioConfig.linkedInUrl],
+    jobTitle: portfolioConfig.currentRole.title,
+    worksFor: { "@type": "Organization", name: portfolioConfig.currentRole.company },
     alumniOf: { "@type": "CollegeOrUniversity", name: portfolioConfig.school },
     knowsAbout: ["Applied artificial intelligence", "Machine learning", "Retrieval-augmented generation", "Full-stack development"],
   };

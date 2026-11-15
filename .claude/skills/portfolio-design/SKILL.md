@@ -201,17 +201,25 @@ Rules for adding motion:
 - Body text contrast at least 4.5:1, large text and UI borders at least 3:1, in both themes.
 - No horizontal scroll at 390px wide.
 
-## 6. Project icons
+## 6. Icons
 
-Every project in `src/content/projects.ts` has an `icon`. Icons are always rendered
-through `ProjectIcon` (`src/components/project-icon.tsx`), which frames them as a
-rounded app-icon tile so mixed artwork looks like one set. New project → add an icon
-(SVG preferred, square, in `public/images/projects/<slug>/`). Icons drawn for the
-site use only the three brand colors.
+Yvan wants one uniform, hand-drawn-looking icon language. Illustrated or
+AI-generated-looking art (the old cartoon robot) and emoji read as cheap to him.
 
-Cards and case-study covers lead with the icon, not a screenshot. Yvan finds the raw
-GMA screenshots ugly: they appear only in the case-study gallery, inside the CSS
-browser frame. Do not put raw screenshots in the hero, on cards, or as cover images.
+- **No emoji and no text symbols as icons.** Never use emoji, and never use characters
+  such as `→ ↗ ✓ ★ ⌘ +` in place of an icon. Use a lucide icon component instead.
+- **UI icons:** lucide only, default stroke, sized by CSS. A standalone icon that
+  introduces a block sits in an `.icon-tile` (soft pink rounded tile).
+- **Brand marks:** GitHub and LinkedIn use the real marks from
+  `src/components/brand-icons.tsx`. Do not substitute generic icons for a brand.
+- **Project icons:** every project in `src/content/projects.ts` has an `icon`, drawn
+  as an SVG in `public/images/projects/<slug>/` in one style: 512 viewBox, Ink
+  background, Cream line work or shapes, one Pastel Pink accent element. No
+  gradients, photos, mascots or generated illustrations. They are always rendered
+  through `ProjectIcon`, which frames them as a rounded app-icon tile.
+- Cards and case-study covers lead with the icon, not a screenshot. Yvan finds the raw
+  GMA screenshots ugly: they appear only in the case-study gallery, inside the CSS
+  browser frame. Do not put raw screenshots in the hero, on cards, or as cover images.
 
 ## 7. Checklist before finishing a UI change
 
@@ -231,6 +239,10 @@ browser frame. Do not put raw screenshots in the hero, on cards, or as cover ima
   `highlights` chips.
 - AI projects put their retrieval and tuning design directly under the case-study
   hero via `aiSystem` in `src/content/projects.ts` (rendered by `AiSpotlight`).
+- Yvan's current position is AI Intern, GMA Research Team, UL Solutions (Jun 2026 –
+  Present). It lives in `portfolioConfig.currentRole`; experience, skills and
+  certifications live in `src/content/experience.ts`. The résumé PDF is the source of
+  truth: when Yvan says to update his info, sync these files and every page with it.
 - Yvan is a BS Computer Science graduate (Mapúa MCL, Aug 2022 – Jul 2026, Machine
   Learning specialization). Never describe him as a student.
 - The résumé page mirrors `public/documents/resume/Ramirez-Resume.pdf`. When the PDF
