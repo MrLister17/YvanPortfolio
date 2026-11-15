@@ -173,12 +173,12 @@ toward more feedback, not less. `src/components/feedback.tsx` provides it site-w
 |------|-----|
 | Anything clickable answers a press | Add its selector to `PRESSABLE` in `feedback.tsx`. It then gets `.is-pressed` (held at least 170ms so quick taps show), `.did-press` on release, a spark at the contact point, and a haptic tick on phones. Style those two classes. |
 | Bigger burst for primary actions | Add the selector to `BIG`. |
-| 3D tilt that follows the pointer or leans toward the finger | `data-tilt=""` on the element. It reads `--rx/--ry` (rotation), `--px/--py` (-1..1 position), `--gx/--gy` (glare). |
+| 3D tilt that follows the pointer | `data-tilt=""` on the element. It reads `--rx/--ry` (rotation), `--px/--py` (-1..1 position), `--gx/--gy` (glare). On touch screens (`hover: none`) the same variables are driven by **scroll position**, because a tap is too short to see a tilt. Yvan tested on an iPhone and reported tilt "not working" when it only reacted to presses: always check tilt in a touch-emulated browser while scrolling. |
 | Tilt values without transforming the element itself | `data-tilt-source=""` (the hero stack). |
 | Physical button | `.button`: sits on a 4px `--edge` and sinks into it when pressed. |
 | Release bounce | `animation: boing` on `.did-press` (uses the `scale` property so it never fights `transform`). |
 | 3D scroll entrance | `data-reveal-group` children rotate up from `rotateX(-16deg)`. |
-| 3D showpiece | `HeroStack`: exploded layers in `preserve-3d`, auto-plays until touched. |
+| 3D showpiece | `HeroStack`: exploded layers in `preserve-3d`, auto-plays until touched. Layers above the selected one lift away and become dashed outlines so the selected layer is never hidden. |
 
 Every new interactive element must have a visible `.is-pressed` state. Feedback must
 work with touch: never rely on `:hover` alone.
@@ -220,9 +220,14 @@ AI-generated-looking art (the old cartoon robot) and emoji read as cheap to him.
   - Icons drawn for the site (GMA Research Assistant, GMA DataReady, any new
     project without its own artwork) share one style: SVG, 512 viewBox, Ink
     background, Cream line work, one Pastel Pink accent element.
-- Cards and case-study covers lead with the icon, not a screenshot. Yvan finds the raw
-  GMA screenshots ugly: they appear only in the case-study gallery, inside the CSS
-  browser frame. Do not put raw screenshots in the hero, on cards, or as cover images.
+- Project cards always lead with the icon, never a screenshot.
+- Screenshots always sit inside the CSS browser frame (gallery buttons and
+  `.case-hero-shot`). A case study may set `cover` to show one under its title.
+- GMA Research Assistant screenshots are captured from the app's own demo mode in
+  **dark theme** at 1440×900 @2x (Yvan found the earlier light captures ugly). To
+  retake them: export `web/` from the `codex/production-sites` branch of
+  `MrLister17/GMAResearchAssistant`, run `NEXT_PUBLIC_DEMO_MODE=true npx vinext dev`,
+  switch to dark theme, and screenshot. Never use light-theme captures.
 
 ## 7. Checklist before finishing a UI change
 
@@ -251,5 +256,13 @@ AI-generated-looking art (the old cartoon robot) and emoji read as cheap to him.
 - The résumé page mirrors `public/documents/resume/Ramirez-Resume.pdf`. When the PDF
   changes, update `src/app/resume/page.tsx` to match. Keep the phone number in the
   PDF only.
+- Fitness Buddy facts come from the team thesis (three authors; Yvan's co-authors are
+  not named on the site): FLAN-T5 fine-tuned on 1,333 ChatDoctor/HealthCareMagic
+  records, a 677-passage RAG corpus, and 28 held-out gold cases used only for
+  evaluation. Never say the gold cases were used for retrieval or training. Report
+  results honestly, including that RAG did not raise Llama's similarity scores.
+- Write plainly and confidently. No defensive or legal-sounding copy ("verified",
+  "public-safe", "clear boundaries", "intentionally"). Yvan is employed, so never
+  mention entry-level roles, practicum, or student status.
 - Only state facts that are in the project's code or that Yvan supplied. Do not
   invent metrics, and do not claim weight fine-tuning unless Yvan provides the details.

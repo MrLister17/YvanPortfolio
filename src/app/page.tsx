@@ -7,10 +7,11 @@ import { Reveal } from "@/components/reveal";
 import { portfolioConfig } from "@/config/portfolio";
 import { projects } from "@/content/projects";
 
+// Drawn from the résumé skill groups; each links back to where it was used.
 const skillGroups = [
-  { icon: BrainCircuit, title: "AI & RAG systems", skills: ["Retrieval-augmented generation", "AI-assisted workflows", "Provider integration", "Evaluation thinking"], project: "GMA Research Assistant · Fitness Buddy" },
-  { icon: Layers, title: "Product engineering", skills: ["Next.js & TypeScript", "FastAPI & Python", "Mobile interfaces", "API integration"], project: "Demonstrated across the case studies" },
-  { icon: DatabaseZap, title: "Data & reliability", skills: ["Structured data", "Spreadsheet workflows", "Review systems", "Source governance"], project: "GMA Research Assistant" },
+  { icon: BrainCircuit, title: "AI and evaluation", skills: ["RAG and source grounding", "LLM prototyping and fine-tuning", "ROUGE-L and semantic similarity", "RAGAS-style evaluation"], project: "Fitness Buddy · GMA Research Assistant" },
+  { icon: Layers, title: "Full-stack development", skills: ["Python and FastAPI", "React, Next.js, and TypeScript", "PostgreSQL and pgvector", "Kotlin and Jetpack Compose"], project: "GMA Research Assistant · Fitness Buddy" },
+  { icon: DatabaseZap, title: "Research automation", skills: ["Power Automate and Office Scripts", "Copilot Studio agents", "Workbook validation and export", "Traceable review workflows"], project: "GMA DataReady · GMA Research Assistant" },
 ];
 
 export default function Home() {
@@ -43,10 +44,10 @@ export default function Home() {
 
       <section className="section-shell section-block skills-section numbered-section">
         <Reveal variant="mask" className="section-heading">
-          <div><span className="eyebrow">03 · Skills through projects</span><h2>Capabilities connected to evidence.</h2></div>
-          <p>Tools are presented through the projects where they appear, not as arbitrary percentages or unsupported proficiency labels.</p>
+          <div><span className="eyebrow">03 · Skills</span><h2>What I work with.</h2></div>
+          <p>Three areas I use every week. Each one points to the project where you can see it in use.</p>
         </Reveal>
-        <div className="skill-groups" data-reveal-group="">{skillGroups.map((group) => <article key={group.title}><span className="icon-tile"><group.icon aria-hidden="true" /></span><h3>{group.title}</h3><ul>{group.skills.map((skill) => <li key={skill}>{skill}</li>)}</ul><small>Evidence: {group.project}</small></article>)}</div>
+        <div className="skill-groups" data-reveal-group="">{skillGroups.map((group) => <article key={group.title}><span className="icon-tile"><group.icon aria-hidden="true" /></span><h3>{group.title}</h3><ul>{group.skills.map((skill) => <li key={skill}>{skill}</li>)}</ul><small>Used in: {group.project}</small></article>)}</div>
       </section>
 
       <section className="section-shell section-block split-feature numbered-section">

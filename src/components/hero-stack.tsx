@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { useReducedMotion } from "motion/react";
 import { useEffect, useState } from "react";
 
@@ -37,9 +39,9 @@ export function HeroStack() {
               <div
                 key={layer.label}
                 className="stack-plate"
-                data-active={index === active ? "" : undefined}
-                data-below={index < active ? "" : undefined}
-                style={{ "--i": index } as React.CSSProperties}
+                // Layers above the chosen one lift away and turn to outlines so it is never hidden.
+                data-state={index === active ? "active" : index < active ? "below" : "above"}
+                style={{ "--i": index, "--gap": index > active ? 1 : 0 } as React.CSSProperties}
                 onClick={() => select(index)}
               >
                 <span>{String(index + 1).padStart(2, "0")}</span>
@@ -61,6 +63,7 @@ export function HeroStack() {
         <div className="stack-caption" aria-live={touched ? "polite" : "off"}>
           <p key={active} className="swap-in">{layers[active].detail}</p>
         </div>
+        <Link className="text-link stack-link" href="/lab">Walk through a worked example <ArrowRight /></Link>
       </div>
     </div>
   );

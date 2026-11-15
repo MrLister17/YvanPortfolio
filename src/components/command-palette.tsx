@@ -22,6 +22,7 @@ export function CommandPalette({ open, onClose, onNavigate }: CommandPaletteProp
   const copyTimeoutRef = useRef<number | null>(null);
   const commands = useMemo(() => [
     ...navigation.map((item) => ({ label: `Go to ${item.label}`, href: item.href, type: "page", project: undefined })),
+    { label: "Go to Lab: RAG walk-through", href: "/lab", type: "page", project: undefined },
     ...projects.map((project) => ({ label: `Open ${project.title}`, href: `/projects/${project.slug}`, type: "project", project })),
   ], []);
   const terms = query.toLowerCase().split(/\s+/).filter(Boolean);

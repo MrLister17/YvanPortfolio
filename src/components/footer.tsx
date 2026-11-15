@@ -16,7 +16,7 @@ export function Footer() {
           <div><span className="footer-label">Elsewhere</span><a href={portfolioConfig.githubUrl} target="_blank" rel="noreferrer">GitHub</a><a href={portfolioConfig.linkedInUrl} target="_blank" rel="noreferrer">LinkedIn</a></div>
         </div>
       </div>
-      <div className="footer-bottom"><span>© {new Date().getFullYear()} Lester Yvan P. Ramirez</span><span>Built with Next.js · Designed with restraint</span></div>
+      <div className="footer-bottom"><span>© {new Date().getFullYear()} Lester Yvan P. Ramirez</span><span>Built with Next.js</span></div>
     </footer>
   );
 }

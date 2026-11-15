@@ -12,6 +12,8 @@ const PRESSABLE = [
 const BIG = ".button:not(.button-secondary), .project-card, .stack-plate";
 const TILT = "[data-tilt], [data-tilt-source]";
 const MIN_PRESS_MS = 170;
+/** Touch presses are held longer so the lean toward the finger is actually seen. */
+const MIN_TOUCH_PRESS_MS = 280;
 
 function setTilt(element: HTMLElement, clientX: number, clientY: number) {
   const rect = element.getBoundingClientRect();
@@ -43,8 +45,33 @@ export function Feedback() {
     layer.setAttribute("aria-hidden", "true");
     document.body.appendChild(layer);
 
+    const noHover = window.matchMedia("(hover: none)");
     let hovered: HTMLElement | null = null;
     let frame: number | null = null;
+    let scrollFrame: number | null = null;
+
+    // On touch screens there is no pointer to follow, so cards (and the hero stack) tilt with
+    // their position on screen: leaning toward you as they enter, flat in the middle, away as they leave.
+    const applyScrollTilt = () => {
+      scrollFrame = null;
+      if (reduce.matches || !noHover.matches) return;
+      const viewport = window.innerHeight;
+      document.querySelectorAll<HTMLElement>(TILT).forEach((element, index) => {
+        if (element.classList.contains("is-pressed")) return;
+        const rect = element.getBoundingClientRect();
+        if (rect.bottom < -120 || rect.top > viewport + 120) return;
+        const position = Math.max(-1, Math.min(1, (rect.top + rect.height / 2 - viewport / 2) / (viewport / 2)));
+        element.style.setProperty("--rx", `${(-position * 9).toFixed(2)}deg`);
+        element.style.setProperty("--ry", `${(position * (index % 2 ? 4 : -4)).toFixed(2)}deg`);
+        element.style.setProperty("--px", "0");
+        element.style.setProperty("--py", position.toFixed(3));
+        element.style.setProperty("--gx", "50%");
+        element.style.setProperty("--gy", `${((position + 1) * 50).toFixed(1)}%`);
+      });
+    };
+    const queueScrollTilt = () => {
+      if (scrollFrame === null) scrollFrame = requestAnimationFrame(applyScrollTilt);
+    };
 
     const spark = (x: number, y: number, big: boolean) => {
       const node = document.createElement("div");
@@ -91,8 +118,9 @@ export function Feedback() {
           target.classList.remove("is-pressed");
           target.classList.add("did-press");
           clearTilt(tilted);
+          queueScrollTilt();
           window.setTimeout(() => target.classList.remove("did-press"), 700);
-        }, Math.max(0, MIN_PRESS_MS - (performance.now() - startedAt)));
+        }, Math.max(0, (touch ? MIN_TOUCH_PRESS_MS : MIN_PRESS_MS) - (performance.now() - startedAt)));
       };
       window.addEventListener("pointerup", release);
       window.addEventListener("pointercancel", release);
@@ -125,7 +153,16 @@ export function Feedback() {
     document.addEventListener("pointerdown", onPointerDown, { passive: true });
     document.addEventListener("pointermove", onPointerMove, { passive: true });
     document.documentElement.addEventListener("pointerleave", onLeave);
+    window.addEventListener("scroll", queueScrollTilt, { passive: true });
+    window.addEventListener("resize", queueScrollTilt);
+    queueScrollTilt();
+    // Run again once scroll-reveal entrances have settled and on client-side navigations.
+    const settle = window.setInterval(queueScrollTilt, 1200);
     return () => {
+      window.removeEventListener("scroll", queueScrollTilt);
+      window.removeEventListener("resize", queueScrollTilt);
+      window.clearInterval(settle);
+      if (scrollFrame !== null) cancelAnimationFrame(scrollFrame);
       document.removeEventListener("pointerdown", onPointerDown);
       document.removeEventListener("pointermove", onPointerMove);
       document.documentElement.removeEventListener("pointerleave", onLeave);

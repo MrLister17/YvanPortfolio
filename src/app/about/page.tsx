@@ -53,7 +53,6 @@ export default function AboutPage() {
           <span className="eyebrow">Right now</span>
           <h2>AI-assisted research applications and workflow automation.</h2>
           <p>{profile}</p>
-          <p>Each public claim is tied to source material, demonstrated functionality, or an explicitly supplied portfolio fact.</p>
         </Reveal>
         <Reveal variant="fade" className={`identity-card ${styles.profileCard}`}>
           <figure className={styles.profilePhoto}>
@@ -64,12 +63,12 @@ export default function AboutPage() {
       </section>
 
       <section className="section-shell section-block">
-        <Reveal variant="mask" className="section-heading"><div><span className="eyebrow">02 · Current interests</span><h2>Technical areas represented in the work.</h2></div><p>These interests are connected to the verified project themes and portfolio direction.</p></Reveal>
+        <Reveal variant="mask" className="section-heading"><div><span className="eyebrow">02 · Interests</span><h2>What I like working on.</h2></div><p>The areas I keep coming back to, at work and in my own projects.</p></Reveal>
         <div className="interest-grid" data-reveal-group="">{interests.map((interest, index) => <div key={interest}><span>{String(index + 1).padStart(2, "0")}</span>{interest}</div>)}</div>
       </section>
 
       <section className="section-shell section-block evidence-section">
-        <Reveal variant="mask"><span className="eyebrow">03 · Skills through evidence</span><h2>Capabilities shown in context.</h2></Reveal>
+        <Reveal variant="mask"><span className="eyebrow">03 · Where to see it</span><h2>Skills, and the projects that show them.</h2></Reveal>
         <div className="evidence-list" data-reveal-group="">{evidenceGroups.map((item, index) => <article key={item.title}><span>{String(index + 1).padStart(2, "0")}</span><h3>{item.title}</h3><p>{item.evidence}</p></article>)}</div>
       </section>
 

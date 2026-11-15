@@ -9,8 +9,8 @@ export const metadata: Metadata = { title: "Contact", description: "Contact Yvan
 export default function ContactPage() {
   return (
     <section className="contact-page section-shell">
-      <div className="contact-intro"><span className="eyebrow">Contact</span><h1>Let’s talk about a <em>clear problem worth solving.</em></h1><p>If you’d like to discuss a project, an entry-level opportunity, or a technical idea, email is the simplest place to start.</p><ContactActions /></div>
-      <div className="contact-panel"><span className="eyebrow">Direct channels</span><a href={`mailto:${portfolioConfig.email}`}><span><Mail /> Email<small>{portfolioConfig.email}</small></span><ArrowUpRight /></a><a href={portfolioConfig.githubUrl} target="_blank" rel="noreferrer"><span><GithubIcon /> GitHub<small>@MrLister17</small></span><ArrowUpRight /></a><a href={portfolioConfig.linkedInUrl} target="_blank" rel="noreferrer"><span><LinkedinIcon /> LinkedIn<small>Lester Yvan P. Ramirez</small></span><ArrowUpRight /></a><div className="contact-boundary"><span className="status-dot" /><p>For project inquiries, academic review, entry-level roles, and thoughtful collaboration.</p></div></div>
+      <div className="contact-intro"><span className="eyebrow">Contact</span><h1>Let’s talk about a <em>clear problem worth solving.</em></h1><p>If you’d like to talk about a project, a role, or a technical idea, email is the simplest place to start.</p><ContactActions /></div>
+      <div className="contact-panel"><span className="eyebrow">Direct channels</span><a href={`mailto:${portfolioConfig.email}`}><span><Mail /> Email<small>{portfolioConfig.email}</small></span><ArrowUpRight /></a><a href={portfolioConfig.githubUrl} target="_blank" rel="noreferrer"><span><GithubIcon /> GitHub<small>@MrLister17</small></span><ArrowUpRight /></a><a href={portfolioConfig.linkedInUrl} target="_blank" rel="noreferrer"><span><LinkedinIcon /> LinkedIn<small>Lester Yvan P. Ramirez</small></span><ArrowUpRight /></a><div className="contact-boundary"><span className="status-dot" /><p>Open to project inquiries, roles, and collaboration.</p></div></div>
     </section>
   );
 }

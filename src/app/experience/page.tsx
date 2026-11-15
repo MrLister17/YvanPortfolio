@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Bot, ExternalLink, ListChecks, ShieldCheck } from "lucide-react";
+import { ArrowRight, Bot, ListChecks } from "lucide-react";
 import { Reveal } from "@/components/reveal";
 import { portfolioConfig } from "@/config/portfolio";
 import { experience, leadership } from "@/content/experience";
@@ -17,7 +17,7 @@ const focusAreas = [
 ];
 
 export default function ExperiencePage() {
-  const { currentRole, practicum } = portfolioConfig;
+  const { currentRole } = portfolioConfig;
   const [current, ...earlier] = experience;
 
   return (
@@ -67,15 +67,6 @@ export default function ExperiencePage() {
           </div>
         </div>
       </section>
-
-      <aside className="section-shell records-note">
-        <span className="icon-tile"><ShieldCheck aria-hidden="true" /></span>
-        <div>
-          <span className="eyebrow">Academic practicum record</span>
-          <p>{practicum.totalHours} required hours at {practicum.company}, {practicum.startDate} to {practicum.endDate}, {practicum.setup.toLowerCase()}. Internal systems, customer information, and proprietary materials are not shown on this site.</p>
-          <a className="text-link" href="/documents/practicum-narrative-report.pdf" target="_blank" rel="noreferrer">View narrative report <ExternalLink /></a>
-        </div>
-      </aside>
 
       <section className="section-shell section-block final-cta">
         <span className="eyebrow">Continue</span>

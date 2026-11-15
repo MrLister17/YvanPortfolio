@@ -21,13 +21,6 @@ export const portfolioConfig = {
     company: "UL Solutions",
     period: "Oct 2026 – Present",
   },
-  practicum: {
-    company: "UL Solutions",
-    startDate: "June 8, 2026",
-    endDate: "August 15, 2026",
-    totalHours: 480,
-    setup: "On-site",
-  },
   careerDirections: [
     "Applied AI Engineer",
     "Machine Learning Engineer",

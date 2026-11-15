@@ -3,12 +3,12 @@ import { ProjectIcon } from "@/components/project-icon";
 import type { Project } from "@/types/project";
 
 export function CaseHeroMedia({ project }: { project: Project }) {
-  const image = project.thumbnail;
+  const image = project.cover ?? project.thumbnail;
 
   return (
     <section className="case-hero-media section-shell" aria-label={`${project.title} at a glance`}>
       {image ? (
-        <figure className="case-hero-frame">
+        <figure className="case-hero-frame case-hero-shot">
           <Image src={image.src} alt={image.alt} width={image.width} height={image.height} sizes="(max-width: 900px) 100vw, 92vw" priority />
           <figcaption>{image.caption}</figcaption>
         </figure>
