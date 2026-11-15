@@ -29,12 +29,12 @@ export default function Home() {
       <section className="section-shell section-block home-about numbered-section">
         <Reveal variant="fade" className="home-about-visual">
           <span className="home-monogram">LYR</span>
-          <div><small>{portfolioConfig.academicLevel}</small><strong>{portfolioConfig.specialization}</strong></div>
+          <div><small>BS Computer Science · {portfolioConfig.academicLevel}</small><strong>{portfolioConfig.specialization}</strong></div>
         </Reveal>
         <Reveal className="home-about-copy">
           <span className="eyebrow">02 · About me</span>
           <h2>Computer science foundations, applied to AI systems.</h2>
-          <p>{portfolioConfig.name} is a fourth-year {portfolioConfig.program} student at {portfolioConfig.school}, specializing in {portfolioConfig.specialization}.</p>
+          <p>{portfolioConfig.name} holds a {portfolioConfig.program} from {portfolioConfig.school}, with a specialization in {portfolioConfig.specialization}.</p>
           <p>Current technical interests include applied artificial intelligence, retrieval-augmented generation, workflow automation, full-stack development, data processing, and user-centered interfaces.</p>
           <Link className="text-link" href="/about">View the academic profile <ArrowRight /></Link>
         </Reveal>

@@ -1,12 +1,12 @@
 /* ==========================================================================
    Design tokens — see .claude/skills/portfolio-design/SKILL.md
-   Brand: Cream #ECE6DC · Ink #050505 · Salmon Pink #FA9189
+   Brand: Cream #ECE6DC · Ink #050505 · Pastel Pink #F7B9CB
    ========================================================================== */
 :root {
   color-scheme: dark;
   --cream: #ece6dc;
   --ink: #050505;
-  --salmon: #fa9189;
+  --pink: #f7b9cb;
 
   --background: var(--ink);
   --surface-1: #0e0d0c;
@@ -15,16 +15,16 @@
   --text-primary: var(--cream);
   --text-secondary: #bdb7ae;
   --text-muted: #918b83;
-  --accent: var(--salmon);
-  --accent-text: var(--salmon);
-  --accent-display: var(--salmon);
-  --accent-strong: #fcb0aa;
-  --accent-deep: #b9544c;
+  --accent: var(--pink);
+  --accent-text: var(--pink);
+  --accent-display: var(--pink);
+  --accent-strong: #fbd5df;
+  --accent-deep: #b8758a;
   --on-accent: var(--ink);
   --border: color-mix(in oklch, var(--cream) 14%, transparent);
   --border-strong: color-mix(in oklch, var(--cream) 32%, transparent);
   --accent-soft: color-mix(in oklch, var(--accent) 13%, transparent);
-  --accent-line: color-mix(in oklch, var(--accent) 55%, transparent);
+  --accent-line: color-mix(in oklch, var(--accent-display) 60%, transparent);
   --overlay: color-mix(in oklch, var(--background) 86%, transparent);
   --scrim: color-mix(in oklch, var(--ink) 78%, transparent);
   --shadow: 0 24px 64px rgb(0 0 0 / .5);
@@ -63,9 +63,9 @@
   --text-primary: var(--ink);
   --text-secondary: #3b3834;
   --text-muted: #625d55;
-  --accent-text: #a3362e;
-  --accent-display: #c9564d;
-  --accent-deep: #c9645c;
+  --accent-text: #9c3257;
+  --accent-display: #c0537a;
+  --accent-deep: #d58ba2;
   --border: color-mix(in oklch, var(--ink) 15%, transparent);
   --border-strong: color-mix(in oklch, var(--ink) 38%, transparent);
   --scrim: color-mix(in oklch, var(--ink) 55%, transparent);
@@ -118,7 +118,7 @@ small, dt, dd, time, kbd { font-variant-numeric: tabular-nums; }
 }
 .eyebrow { display: block; margin-bottom: 18px; color: var(--accent-text); }
 .section-number { display: block; margin-bottom: 20px; color: var(--text-muted); }
-.status-dot { display: inline-block; flex: 0 0 auto; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 5px var(--accent-soft); }
+.status-dot { display: inline-block; flex: 0 0 auto; width: 8px; height: 8px; border-radius: 50%; background: var(--accent-display); box-shadow: 0 0 0 5px var(--accent-soft); }
 
 /* ==========================================================================
    Header
@@ -134,7 +134,7 @@ small, dt, dd, time, kbd { font-variant-numeric: tabular-nums; }
 .desktop-nav { display: flex; align-items: center; gap: 6px; }
 .desktop-nav a { position: relative; min-height: 44px; padding: 0 14px; display: inline-flex; align-items: center; color: var(--text-secondary); font: 500 .94rem/1 var(--font-sans); transition: color var(--dur-fast) var(--ease-out); }
 .desktop-nav a:hover, .desktop-nav a[aria-current="page"] { color: var(--text-primary); }
-.nav-indicator { position: absolute; left: 14px; right: 14px; bottom: 6px; height: 2px; border-radius: 2px; background: var(--accent); }
+.nav-indicator { position: absolute; left: 14px; right: 14px; bottom: 6px; height: 2px; border-radius: 2px; background: var(--accent-display); }
 .header-actions { display: flex; align-items: center; gap: 8px; }
 .command-trigger, .icon-button { min-width: 44px; min-height: 44px; border: 1px solid var(--border); border-radius: var(--radius-sm); color: var(--text-secondary); background: transparent; cursor: pointer; transition: border-color var(--dur-fast) var(--ease-out), background-color var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out); }
 .command-trigger { padding: 0 10px 0 12px; display: flex; align-items: center; gap: 9px; }
@@ -412,7 +412,7 @@ kbd { min-width: 34px; padding: 4px 6px; border: 1px solid var(--border); border
 .case-overview h3 { margin: 0 0 8px; font-size: 1rem; letter-spacing: -.01em; }
 .case-overview p + h3, .case-overview ul + h3 { margin-top: 28px; }
 .case-overview li, .case-limitations li { position: relative; padding: 9px 0 9px 20px; color: var(--text-secondary); line-height: 1.55; }
-.case-overview li::before, .case-limitations li::before { content: ""; position: absolute; left: 0; top: 18px; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+.case-overview li::before, .case-limitations li::before { content: ""; position: absolute; left: 0; top: 18px; width: 6px; height: 6px; border-radius: 50%; background: var(--accent-display); }
 
 .gallery-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 .gallery-grid figure { min-width: 0; }
@@ -534,8 +534,12 @@ kbd { min-width: 34px; padding: 4px 6px; border: 1px solid var(--border); border
 .resume-entry { padding: 24px 0; display: grid; grid-template-columns: 1fr 220px; gap: 36px; border-bottom: 1px solid var(--border); }
 .resume-entry h2 { font-size: 1.2rem; letter-spacing: -.02em; }
 .resume-entry p { margin-top: 8px; font-size: .92rem; }
+.resume-entry ul { margin-top: 12px; }
+.resume-entry li { position: relative; padding: 5px 0 5px 18px; color: var(--text-secondary); font-size: .92rem; line-height: 1.6; }
+.resume-entry li::before { content: ""; position: absolute; left: 0; top: 15px; width: 6px; height: 6px; border-radius: 50%; background: var(--accent-display); }
+.resume-entry:not(:has(> span)) { grid-template-columns: 1fr; }
 .resume-entry small { display: block; margin-top: 12px; color: var(--text-muted); font: var(--label); line-height: 1.6; }
-.resume-entry > span { text-align: right; color: var(--text-secondary); font: var(--label); line-height: 1.6; }
+.resume-entry > span { text-align: right; font-variant-numeric: tabular-nums; color: var(--text-secondary); font: var(--label); line-height: 1.6; }
 .resume-note { max-width: 900px; text-align: center; }
 .resume-note h2 { font-size: clamp(1.7rem, 3vw, 2.8rem); }
 .resume-note p { margin: 20px auto; }
@@ -565,7 +569,7 @@ kbd { min-width: 34px; padding: 4px 6px; border: 1px solid var(--border); border
 .rag-output h2 { font-size: clamp(2rem, 4vw, 3.6rem); }
 .rag-output p { margin-top: 16px; font-size: 1.05rem; }
 .rag-meter { width: min(560px, 100%); height: 4px; margin-top: 40px; border-radius: 4px; overflow: hidden; background: var(--surface-3); }
-.rag-meter span { display: block; height: 100%; border-radius: 4px; background: var(--accent); transition: width .35s var(--ease-out); }
+.rag-meter span { display: block; height: 100%; border-radius: 4px; background: var(--accent-display); transition: width .35s var(--ease-out); }
 .lab-note { max-width: none; padding: 16px 24px; border-top: 1px solid var(--border); color: var(--text-muted); text-transform: none; letter-spacing: 0; }
 
 .not-found { min-height: calc(100vh - var(--header-h)); padding: 88px 0; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; }
@@ -617,11 +621,11 @@ kbd { min-width: 34px; padding: 4px 6px; border: 1px solid var(--border); border
 .footer-bottom { margin-top: 64px; padding-top: 22px; display: flex; justify-content: space-between; gap: 20px; border-top: 1px solid var(--border); color: var(--text-muted); font: var(--label); }
 
 @supports (animation-timeline: scroll()) {
-  .page-progress { position: fixed; inset: 0 auto auto 0; z-index: var(--z-progress); width: 100%; height: 2px; transform-origin: left; background: var(--accent); animation: progress linear; animation-timeline: scroll(); }
+  .page-progress { position: fixed; inset: 0 auto auto 0; z-index: var(--z-progress); width: 100%; height: 2px; transform-origin: left; background: var(--accent-display); animation: progress linear; animation-timeline: scroll(); }
   @keyframes progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 }
 .route-frame { min-height: 100%; }
-.route-reveal { position: fixed; z-index: 145; top: 0; left: 0; width: 100%; height: 2px; transform-origin: left; pointer-events: none; background: var(--accent); }
+.route-reveal { position: fixed; z-index: 145; top: 0; left: 0; width: 100%; height: 2px; transform-origin: left; pointer-events: none; background: var(--accent-display); }
 .back-to-top { position: fixed; z-index: var(--z-float); right: calc(clamp(14px, 2vw, 28px) + env(safe-area-inset-right)); bottom: calc(clamp(14px, 2vw, 28px) + env(safe-area-inset-bottom)); min-width: 48px; min-height: 48px; padding: 0 16px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: 1px solid var(--border-strong); border-radius: 999px; color: var(--text-primary); background: var(--overlay); backdrop-filter: blur(12px); font: 500 .78rem/1 var(--font-sans); cursor: pointer; box-shadow: var(--shadow-sm); transition: border-color var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out); }
 .back-to-top:hover { border-color: var(--accent); color: var(--accent-text); }
 .back-to-top svg { width: 16px; height: 16px; transition: transform var(--dur) var(--ease-out); }
@@ -653,9 +657,9 @@ kbd { min-width: 34px; padding: 4px 6px; border: 1px solid var(--border); border
    ========================================================================== */
 .fx-layer { position: fixed; inset: 0; z-index: 300; overflow: hidden; pointer-events: none; }
 .fx-spark { position: absolute; width: 0; height: 0; }
-.fx-ring { position: absolute; left: -22px; top: -22px; width: 44px; height: 44px; border: 2px solid var(--accent); border-radius: 50%; animation: fx-ring .5s var(--ease-out) forwards; }
+.fx-ring { position: absolute; left: -22px; top: -22px; width: 44px; height: 44px; border: 2px solid var(--accent-display); border-radius: 50%; animation: fx-ring .5s var(--ease-out) forwards; }
 .fx-spark-big .fx-ring { left: -34px; top: -34px; width: 68px; height: 68px; border-width: 3px; }
-.fx-dot { position: absolute; left: -3px; top: -3px; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); animation: fx-dot .6s var(--ease-out) forwards; }
+.fx-dot { position: absolute; left: -3px; top: -3px; width: 6px; height: 6px; border-radius: 50%; background: var(--accent-display); animation: fx-dot .6s var(--ease-out) forwards; }
 .fx-dot:nth-child(even) { background: var(--text-primary); }
 .fx-spark-big .fx-dot { left: -4px; top: -4px; width: 8px; height: 8px; }
 @keyframes fx-ring { from { opacity: .95; transform: scale(.15); } to { opacity: 0; transform: scale(1.5); } }

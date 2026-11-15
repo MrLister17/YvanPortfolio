@@ -8,7 +8,7 @@ import styles from "./about.module.css";
 
 export const metadata: Metadata = {
   title: "About",
-  description: "Academic profile and verified technical interests of Yvan Ramirez, a fourth-year computer science student specializing in machine learning.",
+  description: "Profile and technical interests of Yvan Ramirez, a BS Computer Science graduate specializing in machine learning.",
   alternates: { canonical: "/about" },
 };
 
@@ -46,9 +46,9 @@ export default function AboutPage() {
   return (
     <>
       <section className="page-hero section-shell">
-        <span className="eyebrow">About / Academic profile</span>
+        <span className="eyebrow">About</span>
         <h1>From computer science foundations to <em>applied AI systems.</em></h1>
-        <p>{portfolioConfig.name} is a {portfolioConfig.academicLevel.toLowerCase()} {portfolioConfig.program} student at {portfolioConfig.school}, specializing in {portfolioConfig.specialization}.</p>
+        <p>{portfolioConfig.name} is a {portfolioConfig.program} graduate of {portfolioConfig.school}, specializing in {portfolioConfig.specialization}.</p>
       </section>
 
       <section className="section-shell section-block about-grid">
@@ -63,7 +63,7 @@ export default function AboutPage() {
           <figure className={styles.profilePhoto}>
             <Image src="/images/profile/img-3863.jpg" alt="Portrait of Lester Yvan P. Ramirez outdoors" width={1440} height={1920} sizes="(max-width: 800px) 100vw, 34vw" priority />
           </figure>
-          <dl><div><dt>Full name</dt><dd>{portfolioConfig.name}</dd></div><div><dt>Program</dt><dd>{portfolioConfig.program}</dd></div><div><dt>Specialization</dt><dd>{portfolioConfig.specialization}</dd></div><div><dt>Academic level</dt><dd>{portfolioConfig.academicLevel}</dd></div><div><dt>School</dt><dd>{portfolioConfig.school}</dd></div></dl>
+          <dl><div><dt>Full name</dt><dd>{portfolioConfig.name}</dd></div><div><dt>Program</dt><dd>{portfolioConfig.program}</dd></div><div><dt>Specialization</dt><dd>{portfolioConfig.specialization}</dd></div><div><dt>Status</dt><dd>{portfolioConfig.academicLevel} · Dean&apos;s Lister</dd></div><div><dt>School</dt><dd>{portfolioConfig.school}</dd></div></dl>
         </Reveal>
       </section>
 

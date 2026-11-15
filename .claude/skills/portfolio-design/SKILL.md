@@ -1,6 +1,6 @@
 ---
 name: portfolio-design
-description: Design rules for Yvan's portfolio site. Use BEFORE editing anything visual or interactive in this repo — CSS, components, pages, layout, colors, fonts, icons, animation, hover/focus states, forms, navigation. Covers the brand palette (Cream / Ink / Salmon Pink), the Fraunces + DM Sans type system, the motion system, 20 UX and animation principles, and 20 design terms, each turned into a concrete rule to apply and check.
+description: Design rules for Yvan's portfolio site. Use BEFORE editing anything visual or interactive in this repo — CSS, components, pages, layout, colors, fonts, icons, animation, hover/focus states, forms, navigation. Covers the brand palette (Cream / Ink / Pastel Pink), the Fraunces + DM Sans type system, the motion system, 20 UX and animation principles, and 20 design terms, each turned into a concrete rule to apply and check.
 ---
 
 # Portfolio design rules
@@ -18,16 +18,17 @@ derive it with `color-mix(in oklch, …)` from an existing token.
 |-------------|-----------|----------------------------------------------------------|
 | Cream       | `#ECE6DC` | Text on dark theme, background on light theme            |
 | Ink         | `#050505` | Background on dark theme, text on light theme            |
-| Salmon Pink | `#FA9189` | The one accent: primary buttons, active states, emphasis |
+| Pastel Pink | `#F7B9CB` | The one accent: primary buttons, active states, emphasis |
 
 - Two themes: Ink dark (default) and Cream light, switched by `data-theme` on `<html>`.
   Every change must look right in both. Check both before finishing.
-- Yvan rejected hot pink (Orchid `#E65BC4`) as too loud. Keep the accent soft and warm;
-  never reintroduce a saturated magenta.
-- Salmon as a fill always carries Ink text (`--on-accent`), never Cream or white.
-- Salmon as text fails contrast on Cream, so text never uses `--accent` directly:
-  `--accent-text` for small text (darker terracotta on light), `--accent-display` for
-  large headings and numbers (mid salmon on light). On dark both are the pure salmon.
+- Yvan rejected hot pink (Orchid `#E65BC4`) and salmon (`#FA9189`). The accent is a
+  soft pastel pink. Never reintroduce a saturated magenta or an orange-leaning pink.
+- Pastel pink as a fill always carries Ink text (`--on-accent`), never Cream or white.
+- Pastel pink is nearly invisible on Cream, so on the light theme it is only used for
+  fills. Text uses `--accent-text` (deep rose on light); large headings, numbers,
+  thin lines, dots and sparks use `--accent-display` (mid rose on light). On dark all
+  three are the pure pastel pink.
 - `--accent-deep` is the darker edge under 3D buttons.
 - No other hues. No blue, green, purple or gradient-rainbow accents. Status and
   emphasis are expressed with the accent, weight, or borders.
@@ -230,5 +231,10 @@ browser frame. Do not put raw screenshots in the hero, on cards, or as cover ima
   `highlights` chips.
 - AI projects put their retrieval and tuning design directly under the case-study
   hero via `aiSystem` in `src/content/projects.ts` (rendered by `AiSpotlight`).
+- Yvan is a BS Computer Science graduate (Mapúa MCL, Aug 2022 – Jul 2026, Machine
+  Learning specialization). Never describe him as a student.
+- The résumé page mirrors `public/documents/resume/Ramirez-Resume.pdf`. When the PDF
+  changes, update `src/app/resume/page.tsx` to match. Keep the phone number in the
+  PDF only.
 - Only state facts that are in the project's code or that Yvan supplied. Do not
   invent metrics, and do not claim weight fine-tuning unless Yvan provides the details.

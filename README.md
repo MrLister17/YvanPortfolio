@@ -1,6 +1,6 @@
 # Yvan Ramirez — Portfolio
 
-A multi-page portfolio for Lester Yvan P. Ramirez, a fourth-year Computer Science student specializing in Machine Learning. The site presents applied AI, full-stack, mobile, data, and automation work through evidence-based case studies.
+A multi-page portfolio for Lester Yvan P. Ramirez, a BS Computer Science graduate specializing in Machine Learning. The site presents applied AI, full-stack, mobile, data, and automation work through evidence-based case studies.
 
 Built with Next.js, TypeScript, App Router, Motion for React, and CSS. It uses the standard Next.js server deployment model supported directly by Vercel. There is no static export, GitHub Pages base path, asset prefix, runtime database, contact-form backend, or required secret.
 
