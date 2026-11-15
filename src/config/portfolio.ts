@@ -13,7 +13,8 @@ export const portfolioConfig = {
   email: "yvanmain28@gmail.com",
   githubUrl: "https://github.com/MrLister17",
   linkedInUrl: "https://www.linkedin.com/in/lester-yvan-ramirez-353b44293/",
-  resumeUrl: "/documents/resume/Ramirez-Resume.pdf",
+  // The ?v= stamp makes browsers fetch the new file instead of a cached older résumé. Bump it when the PDF changes.
+  resumeUrl: "/documents/resume/Ramirez-Resume.pdf?v=2026-11",
   currentRole: {
     title: "Research Analyst",
     team: "AI Development & Automation",
