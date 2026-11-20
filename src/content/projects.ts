@@ -16,7 +16,22 @@ export const projects: Project[] = [
     timeframe: "2026",
     technologies: ["Next.js", "React", "TypeScript", "Node.js", "PostgreSQL", "Prisma", "Groq", "Anthropic", "Zod", "Docker", "GitHub Actions", "Playwright", "Vercel"],
     icon: { src: "/images/projects/hatian/icon.png", alt: "Hatian app icon" },
-    gallery: [],
+    gallery: [
+      {
+        src: "/images/projects/hatian/receipt-draft.png",
+        alt: "Hatian receipt editor showing an editable scan draft and a matching PHP 665.50 total",
+        caption: "Receipt review in a browser test. The fixture reader supplies sample data, and the editor checks the total before saving.",
+        width: 720,
+        height: 1480,
+      },
+      {
+        src: "/images/projects/hatian/cash-settlement.png",
+        alt: "Hatian payment screen showing a confirmed cash handoff and an updated remaining transfer in Thai baht",
+        caption: "A synthetic cash payment is confirmed and the remaining transfers are recalculated in the same transaction.",
+        width: 1179,
+        height: 1977,
+      },
+    ],
     liveUrl: "https://ateanne.vercel.app",
     repositoryUrl: "https://github.com/MrLister17/AteAnne",
     problem: "Group bills rarely split evenly. Item quantities, shared dishes, discounts, and service charges make the math tedious, and a payment marked as sent can still be awaiting confirmation.",

@@ -15,7 +15,7 @@ export function HomeHero({ project }: { project: Project }) {
         </div>
         <h1 id="home-title" className="hero-sequence-2">
           <span>I build full-stack apps</span>
-          <em>with practical AI.</em>
+          <em>with AI.</em>
         </h1>
         <p className="hero-lede hero-sequence-3">
           I&apos;m Yvan, a Research Analyst in AI Development &amp; Automation at UL Solutions. My featured project, Hatian, combines a mobile-first React interface, a PostgreSQL ledger, and AI receipt scanning.
