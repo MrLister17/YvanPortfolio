@@ -35,6 +35,12 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         <div className="case-kicker"><span>{project.categories.join(" · ")}</span><span className="status-pill">{project.status}</span></div>
         <h1>{project.title}</h1><p className="case-positioning">{project.positioningStatement}</p>
         {(project.role || project.timeframe || project.technologies.length > 0) && <div className="case-facts">{project.role && <div><small>Role</small><strong>{project.role}</strong></div>}{project.timeframe && <div><small>Timeframe</small><strong>{project.timeframe}</strong></div>}{project.technologies.length > 0 && <div><small>Stack</small><strong>{project.technologies.join(" · ")}</strong></div>}</div>}
+        {!project.embedUrl && (project.liveUrl || project.repositoryUrl) && (
+          <div className="hero-actions">
+            {project.liveUrl && <a className="button" href={project.liveUrl} target="_blank" rel="noreferrer">Open live app <ExternalLink /></a>}
+            {project.repositoryUrl && <a className="button button-secondary" href={project.repositoryUrl} target="_blank" rel="noreferrer"><GithubIcon /> View source</a>}
+          </div>
+        )}
       </header>
 
       <CaseHeroMedia project={project} />

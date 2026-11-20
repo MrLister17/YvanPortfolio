@@ -7,7 +7,7 @@ export type ProjectCategory =
   | "Research"
   | "Automation";
 
-export type ProjectStatus = "Completed" | "In Progress" | "Thesis Project" | "Prototype" | "Workplace Tool";
+export type ProjectStatus = "Live" | "Completed" | "In Progress" | "Thesis Project" | "Prototype" | "Workplace Tool";
 
 export type ProjectImage = {
   src: string;

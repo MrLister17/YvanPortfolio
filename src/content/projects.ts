@@ -2,6 +2,60 @@ import type { Project } from "@/types/project";
 
 export const projects: Project[] = [
   {
+    slug: "ateanne",
+    title: "AteAnne",
+    shortDescription: "An installable web app for splitting shared expenses by item, with AI-assisted receipt scanning and recipient-confirmed payments.",
+    positioningStatement: "Photograph the receipt, claim what you ordered, and settle to the centavo.",
+    highlights: ["Live on Vercel", "Groq vision and validated receipt drafts", "Exact-centavo settlement"],
+    categories: ["AI", "Web", "Mobile"],
+    featured: true,
+    status: "Live",
+    role: "Full-stack AI project",
+    timeframe: "2026",
+    technologies: ["Next.js", "React", "TypeScript", "Node.js", "PostgreSQL", "Prisma", "Groq", "Anthropic", "Zod", "Docker", "GitHub Actions", "Playwright", "Vercel"],
+    icon: { src: "/images/projects/ateanne/icon.png", alt: "AteAnne app icon" },
+    gallery: [],
+    liveUrl: "https://ateanne.vercel.app",
+    repositoryUrl: "https://github.com/MrLister17/AteAnne",
+    problem: "Group bills rarely split evenly. Item quantities, shared dishes, discounts, and service charges make the math tedious, and a payment marked as sent can still be awaiting confirmation.",
+    users: "Friends and families splitting restaurant bills, shared purchases, and trip expenses.",
+    constraints: [
+      "Receipt scans are optional. Manual entry remains available when a scan is unreadable or the provider is unavailable.",
+      "People settle outside AteAnne. A reported transfer only affects the balance after the recipient confirms it.",
+    ],
+    approach: [
+      "Read the receipt with a server-side vision provider and validate the response against a Zod schema.",
+      "Reconcile the draft against the printed total and let the uploader edit it before saving.",
+      "Allocate costs in integer minor units and recalculate outstanding transfers when a payment is confirmed.",
+    ],
+    keyFeatures: [
+      { title: "AI-assisted receipt entry", description: "Groq reads receipt photos in production. The app strips image metadata before sending the photo, validates the JSON response, and opens an editable draft. The code also supports a configurable Claude reader." },
+      { title: "Item-level splitting", description: "Members claim items by share or quantity. Server-side rules allocate discounts and charges and preserve the exact total." },
+      { title: "Recipient-confirmed settlement", description: "Confirmed cash handoffs update the ledger. Overpayments become credit that can apply to later expenses." },
+      { title: "Multi-currency expenses", description: "The app integrates European Central Bank exchange rates and locks the applicable rate for settlement calculations." },
+    ],
+    architecture: [
+      { id: "interface", label: "React PWA", detail: "Mobile event screens for receipt review, item claims, and payments." },
+      { id: "api", label: "Next.js API", detail: "Server routes enforce event membership, workflow rules, and scan rate limits." },
+      { id: "vision", label: "Vision provider", detail: "Groq or Claude returns structured receipt data that the app validates before creating a draft." },
+      { id: "ledger", label: "Money rules", detail: "Deterministic TypeScript rules handle reconciliation, cost allocation, balances, and settlement." },
+      { id: "storage", label: "PostgreSQL", detail: "Prisma persists event and ledger state. Payment confirmation and replanning run in a single transaction." },
+    ],
+    outcomes: [
+      "The live Vercel deployment reports Groq receipt scanning through its health endpoint.",
+      "GitHub Actions runs automated checks, including PostgreSQL integration and browser tests. The v0.10.0 release records a passing production smoke test.",
+    ],
+    lessons: [
+      "An editable draft gives the uploader a chance to catch misread prices before the receipt affects anyone’s balance.",
+      "Making receipt scanning optional keeps bill entry usable through provider outages and rate limits.",
+    ],
+    challenges: [],
+    seo: {
+      title: "AteAnne Case Study",
+      description: "How AteAnne combines AI receipt scanning, human review, and exact settlement in a live full-stack application.",
+    },
+  },
+  {
     slug: "gma-research-assistant",
     title: "GMA Research Assistant",
     shortDescription:

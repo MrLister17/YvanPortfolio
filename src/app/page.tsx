@@ -10,21 +10,23 @@ import { projects } from "@/content/projects";
 // Drawn from the résumé skill groups; each links back to where it was used.
 const skillGroups = [
   { icon: BrainCircuit, title: "AI and evaluation", skills: ["RAG and source grounding", "LLM prototyping and fine-tuning", "ROUGE-L and semantic similarity", "RAGAS-style evaluation"], project: "Fitness Buddy · GMA Research Assistant" },
-  { icon: Layers, title: "Full-stack development", skills: ["Python and FastAPI", "React, Next.js, and TypeScript", "PostgreSQL and pgvector", "Kotlin and Jetpack Compose"], project: "GMA Research Assistant · Fitness Buddy" },
+  { icon: Layers, title: "Full-stack development", skills: ["Python and FastAPI", "React, Next.js, and TypeScript", "PostgreSQL and pgvector", "Kotlin and Jetpack Compose"], project: "AteAnne · GMA Research Assistant · Fitness Buddy" },
   { icon: DatabaseZap, title: "Research automation", skills: ["Power Automate and Office Scripts", "Copilot Studio agents", "Workbook validation and export", "Traceable review workflows"], project: "GMA DataReady · GMA Research Assistant" },
 ];
 
 export default function Home() {
+  const [featuredProject, ...otherProjects] = projects;
+
   return (
     <>
-      <HomeHero />
+      <HomeHero project={featuredProject} />
 
       <section id="selected-work" className="section-shell section-block numbered-section">
         <Reveal variant="mask" className="section-heading">
-          <div><span className="eyebrow">01 · Selected work</span><h2>Four builds, one rule: show the evidence.</h2></div>
+          <div><span className="eyebrow">01 · Selected work</span><h2>More selected projects.</h2></div>
           <p>A regulatory research assistant, a workbook automation tool, an AI cardio coach, and a browser game. Open any of them to see how it works and what I built.</p>
         </Reveal>
-        <div className="project-grid" data-reveal-group="">{projects.map((project, index) => <ProjectCard key={project.slug} project={project} index={index} />)}</div>
+        <div className="project-grid" data-reveal-group="">{otherProjects.map((project, index) => <ProjectCard key={project.slug} project={project} index={index} />)}</div>
         <div className="section-link"><Link className="text-link" href="/projects">Explore all projects <ArrowRight /></Link></div>
       </section>
 
