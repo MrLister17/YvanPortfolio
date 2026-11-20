@@ -2,26 +2,28 @@ import type { Project } from "@/types/project";
 
 export const projects: Project[] = [
   {
-    slug: "ateanne",
-    title: "AteAnne",
+    slug: "hatian",
+    title: "Hatian",
     shortDescription: "An installable web app for splitting shared expenses by item, with AI-assisted receipt scanning and recipient-confirmed payments.",
     positioningStatement: "Photograph the receipt, claim what you ordered, and settle to the centavo.",
     highlights: ["Live on Vercel", "Groq vision and validated receipt drafts", "Exact-centavo settlement"],
     categories: ["AI", "Web", "Mobile"],
     featured: true,
     status: "Live",
-    role: "Full-stack AI project",
+    role: "Full-stack development and AI integration",
+    contributionSummary: "From a receipt photo to a settled balance.",
+    contribution: "I worked across the mobile workflow, server APIs, data model, and AI integration. The React interface handles receipt review and item claims. Next.js routes enforce who can act and when. PostgreSQL transactions keep the settlement plan and payment history consistent when several people use the same event.",
     timeframe: "2026",
     technologies: ["Next.js", "React", "TypeScript", "Node.js", "PostgreSQL", "Prisma", "Groq", "Anthropic", "Zod", "Docker", "GitHub Actions", "Playwright", "Vercel"],
-    icon: { src: "/images/projects/ateanne/icon.png", alt: "AteAnne app icon" },
+    icon: { src: "/images/projects/hatian/icon.png", alt: "Hatian app icon" },
     gallery: [],
     liveUrl: "https://ateanne.vercel.app",
     repositoryUrl: "https://github.com/MrLister17/AteAnne",
     problem: "Group bills rarely split evenly. Item quantities, shared dishes, discounts, and service charges make the math tedious, and a payment marked as sent can still be awaiting confirmation.",
-    users: "Friends and families splitting restaurant bills, shared purchases, and trip expenses.",
+    users: "Friends and families splitting restaurant bills, shared purchases, and trip expenses. The app was originally released as AteAnne.",
     constraints: [
       "Receipt scans are optional. Manual entry remains available when a scan is unreadable or the provider is unavailable.",
-      "People settle outside AteAnne. A reported transfer only affects the balance after the recipient confirms it.",
+      "People settle outside Hatian. A reported transfer only affects the balance after the recipient confirms it.",
     ],
     approach: [
       "Read the receipt with a server-side vision provider and validate the response against a Zod schema.",
@@ -42,17 +44,46 @@ export const projects: Project[] = [
       { id: "storage", label: "PostgreSQL", detail: "Prisma persists event and ledger state. Payment confirmation and replanning run in a single transaction." },
     ],
     outcomes: [
-      "The live Vercel deployment reports Groq receipt scanning through its health endpoint.",
-      "GitHub Actions runs automated checks, including PostgreSQL integration and browser tests. The v0.10.0 release records a passing production smoke test.",
+      "Hatian is live on Vercel with Groq receipt scanning. The v0.10.0 release records 260 unit, 84 PostgreSQL integration, and 77 browser tests passing.",
+      "The v0.10.0 production smoke test checked the cash-payment form and API validation with synthetic data.",
     ],
     lessons: [
       "An editable draft gives the uploader a chance to catch misread prices before the receipt affects anyone’s balance.",
       "Making receipt scanning optional keeps bill entry usable through provider outages and rate limits.",
     ],
-    challenges: [],
+    challenges: [
+      {
+        challenge: "Receipt photos can produce plausible but wrong amounts",
+        response: "The server strips image metadata, limits scans per member and event, and validates the provider response with Zod. The resulting draft flags discrepancies against the printed total and opens in the receipt editor for review. Manual entry covers unreadable images and provider failures.",
+      },
+      {
+        challenge: "Every centavo has to reach the right person",
+        response: "The allocation engine uses integer minor units and rational shares, with largest-remainder rounding so the shares sum to the original total. For example, three equal shares of ₱100.00 become ₱33.34, ₱33.33, and ₱33.33. The server calculates the split from saved receipt lines and item claims.",
+      },
+      {
+        challenge: "Two people can change the same event at the same time",
+        response: "Money-affecting writes lock the event row, check the actor, phase, and version, then update and audit the change in a PostgreSQL transaction. When a confirmed payment changes the plan, a stale transfer ID returns a conflict so the client can load the current plan.",
+      },
+      {
+        challenge: "Cash payments can arrive early, exceed a balance, or be disputed",
+        response: "The recipient confirms the handoff before it changes the ledger. An overpayment becomes credit for later expenses. Disputes pause settlement, and a correction produces a new settlement statement while carrying confirmed transfers forward once.",
+      },
+      {
+        challenge: "Travel receipts and repayments can use different currencies",
+        response: "The app uses dated European Central Bank rates and locks the rate used for the calculation. Conversion uses decimal arithmetic, and the settlement screen shows what a foreign-currency payment counts toward in the event currency.",
+      },
+      {
+        challenge: "Joining should be easy while event data stays private",
+        response: "Join codes get people into an event without a password account. Server-side membership checks protect balances and images. HttpOnly session cookies and hashed recovery keys support device recovery, and the PWA caches public assets while fetching private data fresh.",
+      },
+      {
+        challenge: "A settlement change needs repeatable release checks",
+        response: "GitHub Actions runs a Python reference check, TypeScript unit tests, real PostgreSQL integration tests, and Playwright tests at mobile viewport sizes. The Vercel health route reports the running version and configured receipt scanner for production smoke checks.",
+      },
+    ],
     seo: {
-      title: "AteAnne Case Study",
-      description: "How AteAnne combines AI receipt scanning, human review, and exact settlement in a live full-stack application.",
+      title: "Hatian Case Study",
+      description: "How Hatian combines AI receipt scanning, human review, and exact settlement in a live full-stack application.",
     },
   },
   {

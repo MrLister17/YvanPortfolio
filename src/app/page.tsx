@@ -10,7 +10,7 @@ import { projects } from "@/content/projects";
 // Drawn from the résumé skill groups; each links back to where it was used.
 const skillGroups = [
   { icon: BrainCircuit, title: "AI and evaluation", skills: ["RAG and source grounding", "LLM prototyping and fine-tuning", "ROUGE-L and semantic similarity", "RAGAS-style evaluation"], project: "Fitness Buddy · GMA Research Assistant" },
-  { icon: Layers, title: "Full-stack development", skills: ["Python and FastAPI", "React, Next.js, and TypeScript", "PostgreSQL and pgvector", "Kotlin and Jetpack Compose"], project: "AteAnne · GMA Research Assistant · Fitness Buddy" },
+  { icon: Layers, title: "Full-stack development", skills: ["Python and FastAPI", "React, Next.js, and TypeScript", "PostgreSQL and pgvector", "Kotlin and Jetpack Compose"], project: "Hatian · GMA Research Assistant · Fitness Buddy" },
   { icon: DatabaseZap, title: "Research automation", skills: ["Power Automate and Office Scripts", "Copilot Studio agents", "Workbook validation and export", "Traceable review workflows"], project: "GMA DataReady · GMA Research Assistant" },
 ];
 

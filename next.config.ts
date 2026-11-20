@@ -9,6 +9,9 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  async redirects() {
+    return [{ source: "/projects/ateanne", destination: "/projects/hatian", permanent: true }];
+  },
   async headers() {
     return [{ source: "/(.*)", headers: securityHeaders }];
   },
